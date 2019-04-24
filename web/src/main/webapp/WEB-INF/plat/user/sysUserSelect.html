@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用户表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: "zTree"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="base_box">
+    <script type="text/template">
+        <div>
+            <div class="no_p_box">
+                <div class="query_box">
+                </div>
+            </div>
+            <div class="list_box">
+            </div>
+        </div>
+    </script>
+</div>
+
+<div class="w_button_box">
+    <input type="button" id="confirm" value="确定" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: ["/medias/src/plat/user/sysUserSelect_config.js",
+            "/medias/src/plat/user/sysUserSelect.js"]
+    });
+</script>
+
+</body>
+</html>

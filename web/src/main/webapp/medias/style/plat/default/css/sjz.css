@@ -1,0 +1,31 @@
+/*时间轴插件*/
+.event_box{ width: 100%; margin: 0 auto 0;position: relative;height: auto;}
+.event_box .parHd {position: relative;width: 850px;height: 92px;overflow: hidden;margin: 0 auto 10px;padding: 0 60px;}
+.parHd  ul{ width: 100%; text-align: center; margin: 0 auto; padding-top: 25px !important;}
+.parHd .tempWrap{ margin: 0 auto;}
+.parHd .tempWrap:after{ content: '';width:100%;height: 2px;background: #0e9aef;position: absolute;right: 0%;top: 25px;z-index: 10;}
+.parHd li.no_line:before{ display: none;}
+.parHd li{  display: inline-block; cursor: pointer; padding-top: 30px; font-size: 16px; color: #333;margin:0 30px; position: relative;}
+.parHd li.none_icon{color:#a8a8a8;}
+.parHd li.blue_icon{color:#0e9aef;}
+.parHd li:after{ content: '';width: 24px; height: 24px; position: absolute;  z-index: 20;top: -12px; left: 50%; margin-left: -12px;}
+.parHd li.none_icon:after{ content: ''; background: url(../../image/bqgl/no_ico.png) no-repeat;}
+.parHd li.blue_icon:after{ content: ''; background: url(../../image/bqgl/b_ico.png) no-repeat;width: 34px;height: 34px;top: -16px;margin-left: -16px;}
+.parHd li.green_icon:after{ content: ''; background: url(../../image/bqgl/g_ico.png) no-repeat;}
+.parBd{ text-align: center; margin-top: 0px;}
+.parBd h4{ position: relative; font-size: 40px; margin-bottom: 3%; /*width: 200px;*/ padding: 0 60px;  display: inline-block; text-align: center;}
+.parBd h4:after{ content:''; background: #000; width: 100px; height: 1px; position: absolute; left: -100px; bottom: 12px;}
+.parBd h4:before{ content:''; background: #000; width: 100px; height: 1px; position: absolute; right: -100px; bottom: 12px;}
+.parBd p{ line-height: 180%; font-size: 16px; width: 80%; margin: 0 auto;}
+div#listBox {width: 100%;}
+.sPrev,.sNext,.left_time,.right_time{ width: 30px; height: 30px; display: block; position: absolute; top: 10px;z-index: 999;}
+.sPrev{ left: 45px;}
+.sNext{ right: 45px;}
+.left_time{left: 0;}
+.right_time{right: 0;}
+.sPrev img,.sNext img,.left_time img,.right_time img{transition: all .6s cubic-bezier(.51,1.1,.9,.95);
+    -moz-transition: all .6s cubic-bezier(.51,1.1,.9,.95);
+    -webkit-transition: all .6s cubic-bezier(.51,1.1,.9,.95);
+    -o-transition: all .6s cubic-bezier(.51,1.1,.9,.95);
+}
+.slideBox{height: 100%;}

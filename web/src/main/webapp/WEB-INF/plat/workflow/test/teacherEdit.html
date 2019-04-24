@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div>
+            <div class="page_title">
+                <h1>员工信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th><b>*</b>员工名称</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="name"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>请假时长(h)</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="qjsc"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ['/medias/src/plat/workflow/instance/workflow.js',
+            '/medias/src/plat/workflow/test/teacherEdit_config.js',
+            '/medias/src/plat/workflow/test/teacherEdit.js']
+    });
+</script>
+
+</body>
+</html>

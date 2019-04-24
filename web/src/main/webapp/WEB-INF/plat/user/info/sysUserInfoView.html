@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查看</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--主表单模板-->
+<script type="text/template" id="sysUserForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>用户信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th>用户名</th>
+                    <td>
+                        <div class="span_show_ellipsis" title="{{userName||''}}">{{userName||""}}</div>
+                    </td>
+                    <th>性别</th>
+                    <td>
+                        <div class="span_show_ellipsis" title="{{dict(sex, 'SEXDEMO')}}">{{dict(sex, 'SEXDEMO')}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>登录名</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{loginName||''}}">{{loginName||''}}</span>
+                    </td>
+                    <th>默认组织</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dftOrganName||''}}">{{dftOrganName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>身份证号码</th>
+                    <td colspan="3" class="user_info"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+<!--用户扩展信息-->
+<script type="text/template" id="userInfoForm">
+    <div>
+        <span class="span_show_ellipsis" title="{{sfzhm}}">{{sfzhm}}</span>
+    </div>
+</script>
+
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/user/info/sysUserInfoView_config.js",
+            "/medias/src/plat/user/info/sysUserInfoView.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

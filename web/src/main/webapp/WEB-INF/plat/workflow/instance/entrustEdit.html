@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="entrustForm" class="form_box">
+    <script type="text/template">
+        <div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th><b>*</b>委托人</th>
+                    <td>
+                        <input type="text" class="TextBox" model="entrustUserName"/>
+                        <input type="hide" model="entrustUserId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>开始时间</th>
+                    <td><input type="text" class="TextBox" model="startDate" id="startDate"/></td>
+                </tr>
+                <tr>
+                    <th><b>*</b>结束时间</th>
+                    <td><input type="text" class="TextBox" model="endDate" id="endDate" /></td>
+                </tr>
+            </table>
+        </div>
+    </script>
+</div>
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ['/medias/src/plat/workflow/instance/entrustEdit_config.js',
+            '/medias/src/plat/workflow/instance/entrustEdit.js']
+    });
+</script>
+
+</body>
+</html>

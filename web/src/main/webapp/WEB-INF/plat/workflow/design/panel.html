@@ -1,0 +1,64 @@
+<html xmlns:v>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <title>安顺市社会治安防控</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["flow"]
+        });
+    </script>
+    <style>
+        html, body {
+            overflow: auto;
+            height: 100%;
+        }
+    </style>
+    <script>
+        $(document).click(function () {
+            $("#menu_flow").hide();
+            $("#menu_node").hide();
+            $("#menu_router").hide();
+        });
+    </script>
+</head>
+<body style="margin:0px;">
+<div id="canvas" class="canvas" tabindex="0" style="margin: 0;height: 99%;">
+    <div id="menu_flow" style=" width: 100px;display: none;position:absolute;min-width: 90px;max-width: 190px;"
+         class="om-menu-container om-menu-content om-corner-all"></div>
+    <div id="menu_node" style=" width: 100px;display: none;position:absolute;min-width: 90px;max-width: 190px;"
+         class="om-menu-container om-menu-content om-corner-all"></div>
+    <div id="menu_router" style=" width: 100px;display: none;position:absolute;min-width: 90px;max-width: 190px;"
+         class="om-menu-container om-menu-content om-corner-all"></div>
+</div>
+<div id="dialog-containers" style="display:block"></div>
+<script type="text/javascript">
+    RX.load({
+        async: false,
+        module: [
+            "/medias/src/plat/workflow/design/util/elements.js",
+            "/medias/src/plat/workflow/design/util/flow.js",
+            "/medias/src/plat/workflow/design/util/shape.js",
+            "/medias/src/plat/workflow/design/util/rect.js",
+            "/medias/src/plat/workflow/design/util/oval.js",
+            "/medias/src/plat/workflow/design/util/node/judge_node.js",
+            "/medias/src/plat/workflow/design/util/node/start_node.js",
+            "/medias/src/plat/workflow/design/util/node/end_node.js",
+            "/medias/src/plat/workflow/design/util/node/read_node.js",
+            "/medias/src/plat/workflow/design/util/node/nested_node.js",
+            "/medias/src/plat/workflow/design/util/router.js",
+            "/medias/src/plat/workflow/design/util/node/activity_node.js",
+            "/medias/src/plat/workflow/design/util/panel.js",
+            "/medias/src/plat/workflow/design/util/raphael.js",
+            "/medias/src/plat/workflow/design/util/flow.property.js",
+            "jqueryJson",
+            "json2",
+            "/medias/src/plat/workflow/design/panel.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

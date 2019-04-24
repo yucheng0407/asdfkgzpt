@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>配置案例(基础)</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <!--样式加载-->
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tabPanel"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .defaultPanel {
+            padding: 0px 10px 10px 10px;
+        }
+
+    </style>
+</head>
+<body>
+<!--页面基础布局-->
+<div class="base_box">
+    <div class="list_box" style="padding:0;">
+        <div class="tabdiv" id="appTab">
+        </div>
+    </div>
+    <div id="tabContent">
+        <!--tab页内容模板-->
+        <script type="text/template">
+            <div>
+                <!--循环应用列表，生成各应用tab页内容-->
+                {{#each appTypeList:index}}
+                <div id="_app{{appId}}" class="defaultPanel">
+                    <!--循环应用配置类型列表，生成各类型块-->
+                    {{#each typeList:typeIndex}}
+                    <div class="page_title">
+                        <h1>{{typeName||""}}</h1>
+                    </div>
+                    <table class="list" border="0" cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col width="30%"/>
+                            {{#if appTypeList[index].edit }}
+                            <col width="60%"/>
+                            <col width="10%"/>
+                            {{else}}
+                            <col width="70%"/>
+                            {{/if}}
+                        </colgroup>
+                        <thead></thead>
+                        <tbody>
+                        <!--循环类型配置列表，生成各配置信息行-->
+                        {{#each configList: configIndex}}
+                        <tr>
+                            <th>{{NAME||""}} ({{CODE||""}})</th>
+                            <td>{{VALUE||""}}</td>
+                            {{#if appTypeList[index].edit}}
+                            <td style="text-align: center">
+                                <a on-click="editConfig($keypath)" class="active_1">修改</a>
+                                <a style="margin-left:10px;" on-click="delConfig($keypath)" class="active_2">删除</a>
+                            </td>
+                            {{/if}}
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                    {{/each}}
+
+                </div>
+                {{/each}}
+            </div>
+        </script>
+    </div>
+</div>
+
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["tabPanel",
+            "/medias/src/plat/demo/cmpt/cmptConfigTypeShow.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="layout" content="main"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            module: ["platMain", "uploadify"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        var uploadResult = "";
+        RX.load({
+            async: false,
+            module: ["uploadify", "/medias/src/plat/workflow/design/impWorkflow.js"]
+        });
+    </script>
+</head>
+
+<body>
+<div class="form_box">
+    <table class="form">
+        <colgroup>
+            <col width="120px">
+        </colgroup>
+        <tr>
+            <th>文件</th>
+            <td>
+                <input id="file_upload" name="uploadFile" type="file"/>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="typeId"/>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="uploadBtn" value="上传" class="c_button"/>
+    <input type="button" id="cancel" value="取消" class="n_button"/>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>资源树选择页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "roleRelate"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+
+        .ztree li {
+            line-height: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="no_p_box">
+    <div class="tree_box">
+        <ul id="tree" class="ztree">
+        </ul>
+    </div>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.page.resize = function () {
+        RX.resizeForm();
+        $(".tree_box").innerHeight($(window).height() - $(".w_button_box").outerHeight() - 52);
+    };
+    RX.load({
+        template: "form",
+        module: ["zTree", "/medias/src/plat/resource/roleResourceTreeSelect.js"]
+    });
+</script>
+
+</body>
+</html>

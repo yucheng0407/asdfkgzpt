@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>要素关联信息</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .titleMsg {
+            color: red;
+            font-size: 15px
+        }
+    </style>
+</head>
+<body>
+<div class="form_box"></div>
+<script type="text/template" id="organLink">
+    <div>
+        <!--岗位信息-->
+        <SubOrganList ref="subOrganList" list="{{organ}}"/>
+        <!--岗位信息-->
+        <LinkPostList ref="linkPostList" list="{{post}}"/>
+        <!--用户信息-->
+        <LinkUserList ref="linkUserList" list="{{user}}"/>
+        <!--角色信息-->
+        <LinkRoleList ref="linkRoleList" list="{{role}}"/>
+
+        <div id="selPosition" style="padding: 30px 0 0 0;display: none">
+            <table class="form">
+                <colgroup>
+                    <col width="200px">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>将此机构下的用户转移至</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="newOrganName"/>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="subOrganList">
+    <div class="p_box">
+        <div class="page_title"><h1>下级机构</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:5%">序号</th>
+                <th style="width:20%">机构名称</th>
+                <th style="width:20%">机构编码</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="center" class="orderTag"></td>
+                <td align="center">{{MC||""}}</td>
+                <td align="center">{{ORGAN_CODE||""}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="3">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="linkPostList">
+    <div class="p_box" id="organType">
+        <div class="page_title"><h1>岗位</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:5%">序号</th>
+                <th style="width:20%">岗位名称</th>
+                <th style="width:20%">岗位编码</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="center" class="orderTag"></td>
+                <td align="center">{{POST_NAME||""}}</td>
+                <td align="center">{{POST_CODE||""}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="3">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="linkUserList">
+    <div class="p_box">
+        <div class="page_title"><h1>用户</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:5%">序号</th>
+                <th style="width:20%">用户名称</th>
+                <th style="width:20%">用户账号</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="center" class="orderTag"></td>
+                <td align="center">{{MC||""}}</td>
+                <td align="center">{{LOGIN_NAME||""}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="3">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="linkRoleList">
+    <div class="p_box">
+        <div class="page_title"><h1>角色</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:5%">序号</th>
+                <th style="width:20%">角色名称</th>
+                <th style="width:20%">角色编码</th>
+                <th style="width:20%">角色类型</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="center" class="orderTag"></td>
+                <td align="center">{{ROLE_NAME||""}}</td>
+                <td align="center">{{ROLE_CODE||""}}</td>
+                <td align="center">{{ROLETYPE_NAME||""}}</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="4">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+
+<div class="w_button_box">
+    <span class="titleMsg"></span>
+    <input type="button" id="yes" value="是" class="c_button"/>
+    <input type="button" id="close" value="否" class="n_button"/>
+</div>
+
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/organ/sysOrganLinkList_config.js",
+            "/medias/src/plat/organ/sysOrganLinkList.js"]
+    });
+</script>
+</body>
+</html>

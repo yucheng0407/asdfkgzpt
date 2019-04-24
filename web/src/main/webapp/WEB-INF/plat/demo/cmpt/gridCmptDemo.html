@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>字典列表页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+        .selected {
+            background-color: #ccecff;
+        }
+        .selected:hover {
+            background-color: #ccecff;
+        }
+    </style>
+</head>
+<body>
+<!--页面基础布局-->
+<div class="base_box">
+    <script type="text/template">
+        <div>
+            <div class="no_p_box">
+                <div class="operation_box" id="operate">
+                </div>
+                <div class="query_box">
+                </div>
+            </div>
+            <div class="no_p_box">
+                <div class="list_box">
+                    <div class="card_list_box">
+                        {{#if pageList && pageList.length}}
+                        {{#each pageList:index}}
+                        <div>
+
+                            <div class="card_list {{#if selected}} selected {{/if}}"
+                                 on-dblclick="dblclickItem($keypath)" on-click="select($keypath,$event)">
+                                <div class="card_list_top">
+                                    <h1><span class="span_show_ellipsis">{{USER_NAME || ""}}</span></h1>
+                                </div>
+                                <table border="0" cellspacing="0" cellpadding="0" class="card_list_table">
+                                    <col width="80px">
+                                    <col width="">
+                                    <col width="50px">
+                                    <col width="">
+                                    <tr>
+                                        <th>性别：</th>
+                                        <td>{{dict(SEX,'getSexDict2("SEX")')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>出生日期：</th>
+                                        <td>{{date(CSRQ,'yyyy-MM-dd')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>政治面貌：</th>
+                                        <td>{{dict(ZZMM,'ZZMMDEMO')}}</td>
+                                    </tr>
+
+                                </table>
+                                <img alt=""
+                                     onerror="onerror=null;src='${ctxPath}/medias/style/plat/image/common/photo.jpg'"
+                                     {{#if ZP_ID}} src="${ctxPath}/attachment/getImage?id={{ZP_ID}}"
+                                     {{else}} src="${ctxPath}/medias/style/plat/image/common/photo.jpg" {{/if}}
+                                />
+                            </div>
+
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <div style="width:100%;text-align:center">
+                            {{msg}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: [
+            "/medias/src/plat/demo/cmpt/gridCmptDemo_config.js",
+            "/medias/src/plat/demo/cmpt/gridCmptDemo.js"]
+    });
+</script>
+
+</body>
+</html>

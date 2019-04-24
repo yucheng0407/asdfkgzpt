@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>系统字典表（主表）</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<!--基础布局-->
+<div class="form_box">
+</div>
+
+<!--表单模板-->
+<script type="text/template" id="sysDictForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>字典基本信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th><b>*</b>字典名称</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="dictName"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>字典编码</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="dictCode" on-keyup="changeDictCode()"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否为空</th>
+                    <td>
+                        <div class="element_box">
+                            <div model="isEmpty"></div>
+                        </div>
+                    </td>
+                    <th><b>*</b>字典类型</th>
+                    <td>
+                        <div class="element_box ele_0">
+                            <select title="" class="i_select" model="dictType"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>上级字典</th>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <input title="" type="text" class="i_layer" model="pdictName"/>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>描述</th>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <textarea title="" class="i_textarea" model="description"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--系统字典表（从表）动态列表-->
+        <SysSubdictGrid ref="sysSubdictGrid" list="{{sysSubDictList}}"/>
+    </div>
+</script>
+<!--系统字典表（从表）子模板-->
+<script type="text/template" id="sysSubdict">
+    <div class="p_box" id="subDictList" style="display: none">
+        <div class="page_title"><h1>字典值列表</h1>
+            <ul class="action_button to_right">
+                <li><a on-click="addSysSubdict()"><i class="iconfont"></i>新增</a></li>
+                <li><a on-click="editSysSubdict()"><i class="iconfont">{{{"&#xe605;"}}}</i>修改</a></li>
+                <li><a on-click="deleteSysSubdict()"><i class="iconfont">{{{"&#xe606;"}}}</i>删除</a></li>
+            </ul>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="width:15%">字典项编码</th>
+                <th style="width:20%">字典项值</th>
+                <th style="width:15%">上级字典项编码</th>
+                <th style="width:20%">上级字典项值</th>
+                <th style="width:10%">排序号</th>
+                <th style="">字典项扩展</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr" on-click="select($keypath,$event)">
+                <td align="left" class="orderTag"></td>
+                <td align="left">
+                    <div class="element_box">{{code}}/></div>
+                </td>
+                <td align="left" title="{{value||''}}">
+                    {{value||""}}
+                </td>
+                <td align="left" title="{{pcode||''}}">
+                    {{pcode||''}}
+                </td>
+                <td align="left" title="{{pName||''}}">
+                    {{pName||''}}
+                </td>
+                <td align="left" title="{{sort||''}}">
+                    {{sort||''}}
+                </td>
+                <td align="left"  title="{{remark||''}}">
+                    {{remark||''}}
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="7" class="no_data">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/dict/sysDictEdit_config.js",
+            "/medias/src/plat/dict/sysDictEdit.js"]
+    });
+</script>
+</body>
+</html>

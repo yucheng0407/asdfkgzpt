@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--主表单模板-->
+<script type="text/template" id="sysDictForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>字典基本信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th>字典名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dictName||''}}">{{dictName||''}}</span>
+                    </td>
+                    <th>字典编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dictCode||''}}">{{dictCode||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否为空</th>
+                    <td>
+                        <span class="span_show_ellipsis" title='{{dict(isEmpty,"isEmpty()")}}'>{{dict(isEmpty,"isEmpty()")}}</span>
+                    </td>
+                    <th>字典类型</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dict(dictType,'DICTLX')}}"> {{dict(dictType,'DICTLX')}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>上级字典</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{pdictName||''}}"> {{pdictName||""}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>描述</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title='{{{html(description||"")}}}'>{{{html(description||"")}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--项目动态列表-->
+        <SysSubdictGrid ref="sysSubdictGrid" list="{{sysSubDictList}}"/>
+    </div>
+</script>
+<!--系统字典表（从表）子模板-->
+<script type="text/template" id="sysSubdict">
+    <div class="p_box" id="subDictList">
+        <div class="page_title"><h1>字典项信息</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="width:15%">字典项编码</th>
+                <th style="width:15%">字典项值</th>
+                <th style="width:15%">上级字典项编码</th>
+                <th style="width:15%">上级字典项值</th>
+                <th style="width:15%">排序号</th>
+                <th style="">字典项扩展</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length}}
+                {{#each list:index}}
+                {{#if sfyxSt !== "UNVALID"}}
+                <tr class="rx-grid-tr">
+                    <td align="left" class="orderTag"></td>
+                    <td align="left" title={{code||""}}>
+                        {{code||""}}
+                    </td>
+                    <td align="left" title="{{value||''}}">
+                        {{value||""}}
+                    </td>
+                    <td align="left" title="{{pcode||''}}">
+                       {{pcode||''}}
+                    </td>
+                    <td align="left" title="{{pName||''}}">
+                       {{pName||''}}
+                    </td>
+                    <td align="left" title="{{sort||''}}">
+                       {{sort||''}}
+                    </td>
+                    <td align="left" title="{{remark||''}}">
+                      {{remark||""}}
+                    </td>
+                </tr>
+                {{/if}}
+                {{/each}}
+            {{else}}
+            <tr><td align="center" colspan="6" class="no_data">无数据</td></tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/dict/sysDictView_config.js",
+            "/medias/src/plat/dict/sysDictView.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

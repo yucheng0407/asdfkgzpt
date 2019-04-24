@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+        RX.load({
+            async: false,
+            module: ["uploadify",
+                "/medias/src/plat/attachment/addFileUpload.js"]
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <div class="page_title">
+        <span>共100个文件（至少上传一份）</span>
+        <ul class="action_button to_right">
+            <li>
+                <a href="#none" id="file_upload"><i class="iconfont">&#xe8ab;</i>上传附件</a>
+            </li>
+        </ul>
+        <table cellpadding="0" cellspacing="0" border="0" class="query_form" style="float: right;">
+            <col width="150px"/>
+            <tr>
+                <td>
+                    <select class="i_select">
+                        <option value="">请选择</option>
+                        <option value="">文档</option>
+                        <option value="">图片</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--附件列表-->
+    <table cellpadding="0" cellspacing="0" border="0" class="attachment_list">
+        <col width=""/>
+        <col width="150px"/>
+        <col width="150px"/>
+        <col width="80px"/>
+        <tr>
+            <th>文件名</th>
+            <th>上传时间</th>
+            <th>文件类型</th>
+            <th></th>
+        </tr>
+        <tr class="trhover">
+            <td class="filename"><img src="css/image/attachment/word.png"/>关于开展全省电子信息系统2018年元旦春节送温暖活动的通知.doc</td>
+            <td>2018-3-21</td>
+            <td>文档</td>
+            <td>
+                <i class="iconfont" title="删除">&#xe6a2;</i>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" value="保存" class="c_button"/>
+    <input type="button" value="关闭" id="close" class="n_button"/>
+</div>
+
+<script type="text/javascript" language="javascript">
+    //初始化尺寸
+    $(function () {
+        $(".form_box").height($(window).height() - $(".w_button_box").outerHeight() - 20);
+
+        $(window).resize(function () {
+            $(".form_box").height($(window).height() - $(".w_button_box").outerHeight() - 20);
+        })
+    })
+</script>
+</body>
+
+</html>

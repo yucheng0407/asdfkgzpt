@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重防巡区</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        .operation_box{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--基础布局-->
+<div class="form_box">
+
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box" style="text-align: center" id="w_butt">
+    <!--文件加载-->
+    <script type="text/javascript">
+        RX.load({
+            template: "grid",
+            module: [
+                "/medias/src/jmfk/fkap/zfList_config.js",
+                "/medias/src/jmfk/fkap/zfList.js",
+            ],
+            callback: function () {
+                //初始化内容区域高度
+                $(".form_box").height($(window).height() - 50);
+                //页面大小改变时，触发jquery的resize方法，自适应拖拽
+                $(window).resize(function () {
+                    $(".form_box").height($(window).height() - 50);
+                })
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

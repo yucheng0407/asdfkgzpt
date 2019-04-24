@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>表单编辑器</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js?formdesign=true"></script>
+    <script>
+        RX.loadCSS({
+            template: "platMain",
+            module: ["/medias/style/plat/form/bootstrap/bootstrap.min.css",
+                "/medias/style/plat/form/font-awesome/font-awesome.min.css",
+                "/medias/style/plat/form/jquery/jquery.layout.css",
+                "/medias/style/plat/form/qtip/jquery.qtip.css",
+                "/medias/style/plat/form/ztree/ztree.css",
+                "/medias/style/plat/form/cityPicker/city-picker.css",
+                "/medias/style/plat/form/select2/select2.min.css",
+                "/medias/style/plat/form/select2/select2-bootstrap.min.css",
+                "/medias/style/plat/form/formDesign.css",
+                "/medias/style/plat/form/intro/introjs.min.css",
+                "/medias/style/plat/form/iconpicker/fontawesome-iconpicker.min.css"]
+        });
+    </script>
+</head>
+<body id="form_design">
+<!-- 左边BO对象 -->
+<div class="ui-layout-west">
+    <div class="fb-tabs hidden">
+        <div role="tab">
+            <ul class="nav  nav-pills nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#add_field" aria-controls="add" role="tab"
+                                                          data-toggle="tab">表单字段</a></li>
+                <li role="presentation"><a href="#bo" id="boTab" role="tab" data-toggle="tab">数据库字段</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fb-add-field-types active" id="add_field">
+                    <div class="add-field-wrapper niceScroll"></div>
+                </div>
+                <div class="tab-pane" id="bo">
+                    <div id="boTreeDiv" class="niceScroll">
+                        <div id="boTree" class="ztree"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- //左边BO对象 -->
+<!-- /中间表单设计 -->
+<div class="ui-layout-center" style="overflow: hidden;">
+    <div class="layout-header  hidden">
+        <div class="layout-header-title">表单布局</div>
+        <ul class="action_button to_right" style="margin: 2px 0 0 0">
+            <li style="">
+                <a href="javascript:void(0)" class="js-save-form" id="saveForm"><i class="iconfont">&#xe634;</i>保存表单</a>
+            </li>
+            <li style="">
+                <a href="javascript:void(0)" class="js-preview-from"><i class="iconfont">&#xe7b9;</i>预览</a>
+            </li>
+            <li style="">
+                <a href="javascript:void(0)" class="js-close"><i class="iconfont">&#xe609;</i>关闭</a>
+            </li>
+        </ul>
+        <!--<div class="layout-tools" id="save_tools">-->
+        <!--<a class="btn  btn-primary btn-narrow fa fa-save  js-save-form" id="saveForm"-->
+        <!--href="javascript:void(0)">保存表单</a>-->
+        <!--<a class="btn  btn-primary btn-narrow  fa fa-preview js-preview-from " href="javascript:void(0)">预览</a>-->
+        <!--<a class="btn  btn-primary btn-narrow fa fa-close  js-close" href="javascript:void(0)">关闭</a>-->
+        <!--</div>-->
+    </div>
+    <div id="form-builder" class="niceScroll">
+        <div class="preview-container">
+            <div class="preview">
+                <div class="form-header-wrapper"></div>
+                <div class="fb-response-fields"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui-layout-east">
+    <div class="fb-tabs hidden">
+        <ul class="nav  nav-pills nav-tabs" role="tablist">
+            <li role="presentation"><a href="#edit_field" aria-controls="edit" role="tab" data-toggle="tab">编辑字段</a>
+            </li>
+            <li role="presentation" class="active"><a href="#form_property" aria-controls="style" role="tab"
+                                                      data-toggle="tab">表单属性</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane " id="edit_field">
+                <div class="fb-edit-field-wrapper niceScroll">
+                    <div class="edit-response-field">
+                        <div class="empty-text-container">
+                            <div class="empty-text">
+                                <i class="fa fa-edit"></i>
+                                <p>没有选定的字段<br/>请添加或者选择一个字段</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="form_property">
+                <div class="edit-form-property niceScroll"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /右边设置 -->
+<div id="subMenu" class="bootstrap-contextmenu">
+    <ul class="dropdown-menu" role="menu">
+        <li><a data-action="node_add" tabindex="-1"><i class="fa fa-add"></i>&nbsp;&nbsp;管理业务对象</a></li>
+    </ul>
+</div>
+<div id="topMenu" class="bootstrap-contextmenu">
+    <ul class="dropdown-menu" role="menu">
+        <li><a data-action="node_bind" tabindex="-1"><i class="fa fa-add"></i>&nbsp;&nbsp;绑定业务对象</a></li>
+    </ul>
+</div>
+<script>
+    RX.page.resize = function () {
+        $(".fb-response-fields").height($(window).height() - $(".form-header-wrapper").outerHeight() - 1);
+    };
+    RX.load({
+        module: ["/medias/src/plat/form/utils/util.js",
+            "/medias/src/plat/form/lib/underscore/underscore.min.js",
+            "/medias/src/plat/form/lib/underscore/underscore.string.min.js",
+            "/medias/src/plat/form/lib/backbone/backbone.min.js",
+            "/medias/src/plat/form/lib/backbone/backbone-deep-model.min.js",
+            "/medias/src/plat/form/lib/rivets/rivets.min.js",
+            "/medias/src/plat/form/lib/layer/laydialog.min.js",
+            "/medias/src/plat/form/lib/bootstrap/bootstrap.min.js",
+            "/medias/src/plat/form/lib/jquery/plugins/jquery.layout.min.js",
+            "/medias/src/plat/form/lib/jqueryui/jquery-ui-1.10.4.custom.js",
+            "/medias/src/plat/form/lib/artTemplate/artTemplate.js",
+            "/medias/src/plat/form/lib/ztree/jquery.ztree.min.js",
+            "/medias/src/plat/form/lib/nicescroll/nicescroll.min.js",
+            "/medias/src/plat/form/lib/tooltipster/tooltipster.min.js",
+            "/medias/src/plat/form/lib/qtip/jquery.qtip.js",
+            "/medias/src/plat/form/utils/QtipUtil.js",
+            "/medias/src/plat/form/lib/My97DatePicker/WdatePicker.js",
+            "/medias/src/plat/form/utils/DatetimepickerUtil.js",
+            "/medias/src/plat/form/utils/My97DatePickerUtil.js",
+            "/medias/src/plat/form/lib/select2/select2.full.min.js",
+            "/medias/src/plat/form/lang/select2/zh_CN.js",
+            "/medias/src/plat/form/lib/cityPicker/city-picker-custom.data.js",
+            "/medias/src/plat/form/lib/cityPicker/city-picker-custom.js",
+            "/medias/src/plat/form/lib/rivets/rivetsBind.js",
+            "/medias/src/plat/form/formdesign/formoptions.js",
+            "/medias/src/plat/form/lib/intro/intro.min.js",
+            "/medias/src/plat/form/lib/iconpicker/fontawesome-iconpicker.min.js",
+            "/medias/src/plat/form/formdesign/formbuilder.js",
+            "/medias/src/plat/form/formdesign/formDefDesign.js"
+        ]
+    });
+</script>
+</body>
+</html>

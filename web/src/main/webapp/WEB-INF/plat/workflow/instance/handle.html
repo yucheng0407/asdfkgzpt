@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>办理确认</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div class="no_p_box" style="margin:0px">
+            <table class="form" border="0" cellspacing="0" cellpadding="0" width="100%">
+                <col width="35%"/>
+                <col/>
+                <tr>
+                    <th><b>*</b>办理意见</th>
+                    <td>
+                        <div class="element_box">
+                            <textarea class="i_textarea" model="opinion"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                {{#if info !== "endNode"}}
+                <tr>
+                    <th>{{#if agree}}下一{{else}}退回{{/if}}环节</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{nodeName||''}}">{{nodeName||""}}</span>
+                    </td>
+                </tr>
+                {{/if}}
+            </table>
+            <div class="page_title">
+                <h1>{{#if info == "endNode"}} 本环节办理完成后流程结束！
+                    {{else if info == "noPeople"}}
+                        {{#if agree}}下一{{else}}退回{{/if}}环节未找到办理人，请联系系统服务人员！
+                    {{else}}
+                        {{#if agree}}下一{{else}}退回{{/if}}环节办理人
+                    {{/if}}
+                </h1>
+            </div>
+            {{#if info !== "endNode" && info !== "noPeople"}}
+            <!--办理人列表-->
+            <BlrGrid ref="blrGrid" list="{{blrList}}">
+                <table class="list" cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                    <tr>
+                        <th width='50px'>办理人</th>
+                        <th width='100px'>所在机构</th>
+                        <th width='100px'>环节名称</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#if list.length}}
+                    {{#each list:index}}
+                    <tr>
+                        <td align="center">
+                            <span class="span_show_ellipsis" title="{{USER_NAME||''}}">{{USER_NAME||""}}</span>
+                        </td>
+                        <td align="center">
+                            <span class="span_show_ellipsis" title="{{ORGAN_NAME||''}}">{{ORGAN_NAME||""}}</span>
+                        </td>
+                        <td align="center">
+                            <span class="span_show_ellipsis" title="{{NEXT_NODE_NAME||''}}">{{NEXT_NODE_NAME||""}}</span>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    {{else}}
+                    <tr><td align="center" class="no_data" colspan="3">无数据</td></tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </BlrGrid>
+            {{/if}}
+        </div>
+    </script>
+</div>
+<div class="w_button_box">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/src/plat/workflow/instance/handle_config.js",
+            "/medias/src/plat/workflow/instance/handle.js"]
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>配置查看页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--<script>RX.pageLoading();</script>-->
+<div class="form_box">
+    <script type="text/template">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>配置基本信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="80px">
+                    <col width="">
+                    <col width="70px">
+                    <col width="">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{name}}">{{name}}</span>
+                    </td>
+                    <th>编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{code}}">{{code}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>级别</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dict(levels,'CONFIGLEVEL')}}">{{dict(levels,'CONFIGLEVEL')}}</span>
+                    </td>
+                    <th>类型</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dict(bizType,'CONFIGTYPE')}}">{{dict(bizType,'CONFIGTYPE')}}</span>
+                    </td>
+                </tr>
+                {{#if levels == 2 }}
+                <tr>
+                    <th>所属应用</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{appName}}">{{appName}}</span>
+                    </td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <th>默认值</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{value}}">{{value}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>描述</th>
+                    <td colspan="3">
+                        <span class="span_show_multiline" title="{{{html(description)}}}">{{{html(description)}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/config/configView.js"]
+    });
+</script>
+
+</body>
+</html>

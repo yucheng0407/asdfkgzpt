@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--主表单模板-->
+<script type="text/template" id="sysOrganForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>机构</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th>机构名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{organName||''}}">{{organName||''}}</span>
+                    </td>
+                    <th>组织机构全称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{fullName||''}}">{{fullName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>机构代码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{organCode||''}}">{{organCode||''}}</span>
+                    </td>
+                    <th>上级机构</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{parentName||''}}">{{parentName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3">
+                        <span class="span_show_multiline" title="{{description||''}}">{{{html(description||'')}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--角色关联表动态列表-->
+        <SysGlbRoleGrid ref="sysGlbRoleGrid" list="{{sysGlbRoleList}}"/>
+    </div>
+</script>
+
+<!--角色关联表子模板-->
+<script type="text/template" id="sysGlbRole">
+    <div class="p_box">
+        <div class="page_title"><h1>角色关联表列表</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="">角色名称</th>
+                <th style="width:20%">角色编码</th>
+                <th style="width:20%">角色类型</th>
+                <th style="width:20%">角色级别</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="left" class="orderTag"></td>
+                <td align="left" title="{{roleName||''}}">
+                    {{roleName||''}}
+                </td>
+                <td align="left" title="{{roleCode||''}}">
+                    {{roleCode||''}}
+                </td>
+                <td align="left"  title="{{roleTypeName||''}}">
+                    {{roleTypeName||''}}
+                </td>
+                <td align="left" title="{{levelName||''}}">
+                    {{levelName||''}}
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr><td align="center" class="no_data" colspan="5">无数据</td></tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/organ/nopost/sysOrganView_config_nopost.js",
+            "/medias/src/plat/organ/nopost/sysOrganView_nopost.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

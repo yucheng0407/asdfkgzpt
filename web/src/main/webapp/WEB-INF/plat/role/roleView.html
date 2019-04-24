@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>角色查看页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tagsInput"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>角色基本信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                    <col width="">
+                    <col width="100px">
+                    <col width="">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>角色名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{roleName}}">{{roleName}}</span>
+                    </td>
+                    <th>角色编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{roleCode}}">{{roleCode}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>角色类型</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dict(roleType, 'JSLX')}}">{{dict(roleType, 'JSLX')}}</span>
+                    </td>
+                    <th>是否组合</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dict(isCombine, 'SF')}}">{{dict(isCombine, 'SF')}}</span>
+                    </td>
+                </tr>
+                {{#if isCombine == 1}}
+                <tr>
+                    <th>组合角色</th>
+                    <td colspan="3">
+                        <LeaderTags ref="leaderTags" list="{{combineRoleList}}">
+                            <div>{{> tagsInput}}</div>
+                        </LeaderTags>
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if roleType == 2}}
+                <tr class="_roleMade">
+                    <th>角色组成类别</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{dict(roleMade, 'JSZCLX')}}">{{dict(roleMade, 'JSZCLX')}}</span>
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if roleType == 1}}
+                <tr class="_sysrole">
+                    <th>角色级别</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{dict(levels, 'SYSLEVEL')}}">{{dict(levels, 'SYSLEVEL')}}</span>
+                    </td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <th>角色备注</th>
+                    <td colspan="3">
+                        <span class="span_show_multiline" title="{{{html(description || "")}}}"> {{{html(description || "")}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<script type="text/javascript">
+    var isPlatAdmin = ${isPlatAdmin};
+    var userRoleLevel = ${roleLevel};
+    RX.load({
+        template: "form",
+        module: [
+            "tagsInput", "rxTag", "/medias/src/plat/role/roleView_config.js",
+            "/medias/src/plat/role/roleView.js"]
+    });
+</script>
+
+</body>
+</html>

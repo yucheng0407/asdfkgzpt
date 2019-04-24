@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>流程图</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="${ctxPath}/medias/plugin/qtip/jquery.qtip.css"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            skin: "default"
+        });
+    </script>
+    <style>
+        table {
+            font-size: 12px;
+        }
+
+        a {
+            padding: 5px 5px 0 0;
+            font-size: 12px;
+            color: #006af1;
+            float: right;
+        }
+
+        .span_owner {
+            width: auto;
+            background-color: #EFF2F7;
+            border: 1px solid #CCD5E4;
+            border-radius: 5px 5px 5px 5px;
+            cursor: default;
+            float: left;
+            height: auto !important;
+            margin: 3px;
+            overflow: hidden;
+            padding: 2px 4px;
+            white-space: nowrap;
+            position: relative;
+        }
+        /**
+           适当缩小默认最大宽度
+         */
+        .qtip {
+            max-width: 260px;
+        }
+    </style>
+</head>
+<body>
+<div class="flowImage">
+    <script type="text/template">
+        <div class="flowCanvas" style="position:relative;left:100px">
+            <img id="img-workflow" src='${ctxPath}/workflow/ibps/gen?wfId={{defId}}{{instId?"&instId="+instId:""}}'
+                 width="{{originalWidth}}px" height="{{originalHeight}}px"
+                 style="position: absolute;left:0;top:0;"/>
+            {{#if listLayout && listLayout.length > 0}}
+            {{#each listLayout }}
+            <div class="flowNode"
+                 data-node-domid="{{nodeId||''}}"
+                 data-node-name="{{name||''}}"
+                 data-node-type="{{nodeType||''}}"
+                 style="position:absolute;left:{{x}}px;top:{{y}}px;width:{{width}}px;height:{{height}}px;"></div>
+            {{/each }}
+            {{ /if }}
+        </div>
+    </script>
+</div>
+<script>
+    RX.load({
+        template: "all",
+        module: [
+            '/medias/plugin/layer/layer.js',
+            "/medias/plugin/qtip/jquery.qtip.js",
+            "/medias/src/plat/workflow/ibps/flowImage.js"
+        ]
+    });
+</script>
+</body>
+</html>

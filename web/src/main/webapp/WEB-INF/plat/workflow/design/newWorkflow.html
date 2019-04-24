@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title>新建流程</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "flow"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+        .c_main {
+            background-color: #fff;
+        }
+        #flowSelect {
+            width: 340px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="main_container" class="c_main">
+    <div class="element_box" id="flowSelect">
+        <script type="text/template">
+            <div class="no_p_box">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th style="padding-right: 10px;">选择已有流程</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="hidden" model="flowId"/>
+                                <input class="i_layer" model="flowName"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="element_box" style="margin-top: 10px;">
+                    <label class="label_check hideElement">
+                        <input type="checkbox" model="newVersion" />新建为新版本
+                    </label>
+                    <label class="label_check hideElement">
+                        <input type="checkbox" model="copyStruct" />复制流程结构
+                    </label>
+                </div>
+            </div>
+        </script>
+    </div>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--js引用区-->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/src/plat/workflow/design/newWorkflow_config.js",
+            "/medias/src/plat/workflow/design/newWorkflow.js"]
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", 'flow']
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+<body>
+<div class="base_box">
+    <div class="left_box">
+        <div class="operation_box">
+            <ul class="action_button">
+                <li>
+                    <a href="#none" id="button-new"><i class="iconfont">&#xe62a;</i>新建</a>
+                </li>
+                <li>
+                    <a href="#none" id="button-save"><i class="iconfont">&#xe634;</i>保存</a>
+                </li>
+            </ul>
+            <ul class="workflow_button">
+                <li>
+                    <a href="#none" id="button-select" class="operate checked"><i class="iconfont ">&#xe7eb;</i>选择</a>
+                </li>
+                <li class="split-line"></li>
+                <li>
+                    <a href="#none" id="button-draw-start-node" class="operate"><i class="iconfont">&#xe68a;</i>开始环节</a>
+                </li>
+                <li class="split-line"></li>
+                <li>
+                    <a href="#none" id="button-draw-rect" class="operate"><i class="iconfont">&#xe7cf;</i>活动环节</a>
+                </li>
+                <li class="split-line"></li>
+                <li>
+                    <a href="#none" id="button-draw-diamond" class="operate"><i class="iconfont">&#xe6f3;</i>决策环节</a>
+                </li>
+                <li class="split-line"></li>
+                <li>
+                    <a href="#none" id="button-draw-end-node" class="operate"><i class="iconfont">&#xe641;</i>结束环节</a>
+                </li>
+                <li class="split-line"></li>
+                <li>
+                    <a href="#none" id="button-draw-polyline" class="operate"><i class="iconfont">&#xe676;</i>流向</a>
+                </li>
+            </ul>
+        </div>
+        <div class="lcgl_box">
+            <iframe src="${ctxPath}/workflow/design/panel" id="flow-panel" frameborder="0" width="100%"
+                    height="100%" scrolling="no"></iframe>
+        </div>
+    </div>
+    <div class="right_side">
+        <div class="toggle_collapse">
+            <h2>流程选择</h2>
+        </div>
+        <div class="tree_box">
+            <ul class="ztree" id="flowlist"></ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    RX.load({
+        module: ["zTree",
+            "/medias/src/plat/workflow/design/flow.js"
+        ],
+        callback: function () {
+            //初始化内容区域高度
+            $(".lcgl_box").innerHeight($(window).height() - $(".operation_box").outerHeight() - 30);
+            $(".right_side").width($(".right_side").width() + 20);
+            $(".left_box").innerWidth($(".base_box").width() - $(".right_side").outerWidth() - 15);
+            $(".tree_box").innerHeight($(window).height() - $(".toggle_collapse").outerHeight() - 32);
+            $("#flow-panel").innerHeight($(".right_side").innerHeight() - $(".operation_box").outerHeight());
+            $(window).resize(function () {
+                $(".lcgl_box").innerHeight($(window).height() - $(".operation_box").outerHeight());
+                $(".left_box").innerWidth($(".base_box").width() - $(".right_side").outerWidth() - 15);
+                $(".tree_box").innerHeight($(window).height() - $(".toggle_collapse").outerHeight() - 32);
+                $("#flow-panel").innerHeight($(".right_side").innerHeight() - $(".operation_box").outerHeight());
+            })
+        }
+    });
+</script>
+
+</body>
+</html>

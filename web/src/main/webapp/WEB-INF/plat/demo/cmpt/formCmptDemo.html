@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>机构编辑</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th><b>*</b>机构名称</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="organName"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>机构全称</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="fullName"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>排序号</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="sortNum"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>机构编码</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="organCode"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>政治面貌</th>
+                    <td>
+                        <div class="element_box">
+                            <select class="i_select" model="zzmm">
+                            </select>
+                        </div>
+                    </td>
+                    <th>测试默认值</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="dv"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>成立时间</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_date" model="clsj"/>
+                        </div>
+                    </td>
+                    <th>上级机构</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="parentName"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <textarea name="" rows="" cols="" class="i_textarea" model="description"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div class="page_title" style="">
+                    <h1>包含岗位</h1>
+                    <ul class="action_button" style="float: right;margin: 0 5px 0 0;">
+                        <li><a class="addPost" on-click="addPost()">新增</a></li>
+                    </ul>
+
+                </div>
+                <table cellpadding="0" cellspacing="0" border="0" class="list">
+                    <tr>
+                        <th style="width:25%">岗位名称</th>
+                        <th style="width:30%">岗位编码</th>
+                        <th style="width:30%">岗位编码输入值</th>
+                        <th style="width:10%">操作</th>
+                    </tr>
+                    <tbody>
+                    {{#if sysPostList.length}}
+                        {{#each sysPostList:index}}
+                        {{#if sfyxSt!='UNVALID'}}
+                        <tr>
+                            <td style="text-align:center"><span class="span_show_ellipsis" >{{postRoleName}}</span></td>
+                            <td style="text-align:center"><span class="span_show_ellipsis"><input type="text" model="postCode"/></span></td>
+                            <td style="text-align:center"><span class="span_show_ellipsis">{{postCode}}</span></td>
+                            <td style="text-align:center"><a href="javascript:void(0)" on-click="delPost($keypath)">删除</a></td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <td align="center" colspan="4">无数据</td>
+                        </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+
+
+<div class="w_button_box">
+    <input type="button" id="validate" value="验证" class="c_button"/>
+    <input type="button" id="testDisabled" value="切换字段状态" class="c_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/demo/cmpt/formCmptDemo_config.js",
+            "/medias/src/plat/demo/cmpt/formCmptDemo.js"]
+    });
+</script>
+
+</body>
+</html>

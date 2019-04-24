@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title>新建流程</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "tabPanel"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--页面基础布局-->
+<div id="box">
+    <!--流程设置-->
+    <script type="text/template">
+        <div class="tabdiv" id="flowTab">
+            <div>
+                <!--流程基本信息-->
+                <div id="tab1">
+                    <div class="form_box">
+                    <table class="form" border="0" cellspacing="0" cellpadding="0">
+                        <col width="150">
+                        <col>
+                        <tr>
+                            <th><b>*</b>流程名称</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" on-change="changeTitle()" model="name"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>流程实例标题</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="instanceTitle"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>流程版本号</th>
+                            <td>
+                                <div class="element_box">
+                                    <input id="version" type="text" class="i_text" model="version"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>流程编码</th>
+                            <td>
+                                <div class="element_box">
+                                    <input id="code" type="text" class="i_text" model="code"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>流程类别</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="hidden" model="type"/>
+                                    <input type="text" class="i_layer" model="typeName"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>业务状态字典</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_layer" model="workflowYwztZdName"/>
+                                    <input type="hidden" model="workflowYwztZd"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>环节编码字典</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_layer" model="nodeCodeDictName"/>
+                                    <input type="hidden" model="nodeCodeDictCode"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                <!--流程表单列表-->
+                <div id="tab2">
+                    <div class="form_box">
+                    <FlowSheetGrid ref="flowSheetGrid" list="{{sheets}}">
+                        <div class="no_p_box">
+                            <div class='page_title'><h1>流程表单</h1>
+                                <ul class='action_button to_right'>
+                                    <li><a on-click="addSheet()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                                </ul>
+                            </div>
+                            <!--表单列表-->
+                            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                <tr>
+                                    <th align="left" width='10%'><b>*</b>序号</th>
+                                    <th align="left" width='30%'><b>*</b>标题</th>
+                                    <th align="left" width='40%'><b>*</b>所属表单</th>
+                                    <th align="left">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#if list.length}}
+                                    {{#each list:index}}
+                                    {{#if sfyxSt !== "UNVALID"}}
+                                    <tr>
+                                        <td align="left">
+                                            <div class="element_box">
+                                                <input type='hidden' model='id'/>
+                                                <input type='hidden' model='sfyxSt'/>
+                                                <input type="text" class="i_text" model="sort"/>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <div class="element_box">
+                                                <input type="text" class="i_text" model="title"/>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <div class="element_box">
+                                                <input class="i_layer" model="name"/>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <a href='javascript:void(0)' class="active_2" on-click='delSheet($keypath)'>删除</a>
+                                        </td>
+                                    </tr>
+                                    {{/if}}
+                                    {{/each}}
+                                {{else}}
+                                <tr><td align="center" class="no_data" colspan="4">无数据</td></tr>
+                                {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </FlowSheetGrid>
+                    </div>
+                </div>
+                <!--流程变量列表-->
+                <div id="tab3">
+                    <div class="form_box">
+                    <FlowVariableGrid ref="flowVariableGrid" list="{{variables}}">
+                        <div class="no_p_box">
+                            <div class='page_title'><h1>流程变量</h1>
+                                <ul class='action_button to_right'>
+                                    <li><a on-click="addVariable()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                                </ul>
+                            </div>
+                            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                <tr>
+                                    <th align="left" width="40%"><b>*</b>变量名</th>
+                                    <th align="left" width="40%"><b>*</b>默认值</th>
+                                    <th align="left">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#if list.length}}
+                                    {{#each list:index}}
+                                    {{#if sfyxSt !== "UNVALID"}}
+                                    <tr>
+                                        <td align="left">
+                                            <div class="element_box">
+                                                <input type='hidden' model='id'>
+                                                <input type='hidden' model='sfyxSt'>
+                                                <input type="text" class="i_text" model="name"/>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <div class="element_box">
+                                                <input type="text" class="i_text" model="value"/>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <a href="javascript:void(0);" class="active_2" on-click="delVariable($keypath)">删除</a>
+                                        </td>
+                                    </tr>
+                                    {{/if}}
+                                    {{/each}}
+                                {{else}}
+                                <tr><td align="center" class="no_data" colspan="3">无数据</td></tr>
+                                {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </FlowVariableGrid>
+                    </div>
+                </div>
+                <!--流程后处理信息-->
+                <div id="tab4">
+                    <div class="form_box">
+                    <table class="form" border="0" cellspacing="0" cellpadding="0">
+                        <td>
+                            <div class="element_box">
+                                <textarea style="height: 180px;width: 650px" class="i_textarea" model="finishProcessSql"></textarea>
+                            </div>
+                            <p>1.SQL格式：SQL:sql语句</p>
+                            <p>2.PRO格式：PRO:存储过程名称</p>
+                        </td>
+                    </table>
+                 </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<!--js引用区-->
+<script type="text/javascript">
+    RX.load({
+        template: "all",
+        module: ["tabPanel", "zTree",
+            "/medias/src/plat/workflow/design/util/flow.property.js",
+            "/medias/src/plat/workflow/design/flowPropertyEdit_config.js",
+            "/medias/src/plat/workflow/design/flowPropertyEdit.js"],
+        callback: function () {
+            $("#box").innerHeight($(window).height() - $(".w_button_box").outerHeight());
+        }
+    });
+</script>
+
+</body>
+</html>

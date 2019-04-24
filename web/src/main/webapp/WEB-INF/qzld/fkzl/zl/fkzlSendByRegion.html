@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>指令发送-按区域</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="roll_box" style="height: 100%;">
+    <div class="regioncom">
+    </div>
+    <script type="text/template" id="regiontemplate">
+        <table class="mapform" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col width="65px"/>
+                <col width=""/>
+            </colgroup>
+            <tr>
+                <th colspan="2">绘制指令发送区域</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul class="Dxm">
+                        <li onclick="mapQuery('RECTANGLE')">
+                            <a id="querywayRECTANGLE"><i class="iconfont">{{{'&#xe6b4;'}}}</i>框选</a>
+                        </li>
+                        <li  onclick="mapQuery('CIRCLE')">
+                            <a id="querywayCIRCLE"><i class="iconfont">{{{'&#xe72a;'}}}</i>圆选</a>
+                        </li>
+                        <li onclick="mapQuery('')">
+                            <a id="querywayPOINT"><i class="iconfont">{{{'&#xe7eb;'}}}</i>任意</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>接收人员</th>
+                <td>
+                    <a href="#none" class="mapform_tcc" onclick="ckxq()">查看详情</a>
+                </td>
+            </tr>
+            <tr>
+                <th>指令类型</th>
+                <td>
+                    <div class="element_box">
+                        <select  title="" type="text" class="i_query_textarea" model="zltype"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">指令信息</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="element_box">
+                        <textarea style="width: 100%;height: 80px;" model="content"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </script>
+    <!-- 下面按钮 -->
+    <div class="mapform_button_box" id="w_butt">
+        <input type="button" value="发送" class="f_button" onclick="send()" />
+    </div>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/map/getMap.js",
+            "/medias/src/qzld/map/tabOperation.js",
+            "/medias/src/qzld/fkzl/zl/fkzlSendRegion_config.js",
+            "/medias/src/qzld/fkzl/zl/fkzlSendRegion.js"
+        ]
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: ["platMain"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>RX.pageLoading();</script>
+<!--基础布局-->
+<div class="form_box">
+    <!--主表单模板-->
+    <script type="text/template">
+        <div>
+            <div class="p_box">
+                <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="100px"/>
+                        <col width=""/>
+                    </colgroup>
+                    <tr>
+                        <th>企业名称</th>
+                        <td>
+                            {{organName || ""}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--项目动态列表-->
+            <ProjectGrid ref="projectGrid" list="{{demoProjectList}}">
+                    <div class="p_box">
+                        <div class="page_title">
+                            <h1>项目列表</h1>
+                        </div>
+                        <table cellpadding="0" cellspacing="0" border="0" class="list">
+                            <thead>
+                            <tr>
+                                <th style="width:20%">项目名称</th>
+                                <th style="width:20%">项目类型</th>
+                                <th style="width:20%">成立日期</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#if list.length}}
+                                {{#each list:index}}
+                                {{#if sfyxSt !== "UNVALID"}}
+                                <tr class="rx-grid-tr">
+                                    <!--<td align="center">1</td>-->
+                                    <td align="center">
+                                        {{projectName || ""}}
+                                    </td>
+                                    <td align="center">
+                                        {{projectType || ""}}
+                                    </td>
+                                    <td align="center">
+                                        {{clrq || ""}}
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                            {{else}}
+                                <tr class="rx-grid-tr">
+                                    <td align="center" colspan="3">无数据</td>
+                                </tr>
+                            {{/if}}
+                            </tbody>
+                        </table>
+                    </div>
+            </ProjectGrid>
+            <!--领导人动态列表-->
+            <LeaderGrid ref="leaderGrid" list="{{demoLeaderList}}">
+                <div class="p_box">
+                    <div class="page_title">
+                        <h1>领导人列表</h1>
+                    </div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="list">
+                        <thead>
+                        <tr>
+                            <th style="width:20%">姓名</th>
+                            <th style="width:20%">性别</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#if list.length}}
+                            {{#each list:index}}
+                            {{#if sfyxSt !== "UNVALID"}}
+                            <tr class="rx-grid-tr">
+                                <td align="center">
+                                    {{leaderName}}
+                                </td>
+                                <td align="center">
+                                    {{dict(sex,'getSexDict()')}}
+                                </td>
+                            </tr>
+                            {{/if}}
+                            {{/each}}
+                        {{else}}
+                        <tr class="rx-grid-tr">
+                            <td align="center" colspan="2">无数据</td>
+                        </tr>
+                        {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </LeaderGrid>
+        </div>
+    </script>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: ["/medias/src/plat/demo/cmpt/cmptDemoOrganView_config.js",
+            "/medias/src/plat/demo/cmpt/cmptDemoOrganView.js"]
+    });
+</script>
+</body>
+</html>

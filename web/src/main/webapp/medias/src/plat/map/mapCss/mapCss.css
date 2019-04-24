@@ -1,0 +1,454 @@
+/*地图*/
+.mapTool {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    width: 30px;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+
+.mapTool ul {
+    width: 100%;
+    height: auto;
+}
+
+.mapTool ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mapTool ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.mapTool ul li a i {
+    color: #3b7dd6;
+}
+
+.extensionTool {
+    position: absolute;
+    top: 290px;
+    right: 20px;
+    width: 30px;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+
+.extensionTool ul {
+    width: 100%;
+    height: auto;
+}
+
+.extensionTool ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.extensionTool ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.extensionTool ul li a i {
+    color: #3b7dd6;
+}
+
+.maptype {
+    width: auto;
+    height: 65px;
+    background: #fff;
+    padding: 10px 0 5px 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    z-index: 999;
+    border-radius: 2px 0 0 0;
+    cursor: pointer;
+}
+
+.maptypeCard {
+    width: 86px;
+    height: 60px;
+    border: 1px solid #fff;
+    float: left;
+    margin: 0 5px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.maptypeCard:hover {
+    border: 1px solid #1eb499;
+}
+
+/*.m1{background: url("/mhsj/medias/style/images/mhsj/map.png") no-repeat 0 0;}*/
+/*.m2{background: url("/mhsj/medias/style/images/mhsj/wxmap.png") no-repeat 0 0;}*/
+/*.m3{background: url("/mhsj/medias/style/images/mhsj/map.gif") no-repeat 0 0;}*/
+.selected {
+    border: 1px solid #1eb499;
+}
+
+.maptypeCard span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    background: #1eb499;
+    color: #fff;
+    padding: 0 3px;
+    border-radius: 2px 0 0 0;
+}
+
+.mapApp {
+    position: absolute;
+    top: 90px;
+    right: 90px;
+    width: auto;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+
+.mapApp ul {
+    width: 100%;
+    height: auto;
+}
+
+.mapApp ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mapApp ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.mapApp ul li a i {
+    color: #3b7dd6;
+}
+
+#mapSidebar {
+    position: absolute;
+    top: 60px;
+    left: 330px;
+    min-width: 250px;
+    height: auto;
+    display: none
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.move li a {
+    line-height: 2.5em;
+    width: 100%;
+}
+
+.move li {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+.move i {
+    font-size: 20px;
+    color: #252020;
+}
+
+/*图标动画效果*/
+#mapSidebarContent a i:hover, .mapTool a i:hover, .extensionTool a i:hover {
+    font-size: 30px
+}
+
+.openTool {
+    position: absolute;
+    width: 110px;
+    top: 40px;
+    background-color: #393a3d;
+    border-radius: 3px;
+    display: none;
+}
+
+.openTool i {
+    color: #fff;
+}
+
+.openTool:after {
+    content: "";
+    border-bottom: 7px solid #393a3d;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: 30px;
+    left: 5%;
+}
+
+.dextra-bubble-edit {
+    position: absolute;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+    background-color: #FFF;
+    border-radius: 2px;
+    padding: 1px 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*border: 1px solid #2f4056;*/
+}
+
+.dextra-bubble-pop {
+    position: absolute;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+    background-color: #FFF;
+    border-radius: 2px;
+    padding: 1px 2px;
+    /*border: 1px solid #2f4056;*/
+}
+
+.dextra-bubble-pop:after {
+    content: "";
+    border-top: 7px solid #fff;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: -8px;
+    left: 45%;
+}
+
+.esriPopup .content {
+    margin: 0;
+}
+
+/*地图视频*/
+.video_box {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    right: 45%;
+    z-index: 999;
+    background: #2f4056;
+    border: 1px solid #2f4056;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 #b0b0b0;
+}
+
+.video_top {
+    position: relative;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 1px solid #555
+}
+
+.video_top i {
+    float: right;
+    margin-right: 5px;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.video_top i:hover {
+    color: #cecece;
+}
+
+.video_icon_box {
+    width: auto;
+    padding: 0 20px;
+    height: 36px;
+}
+
+.video_icon {
+    margin: 0 auto;
+    width: 216px;
+    height: 100%;
+}
+
+.video_icon li {
+    float: left;
+    width: 36px;
+    height: 36px;
+}
+
+.video_icon li a {
+    display: block;
+    line-height: 36px;
+    text-align: center;
+}
+
+.video_icon li a i {
+    color: #888;
+    font-size: 18px;
+}
+
+.video_icon li a:hover i {
+    color: #cecece;
+}
+
+.hint {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    height: auto;
+    font-size: 15px;
+    color: #CE1A2C;
+    display: none;
+}
+
+.citychangeopt {
+    width: auto;
+    height: 45px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 999999;
+    background: #fff;
+    border: 0px solid #cacaca;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 #b0b0b0;
+}
+
+.Maptools {
+    float: left;
+}
+
+.Maptools li.change_wrap {
+    float: left;
+    display: inline;
+    width: auto;
+    height: 52px;
+    line-height: 45px;
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+    padding: 0 25px;
+    border-right: 0px solid #f0f0f0;
+    position: relative;
+    cursor: pointer;
+}
+.Maptools li.change_wrap i.xiangxiajiantou{font-size: 6px;color: #333;margin: 0 0 0 7px;}
+.Maptools li.change_wrap:hover{color: #1e8ae5;}
+.Maptools li.change_wrap .ax_default_box {
+    line-height: normal;
+    display: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 52px;
+    left: 0px;
+    z-index: 1;
+    background: #fff;
+    border-radius: 2px;
+    border: 0px solid #cacaca;
+    box-shadow: 0 2px 4px 0 #b0b0b0;
+}
+.Maptools li.change_wrap:hover .ax_default_box {
+    display: block;
+}
+.boxinfo{width: 100%;}
+.boxinfo li{width: 100%;display: inline;}
+.boxinfo li a{width: 100%;display: block;height: 30px;line-height: 30px;color: #333;text-align: left;}
+.boxinfo li a i{font-size: 16px;color: #666;margin: 0 6px 0 10px;}
+.boxinfo li a img{font-size: 16px;color: #666;margin: 0 6px 0 10px;}
+.boxinfo li a:hover{background: #1e8ae5;color: #fff;}
+.boxinfo li a:hover i{color: #fff;}
+.Maptools li.change_wrap .zbxx {
+    display: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 350px;
+    height: auto;
+    max-height: 550px;
+    padding: 10px 10px;
+    position: absolute;
+    top: 35px;
+    left: -1px;
+    z-index: 999;
+    background: #2f4056;
+    border: 0px solid #cacaca;
+    border-radius: 0 0 2px 2px;
+}
+.maptitle{float: left;width: 100%;height: 30px;line-height: 30px;background: #fff;border-bottom: 1px solid #e8e8e8;}
+.maptitle h1{float: left;margin: 5px 0 0 8px;font-size: 12px;color: #333;font-weight: normal;}
+.maptitle i.shanchu{float: right;margin: 5px 5px 0 0;font-size: 16px;color: #a9a9a9;cursor: pointer;}
+.maptitle i.shanchu:hover{color: #888;}
+.maptitle p{float: left;margin: 0px 0 0 15px;}
+.maptitle p a{color: #3d6dcc;}
+.maptitle p a.datop{float: left;}
+.maptitle p a:hover{color: #002780;}
+.selCityPlaceListId{width:100%;background:#fff;border-collapse: collapse;}
+.selCityPlaceListId tr th{vertical-align: top;text-align:center;color:#333;background:none;font-weight:bold;padding-top: 10px;}
+.selCityPlaceListId tr th a{color: #3d6dcc;}
+.selCityPlaceListId tr th a:hover{text-decoration: underline;}
+.selCityPlaceListId tr td{text-align:left;padding-top: 8px;}
+.selCityPlaceListId tr td a{float: left;margin: 1px 2px;color: #333;;white-space:nowrap;width: auto;padding: 0 5px;height: 20px;line-height: 20px;display: block;}
+.selCityPlaceListId tr td a:hover{text-decoration: underline;}
+.select{background: #1e8ae5;color: #fff!important;}
+/*通用CSS*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
+body,button,select,textarea{font:normal 12px/150% Tahoma, "microsoft yahei", Helvetica, Arial, "宋体", sans-serif;color:#000;background:#fff;outline:none;}
+html,body{height:100%;scrollbar-face-color: #eef3f5;
+    scrollbar-shadow-color: #adb9c2;
+    scrollbar-highlight-color: #fff;
+    scrollbar-3dlight-color: #adb9c2;
+    scrollbar-darkshadow-color: #fff;
+    scrollbar-track-color: #fff;
+    scrollbar-arrow-color: #3c4f57;
+    font-family: "microsoft yahei";
+    background: #e5eaf3;}
+img {border:0 none}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4{font-size:12px;}
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp,tt{font-family:"Courier New", Courier, monospace;}
+small{font-size:12px;}
+ul,ol,li{list-style:none}
+a{text-decoration:none;color:red;outline:none;blr:expression(this.onFocus=this.blur());position:relative;cursor: pointer}
+a:hover{text-decoration:none}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help;}
+q:before,q:after{content:'';}
+legend{color:#000;}
+fieldset,img{border:none;}
+table{border-collapse:collapse;table-layout:fixed}
+hr{border:none;height:1px;color:#fff;}
+h5,h6,button,input,select,textarea{color:#333;font-family: "microsoft yahei";}
+input[type="checkbox"]{vertical-align:middle;}
+input[type="radio"]{vertical-align:middle;}
+input,textarea,select,button{outline: none;}
+::-webkit-scrollbar {width: 8px;height: 12px;}
+::-webkit-scrollbar-track {background-color: #f0f0f0;}
+::-webkit-scrollbar-thumb {background-color: #c6c6c6;}
+::-webkit-scrollbar-thumb:hover {background-color:#999}
+::-webkit-scrollbar-thumb:active {background-color: #999}

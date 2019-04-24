@@ -1,0 +1,112 @@
+#bar{
+    width:100%;
+    height:15px;
+    background-color:#ccc;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+#progress{
+    position: relative;
+    width:0;
+    height:100%;
+    background-color:#ff1170;
+}
+.progress-marker{
+    position: absolute;
+    left: -2px;
+    height: 20px;
+    width: 4px;
+    top: -3px;
+    background-color: #245bad;
+}
+.progress-value {
+   width: 45px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    background: #393a3d;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 30px;
+    right: -22px;
+}
+.progress-value:after {
+    content: "";
+    border-top: 7px solid #393a3d;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: -7px;
+    left: 35%;
+}
+.progress-marker-value {
+    display: none;
+    font-size: 1px;
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    background: #393a3d;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: -40px;
+    left: -64px;
+}
+.progress-marker-value:after {
+    content: "";
+    border-bottom: 7px solid #393a3d;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    top:-7px;
+    left: 45%;
+}
+.progress-stop-value {
+    width: 45px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    background: #393a3d;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+    font-size: 13px;
+    font-weight: 700;
+    color: #EFF811;
+    text-align: center;
+    position: absolute;
+    bottom: -45px;
+    right: -22px;
+}
+.progress-stop-value:after {
+    content: "";
+    border-bottom: 7px solid #393a3d;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: 30px;
+    left: 35%;
+}
+.progress-cur {
+    border: 5px solid #ff1170;
+}
+.progress-cur:hover {
+    border: 5px solid  #393a3d !important;
+}
+.progress-cur {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    background: #fff;
+    position: absolute;
+    right: -12px;
+    top: -6px;
+}

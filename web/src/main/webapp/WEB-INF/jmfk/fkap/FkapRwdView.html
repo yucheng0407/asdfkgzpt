@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务表单</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+</div>
+<!--表单模板-->
+<script type="text/template" id="fqapRwd">
+    <div>
+        <div class="p_box">
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px"/>
+                    <col width=""/>
+                    <col width=""/>
+                    <col width="120px"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>
+                        <b>*</b>责任单位
+                    </th>
+                    <td colspan="2">
+                        <span class="span_show_ellipsis"
+                              title="{{zrdwmc,||''}}"> {{zrdwmc||''}}</span>
+                    </td>
+                    <th><b>*</b>巡组</th>
+                    <td>
+                         <span class="span_show_ellipsis"
+                               title="{{xz,||''}}"> {{xz||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <b>*</b>巡防开始时间
+                    </th>
+                    <td colspan="2">
+                        <span class="span_show_ellipsis"
+                              title="{{date(xfkssj,'yyyy-MM-dd HH:mm:ss')}}">{{date(xfkssj,'yyyy-MM-dd HH:mm:ss')}}</span>
+                    </td>
+                    <th>
+                        <b>*</b>巡防结束时间
+                    </th>
+                    <td>
+                        <span class="span_show_ellipsis"
+                              title="{{date(xfjssj,'yyyy-MM-dd')}}">{{date(xfjssj,'yyyy-MM-dd HH:mm:ss')}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <b>*</b>巡区
+                    </th>
+                    <td colspan="2">
+                        <span class="span_show_ellipsis"
+                              title="{{xqmc,||''}}" > {{xqmc||''}}</span>
+
+                    </td>
+                    <th>
+                        <b>*</b>巡区类型
+                    </th>
+                    <td >
+                       <span class="span_show_ellipsis"
+                          title="{{dict(xqlx,'XQLX')}}"> {{dict(xqlx,'XQLX')}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>任务类型</th>
+                    <td colspan="2">
+                       <span class="span_show_ellipsis"
+                             title="{{dict(rwlx,'XFRWLX')}}"> {{dict(rwlx,'XFRWLX')}}</span>
+                    </td>
+                    <th>
+                        <b>*</b>巡逻方式
+                    </th>
+                    <td>
+                        <span class="span_show_ellipsis"
+                              title="{{dict(xffs,'XFFS')}}"> {{dict(xffs,'XFFS')}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="form" border="0" cellspacing="0" cellpadding="0" id="deviceTab" hidden="hidden">
+                <colgroup>
+                    <col width="120px"/>
+                    <col width=""/>
+                    <col width=""/>
+                    <col width="120px"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tbody id="devices">
+                </tbody>
+            </table>
+
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px"/>
+                    <col width=""/>
+                    <col width=""/>
+                    <col width="120px"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>
+                        <b>*</b>责任民警
+                    </th>
+                    <td colspan="4">
+                        <span class="span_show_ellipsis"
+                              title="{{zrmjmcs||''}}">{{zrmjmcs||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        重防区域
+                    </th>
+                    <td colspan="4">
+                    <span class="span_show_ellipsis"
+                          title="{{zfxqmc||''}}">{{zfxqmc||''}}</span>
+                    </td>
+                </tr>
+                {{#if zfxqmc}}
+                <tr>
+                    <th>
+                        重防时段
+                    </th>
+                    <td colspan="4">
+                        <span class="span_show_ellipsis"
+                              title="{{{zfsd||''}}}">{{{zfsd||''}}}</span>
+                    </td>
+                </tr>
+                {{else}}
+                <tr hidden="hidden" >
+                    <th>
+                        重防时段
+                    </th>
+                    <td colspan="4">
+
+                    </td>
+                </tr>
+                {{/if}}
+
+                <tr>
+                    <th>备注</th>
+                    <td colspan="4">
+                    <span class="span_show_ellipsis"
+                          title="{{bz||''}}">{{bz||''}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt" style="text-align: center">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/jmfk/fkap/fkapRwdView_config.js",
+            "/medias/src/jmfk/fkap/fkapRwdView.js"]
+    });
+</script>
+</body>
+</html>

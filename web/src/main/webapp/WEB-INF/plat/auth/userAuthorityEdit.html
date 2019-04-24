@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>用户权限编辑页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tagsInput"]
+        });
+        var isPlatAdmin = ${isPlatAdmin};
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <script type="text/template" id="roleForm">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>调整用户权限</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th><b>*</b>用户名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{userName||''}}">{{userName||""}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>授予权限</th>
+                    <td>
+                        <AuthTags ref="authTags" list="{{authorityList}}">
+                            <div>{{> tagsInput}}</div>
+                        </AuthTags>
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他权限</th>
+                    <td>
+                        <OtherAuthTags ref="otherAuthTags" list="{{otherAuthorityList}}">
+                            <div>{{> tagsInput}}</div>
+                        </OtherAuthTags>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "tagsInput", "rxTag",
+            "/medias/src/plat/auth/userAuthorityEdit_config.js",
+            "/medias/src/plat/auth/userAuthorityEdit.js"]
+    });
+</script>
+
+</body>
+</html>

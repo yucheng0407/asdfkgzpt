@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>办理确认</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <table class="form" border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr height="200px">
+                <td>
+                    <div class="element_box">
+                    <textarea class="i_textarea prompt" style="height:180px" model="content"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </script>
+</div>
+<div class="w_button_box">
+</div>
+
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/src/plat/workflow/instance/pressContent.js"
+        ]
+    })
+</script>
+
+</body>
+</html>

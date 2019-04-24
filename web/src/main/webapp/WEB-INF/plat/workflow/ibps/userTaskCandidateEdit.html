@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>编辑办理人</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tagsInput"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template" id="roleForm">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>选择规则与办理角色</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th><b>*</b>规则</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_layer" model="ruleName"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>办理角色</th>
+                    <td>
+                        <RoleTags ref="roleTags" list="{{roleList}}">
+                            <div>{{> tagsInput}}</div>
+                        </RoleTags>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+</div>
+<div class="w_button_box">
+    <input type="button" id="confirm" value="确认" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "tagsInput", "rxTag",
+            "/medias/src/plat/workflow/ibps/userTaskCandidateEdit_config.js",
+            "/medias/src/plat/workflow/ibps/userTaskCandidateEdit.js"]
+    });
+</script>
+</body>
+</html>

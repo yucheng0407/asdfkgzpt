@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>测试表单保存</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #e5eaf3;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box"></div>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt"></div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/form/formdesign/fieldOptions.js",
+            "/medias/src/plat/form/formdesign/formControl.js",
+            "/medias/src/plat/form/formdesign/testSaveFormView.js"]
+    });
+</script>
+</body>
+</html>

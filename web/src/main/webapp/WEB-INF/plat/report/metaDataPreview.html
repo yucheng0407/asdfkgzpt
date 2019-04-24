@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>元数据</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .list tr th{
+            word-break:break-all !important;word-wrap:break-word !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--基础布局-->
+<div class="base_box">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.page.resize = function(){
+        $(".list_box").innerHeight($(window).height()-30);
+    };
+    RX.load({
+        template: "grid",
+        module: [
+            "/medias/src/plat/report/metaDataPreview.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

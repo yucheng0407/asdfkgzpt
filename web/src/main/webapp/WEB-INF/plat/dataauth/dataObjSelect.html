@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>数据权限对象数据选择</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .content_wrap {
+        }
+    </style>
+</head>
+
+<body>
+<div class="base_box">
+</div>
+<div class="w_button_box">
+    <input type="button" id="confirm" value="确认" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: [
+            "/medias/src/plat/dataauth/dataObjSelect_config.js",
+            "/medias/src/plat/dataauth/dataObjSelect.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+/*角色关联样式，用于角色关联操作界面与角色关联展示界面*/
+
+.glinfo_title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    /*background-color: #eff4fa;*/
+    /*border-top: 1px solid #d2d7da;*/
+    color: #0e9aef;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.glinfo_content {
+    border-top: 1px solid #d2d7da;
+    width: 100%;
+    height: 300px;
+    display: none;
+}
+
+.glinfo_left {
+    width: 20%;
+    background-color: #ececec;
+    height: 300px;
+    float: left;
+}
+
+.glinfo_left_item {
+    width: 90%;
+    background-color: #ececec;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+}
+
+.glinfo_left_select {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+.glinfo_right {
+    width: 79%;
+    height: 300px;
+    float: right;
+}
+
+.tableUl {
+    width: 100%;
+}
+
+.tableUl li {
+    float: left;
+    width: 30%;
+    margin: 5px;
+    line-height: 30px;
+}
+
+/*.span_show_ellipsis {*/
+    /*float: left;*/
+    /*width: 100%;*/
+    /*position: relative;*/
+    /*background: #f9f9f9;*/
+    /*border: 1px solid #e2e2e2;*/
+    /*border-radius: 3px;*/
+/*}*/
+
+.span_show_ellipsis em {
+    float: left;
+    text-indent: 10px;
+    width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+
+.span_show_ellipsis a {
+    /*float: left;*/
+    text-indent: 0;
+    color: #ff0000;
+    font-size: 8px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    position: absolute;
+    right: 5px;
+    top: 8px;
+}
+
+.span_show_ellipsis a:hover {
+    background: none;
+}
+
+.so_box {
+    padding: 7px;
+    border-bottom: 1px solid #363e47;
+    background: #363e47;
+}
+
+.so_k {
+    height: 20px;
+    padding: 5px;
+    border: 1px solid #424c53;
+    background: #2d363f;
+    border-radius: 2px;
+}
+
+.so_box input {
+    float: left;
+    width: 50%;
+    color: #b8c9e0;
+    height: 20px;
+    line-height: 20px;
+    outline: none;
+    background: none;
+    border: 0
+}
+
+.so_box .aidArea {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+.pagDiv .iconfont{
+    font-size: 12px !important;
+    color: #b8c9e0;
+}
+.so_box img {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 2px 3px;
+}
+
+.aidShow {
+    display: none;
+    color: #b8c9e0;
+}
+.aidShow i{color: #b8c9e0}
+
+.so_k .pagDiv {
+    float: right;
+}
+.so_k input{ padding-right: 4px; border-right:1px solid #3b597e;  }
+

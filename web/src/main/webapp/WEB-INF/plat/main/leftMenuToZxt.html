@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>基础后台</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript" src="${ctxPath}/medias/src/plat/main/leftMenuToZxt.js"></script>
+
+    <script type="text/javascript">
+        RX.loadCSS({
+            async: false,
+            template: "platMain",
+            module: ['iconfont',
+                '/medias/style/plat/default/css/Main_portal.css',
+                '/medias/style/plat/default/css/Global.css']
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="left_tab">
+    <ul class="left_nav_tab" id="asdfknav">
+    </ul>
+    <img src="${ctxPath}/medias/style/plat/default/css/image/common/round.png" class="rounded_stitching"/>
+</div>
+
+<div class="right_content">
+    <iframe name="MainIframeR" id="MainIframeR" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
+</div>
+<script type="text/javascript" language="javascript">
+    $(function() {
+        //初始化内容区域高度
+        $(".right_content").width($(window).width() - $(".left_tab").outerWidth()-1);
+    });
+    //页面大小改变时，触发jquery的resize方法，自适应拖拽
+    $(window).resize(function() {
+        $(".right_content").width($(window).width() - $(".left_tab").outerWidth()-1);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<div>
+    <div class='page_title'>
+        <h1>{{listName}}</h1>
+        {{#if disabled != true}}
+        {{#if minNum}} <p><em style='float: left'>(至少上传{{minNum}}份)</em></p> {{/if}}
+        <form enctype='multipart/form-data' method='POST'>
+            <ul class='action_button to_right'>
+                <li><a class='tabFile' href='#none'><input type='file' name='fileData' class="addFile" on-change="changeFile()"/>
+                    <i class='iconfont'>{{{'&#xe8ab;'}}}</i>{{uploadName}}</a>
+                </li>
+                <input type='hidden' name='thumbFlag' value='true'/>
+            </ul>
+        </form>
+        {{/if}}
+    </div>
+    <table border='0' cellpadding='0' cellspacing='0' class='attachment_list'>
+        <col width="" />
+        <col width="150px" />
+        <col width="110px" />
+        <thead>
+            <tr>
+                <th align="left">文件名</th>
+                <th align="left">上传时间</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#if list.length}}
+            {{#each list:index}}
+            <tr class='trhover'>
+                <td align="left" class="filename" title="{{name}}{{#if extension}}.{{extension}}{{/if}}"><img src="{{showImg}}" />{{name}}{{#if extension}}.{{extension}}{{/if}}</td>
+                <td align="left">{{date(cjsj,'yyyy-MM-dd HH:mm')}}</td>
+                <td align="left">
+                    <i class="iconfont" title="下载" on-click="downloadFile($keypath)">{{{'&#xe630;'}}}</i>
+                    {{#if disabled != true}} <i class="iconfont" title="删除" on-click="deleteFile($keypath)">{{{'&#xe6a2;'}}}</i>{{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td align="center" colspan="3" class="no_data">无数据</td>
+            </tr>
+        {{/if}}
+        </tbody>
+    </table>
+</div>

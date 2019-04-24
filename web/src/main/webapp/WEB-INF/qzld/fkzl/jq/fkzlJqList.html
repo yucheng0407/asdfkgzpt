@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>防控指令-反馈列表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: auto;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="roll_box">
+    <table class="mapform" border="0" cellspacing="0" cellpadding="0">
+        <colgroup>
+            <col width="65px"/>
+            <col width=""/>
+        </colgroup>
+        <tr>
+            <th>防控反馈</th>
+            <td>
+                <div class="query_element_box ele_0">
+                    <select class="i_query_select">
+                        <option>请选择</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">反馈信息</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="query_element_box">
+                    <label class="label_radio" for="radio-01"><input name="sample-radio" id="radio-01" value="1" type="radio" checked /> 全部</label>
+                    <label class="label_radio" for="radio-02" style="margin-left: 12px;"><input name="sample-radio" id="radio-02" value="1" type="radio" /> 未读</label>
+                    <label class="label_radio" for="radio-03" style="margin-left: 12px;"><input name="sample-radio" id="radio-03" value="1" type="radio" /> 已读</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="element_box ele_1">
+                    <input type="text" class="i_blue_date" placeholder="请输入名称" />
+                    <div class="ico_1">
+                        <span class="blue_search" title="查询" /><i class="iconfont">&#xe613;</i></span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="short_message_box">
+        <div class="short_message sm_point">
+            <p class="message_title">@交警支队王敏：</p>
+            <p class="message_content">请紧密注意209省道贵州紫运集团附近的嫌疑车，禁毒人员已派出，请协助搜查！</p>
+            <div class="message_i">
+                <ul>
+                    <li>
+                        <a href="反馈详细信息.html" title="详细">
+                            <i class="iconfont">&#xe605;</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="short_message">
+            <p class="message_title">@交警支队王敏：</p>
+            <p class="message_content">请紧密注意209省道贵州紫运集团附近的嫌疑车，禁毒人员已派出，请协助搜查！</p>
+            <div class="message_i">
+                <ul>
+                    <li>
+                        <a href="反馈详细信息.html" title="详细">
+                            <i class="iconfont">&#xe605;</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="short_message sm_point">
+            <p class="message_title">@交警支队王敏：</p>
+            <p class="message_content">已通过监控录像核实情况，在卡口设点拦截了贵G39076嫌疑车辆，请尽快将嫌疑人员带回派出所立案侦查。</p>
+            <div class="message_i">
+                <ul>
+                    <li>
+                        <a href="反馈详细信息.html" title="详细">
+                            <i class="iconfont">&#xe605;</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="short_message">
+            <p class="message_title">@交警支队王敏：</p>
+            <p class="message_content">请紧密注意209省道贵州紫运集团附近的嫌疑车，禁毒人员已派出，请协助搜查！</p>
+            <div class="message_i">
+                <ul>
+                    <li>
+                        <a href="#none" title="详细">
+                            <i class="iconfont">&#xe605;</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="short_message">
+            <p class="message_title">@交警支队王敏：</p>
+            <p class="message_content">请紧密注意209省道贵州紫运集团附近的嫌疑车，禁毒人员已派出，请协助搜查！</p>
+            <div class="message_i">
+                <ul>
+                    <li>
+                        <a href="#none" title="详细">
+                            <i class="iconfont">&#xe605;</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rx-paging" style="margin:0px 10px 0 0;">
+        <ul class="rx-pagenate" style="float: right;width: auto;">
+            <li class="rx-first paged" disabled="disabled">首页
+            </li>
+            <li class="rx-pageRoll">
+                <div class="rx-pRoll" style="width: 88px;">
+                    <ul class="rx-pRollUl">
+                        <li class="clicked paged">1</li>
+                        <li class="paged">2</li>
+                        <li class="pagedn">···
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="rx-last paged">末页
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        //初始化内容区域高度
+        $("#mapIframeList").height($(window).height() - $(".mapform").outerHeight() - 10);
+    });
+    //页面大小改变时，触发jquery的resize方法，自适应拖拽
+    $(window).resize(function () {
+        $("#mapIframeList").height($(window).height() - $(".mapform").outerHeight() - 10);
+    })
+</script>
+
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/map/getMap.js",
+            "/medias/src/zybz/map/tabOperation.js",
+            "/medias/src/plat/form/formdesign/fieldOptions.js",
+            "/medias/src/zybz/cjrw/cjbzContentEdit_config.js",
+            "/medias/src/zybz/cjrw/cjbzContentEdit.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div style="overflow:hidden;position: relative ">
+    {{#if disabled != true &&resultList.length<maxNum}}
+    <form enctype="multipart/form-data" method="POST"
+          style="float: left;margin-top: 3px;">
+        <span ><i class="iconfont file_tag"></i>
+            <a href="#none">
+       <input type="file" class="addFile" name="fileData" on-change="changeFile()">添加附件</a>
+        </span>
+    </form>
+    {{/if}}
+    {{#each resultList:index}}
+    <div class="form_file">
+        <a href="#none">{{name}}.{{extension}}</a>
+        <i class="iconfont" title="下载" on-click="downloadFile($keypath)"></i>
+        {{#if disabled != true}}
+        <i class="iconfont" title="删除" on-click="deleteFile($keypath)"></i>
+        {{/if}}
+    </div>
+    {{/each}}
+</div>

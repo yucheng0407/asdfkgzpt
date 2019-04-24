@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查看原图</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            module: ["/medias/style/plat/lztstyle.css"]
+        });
+    </script>
+</head>
+<body>
+<div class="w_button_box">
+    <input type="button" value="旋转" id="xz" class="button" onclick="rotateRight('preview',90)"/>
+</div>
+<div>
+    <img id="preview" alt="扫描件预览" src="/medias/image/default_pic.png"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        module: ["/medias/src/plat/attachment/showYt.js"]
+    });
+</script>
+</body>
+</html>

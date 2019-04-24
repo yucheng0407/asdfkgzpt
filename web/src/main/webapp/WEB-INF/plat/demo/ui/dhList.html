@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title></title>
+		<script src="${ctxPath}/medias/rx.load.js"></script>
+		<script type="text/javascript">
+            RX.loadCSS({
+                template: "platMain"
+            });
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="base_box">
+			<div class="no_p_box">
+				<div class="Useroperations">
+					<ul class="dh_nav">
+						<li><a href="index.html"> 首页</a></li>
+						<li class="dh_jt"></li>
+						<li><a href="index.html">项目名称项目名称项目名称项目名称</a></li>
+						<li class="dh_jt"></li>
+						<li>导航列表</li>
+						<li class="dh_jt"></li>
+					</ul>
+				</div>
+				<div class="query_box">
+					<table cellpadding="0" cellspacing="0" border="0" class="query_form">
+						<col width="50px" />
+						<col width="150px" />
+						<col width="70px" />
+						<col width="300px" />
+						<col width="70px" />
+						<col width="65px" />
+						<tr>
+							<th>姓名</th>
+							<td>
+								<div class="query_element_box">
+									<input type="text" class="i_query_text" />
+								</div>
+							</td>
+							<th>身份证号</th>
+							<td>
+								<div class="query_element_box">
+									<input type="text" class="i_query_text" />
+								</div>
+							</td>
+							<th><input class="query_button" type="button" value="查询" /></th>
+							<th><input class="query_buttonB" type="button" value="重置" /></th>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="bb_list_box">
+				<table border="0" cellspacing="0" cellpadding="0" class="bb_list">
+					<tr>
+						<th rowspan="2">Header</th>
+						<th rowspan="2">Header</th>
+						<th colspan="4">Header</th>
+						<th colspan="4">Header</th>
+						<th rowspan="2">Header</th>
+						<th rowspan="2">Header</th>
+					</tr>
+					<tr>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+						<th>Header</th>
+					</tr>
+					<tr>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+				</table>
+				<div class="rx-paging">
+					<ul class="rx-pagenate" style="float: right;width: auto;">
+						<li class="rx-first paged" disabled="disabled">首页
+						</li>
+						<li class="rx-pageRoll">
+							<div class="rx-pRoll" style="width: 175px;">
+								<ul class="rx-pRollUl">
+									<li class="clicked paged">1</li>
+									<li class="paged">2</li>
+									<li class="paged">3
+									</li>
+									<li class="paged">4
+									</li>
+									<li class="paged">5
+									</li>
+									<li class="paged">6
+									</li>
+									<li class="pagedn">···
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="rx-last paged">末页
+						</li>
+					</ul>
+					<span style="display:block;width:auto;float:right;padding:0 10px;height:30px;font-size: 12px;text-indent: 15px;line-height:30px;color: #666">共<b style="padding:0 3px;color:#666;font-weight: normal;">2</b>页<b style="padding:0 3px;color:#666;font-weight: normal;">16</b>条数据</span>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					//初始化内容区域高度
+					$(".bb_list_box").height($(window).height() - $(".no_p_box").outerHeight()- 70);
+				})
+				//页面大小改变时，触发jquery的resize方法，自适应拖拽
+				$(window).resize(function() {
+					$(".bb_list_box").height($(window).height() - $(".no_p_box").outerHeight() - 70);
+				})
+			</script>
+	</body>
+
+</html>

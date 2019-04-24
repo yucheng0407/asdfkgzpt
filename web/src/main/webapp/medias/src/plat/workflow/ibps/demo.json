@@ -1,0 +1,192 @@
+{
+  "fromServer": false,
+  "id": "823",
+  "sfyxSt": "VALID",
+  "name": "BPMN请假流程-2（改）",
+  "version": 0,
+  "versionName": "BPMN请假流程-2（改）",
+  "workflow": "823",
+  "code": "BPMN_LEAVE",
+  "instanceTitle": "BPMN请假流程-2（改）",
+  "type": "134",
+  "typeName": "测试类别",
+  "workflowYwztZd": "QJLCZT",
+  "workflowYwztZdName": "请假流程业务状态",
+  "nodeCodeDictCode": null,
+  "nodeCodeDictName": null,
+  "startupProcessSql": "null",
+  "autoHandleSql": "",
+  "description": "null",
+  "sheets": [
+    {
+      "sfyxSt": "VALID",
+      "workflow_id": "823",
+      "sheet_id": "145",
+      "name": "员工请假单",
+      "id": "429",
+      "sort": "1",
+      "title": ""
+    }
+  ],
+  "variables": [
+    {
+      "interactionFields": null,
+      "fjUpdateIds": null,
+      "id": "487",
+      "name": "SFJLSP",
+      "value": "1",
+      "cjrId": "815",
+      "cjsj": 1536577486000,
+      "sfyxSt": "VALID"
+    }
+  ],
+  "finishProcessSql": "null",
+  "nodes": [
+    {
+      "domid": "StartEvent_1",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "开始",
+      "x": 180,
+      "y": 120,
+      "type": "0",
+      "ywzt": ""
+    },
+    {
+      "domid": "UserTask_1heb24s",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "申请",
+      "x": 267,
+      "y": 98,
+      "type": "2",
+      "ywzt": ""
+    },
+    {
+      "domid": "UserTask_0x2wl96",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "组长审批",
+      "x": 419,
+      "y": 98,
+      "type": "2",
+      "ywzt": ""
+    },
+    {
+      "domid": "ExclusiveGateway_03odd70",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "",
+      "x": 576,
+      "y": 113,
+      "type": "4",
+      "ywzt": ""
+    },
+    {
+      "domid": "EndEvent_0ymslpz",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "",
+      "x": 583,
+      "y": 213,
+      "type": "1",
+      "ywzt": ""
+    },
+    {
+      "domid": "UserTask_1rl0x69",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "经理审批",
+      "x": 672,
+      "y": 98,
+      "type": "2",
+      "ywzt": ""
+    },
+    {
+      "domid": "EndEvent_00hjhw8",
+      "fromServer": true,
+      "sort": "",
+      "sfyxSt": "VALID",
+      "sheets": [],
+      "variables": [],
+      "buttons": [],
+      "name": "",
+      "x": 824,
+      "y": 120,
+      "type": "1",
+      "ywzt": ""
+    }
+  ],
+  "routers": [
+    {
+      "domid": "SequenceFlow_0h8sivz",
+      "fromServer": true,
+      "name": "",
+      "branch": "",
+      "sfyxSt": "VALID"
+    },
+    {
+      "domid": "SequenceFlow_0tpbqzu",
+      "fromServer": true,
+      "name": "",
+      "branch": "",
+      "sfyxSt": "VALID"
+    },
+    {
+      "domid": "SequenceFlow_029f7s8",
+      "fromServer": true,
+      "name": "",
+      "branch": "",
+      "sfyxSt": "VALID"
+    },
+    {
+      "domid": "SequenceFlow_02w5z0e",
+      "fromServer": false,
+      "name": "",
+      "branch": "[WF:SFJLSP]=1",
+      "sfyxSt": "VALID"
+    },
+    {
+      "domid": "SequenceFlow_1s1hv4h",
+      "fromServer": true,
+      "name": "",
+      "branch": "",
+      "sfyxSt": "VALID"
+    },
+    {
+      "domid": "SequenceFlow_1120ivu",
+      "fromServer": true,
+      "name": "",
+      "branch": "",
+      "sfyxSt": "VALID"
+    }
+  ],
+  "priority": "high",
+  "bpmnDef": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" id=\"sample-diagram\" targetNamespace=\"http://bpmn.io/schema/bpmn\" xsi:schemaLocation=\"http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd\"><process id=\"Process_0jt7one\" isExecutable=\"false\"><startEvent id=\"StartEvent_1\" name=\"开始\"><outgoing>SequenceFlow_0h8sivz</outgoing></startEvent><userTask id=\"UserTask_1heb24s\" name=\"申请\"><incoming>SequenceFlow_0h8sivz</incoming><outgoing>SequenceFlow_0tpbqzu</outgoing></userTask><sequenceFlow id=\"SequenceFlow_0h8sivz\" sourceRef=\"StartEvent_1\" targetRef=\"UserTask_1heb24s\" /><userTask id=\"UserTask_0x2wl96\" name=\"组长审批\"><incoming>SequenceFlow_0tpbqzu</incoming><outgoing>SequenceFlow_029f7s8</outgoing></userTask><sequenceFlow id=\"SequenceFlow_0tpbqzu\" sourceRef=\"UserTask_1heb24s\" targetRef=\"UserTask_0x2wl96\" /><exclusiveGateway id=\"ExclusiveGateway_03odd70\"><incoming>SequenceFlow_029f7s8</incoming><outgoing>SequenceFlow_02w5z0e</outgoing><outgoing>SequenceFlow_1s1hv4h</outgoing></exclusiveGateway><sequenceFlow id=\"SequenceFlow_029f7s8\" sourceRef=\"UserTask_0x2wl96\" targetRef=\"ExclusiveGateway_03odd70\" /><endEvent id=\"EndEvent_0ymslpz\"><incoming>SequenceFlow_02w5z0e</incoming></endEvent><sequenceFlow id=\"SequenceFlow_02w5z0e\" sourceRef=\"ExclusiveGateway_03odd70\" targetRef=\"EndEvent_0ymslpz\" /><userTask id=\"UserTask_1rl0x69\" name=\"经理审批\"><incoming>SequenceFlow_1s1hv4h</incoming><outgoing>SequenceFlow_1120ivu</outgoing></userTask><sequenceFlow id=\"SequenceFlow_1s1hv4h\" sourceRef=\"ExclusiveGateway_03odd70\" targetRef=\"UserTask_1rl0x69\" /><endEvent id=\"EndEvent_00hjhw8\"><incoming>SequenceFlow_1120ivu</incoming></endEvent><sequenceFlow id=\"SequenceFlow_1120ivu\" sourceRef=\"UserTask_1rl0x69\" targetRef=\"EndEvent_00hjhw8\" /></process><bpmndi:BPMNDiagram id=\"BPMNDiagram_1\"><bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_0jt7one\"><bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\"><dc:Bounds x=\"180\" y=\"120\" width=\"36\" height=\"36\" /></bpmndi:BPMNShape><bpmndi:BPMNShape id=\"UserTask_1heb24s_di\" bpmnElement=\"UserTask_1heb24s\"><dc:Bounds x=\"267\" y=\"98\" width=\"100\" height=\"80\" /></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_0h8sivz_di\" bpmnElement=\"SequenceFlow_0h8sivz\"><di:waypoint xsi:type=\"dc:Point\" x=\"216\" y=\"138\" /><di:waypoint xsi:type=\"dc:Point\" x=\"267\" y=\"138\" /><bpmndi:BPMNLabel><dc:Bounds x=\"242\" y=\"113\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNShape id=\"UserTask_0x2wl96_di\" bpmnElement=\"UserTask_0x2wl96\"><dc:Bounds x=\"419\" y=\"98\" width=\"100\" height=\"80\" /></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_0tpbqzu_di\" bpmnElement=\"SequenceFlow_0tpbqzu\"><di:waypoint xsi:type=\"dc:Point\" x=\"367\" y=\"138\" /><di:waypoint xsi:type=\"dc:Point\" x=\"419\" y=\"138\" /><bpmndi:BPMNLabel><dc:Bounds x=\"393\" y=\"113\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNShape id=\"ExclusiveGateway_03odd70_di\" bpmnElement=\"ExclusiveGateway_03odd70\" isMarkerVisible=\"true\"><dc:Bounds x=\"576\" y=\"113\" width=\"50\" height=\"50\" /><bpmndi:BPMNLabel><dc:Bounds x=\"601\" y=\"163\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_029f7s8_di\" bpmnElement=\"SequenceFlow_029f7s8\"><di:waypoint xsi:type=\"dc:Point\" x=\"519\" y=\"138\" /><di:waypoint xsi:type=\"dc:Point\" x=\"576\" y=\"138\" /><bpmndi:BPMNLabel><dc:Bounds x=\"548\" y=\"113\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNShape id=\"EndEvent_0ymslpz_di\" bpmnElement=\"EndEvent_0ymslpz\"><dc:Bounds x=\"583\" y=\"213\" width=\"36\" height=\"36\" /><bpmndi:BPMNLabel><dc:Bounds x=\"601\" y=\"249\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_02w5z0e_di\" bpmnElement=\"SequenceFlow_02w5z0e\"><di:waypoint xsi:type=\"dc:Point\" x=\"601\" y=\"163\" /><di:waypoint xsi:type=\"dc:Point\" x=\"601\" y=\"213\" /><bpmndi:BPMNLabel><dc:Bounds x=\"616\" y=\"178\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNShape id=\"UserTask_1rl0x69_di\" bpmnElement=\"UserTask_1rl0x69\"><dc:Bounds x=\"672\" y=\"98\" width=\"100\" height=\"80\" /></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_1s1hv4h_di\" bpmnElement=\"SequenceFlow_1s1hv4h\"><di:waypoint xsi:type=\"dc:Point\" x=\"626\" y=\"138\" /><di:waypoint xsi:type=\"dc:Point\" x=\"672\" y=\"138\" /><bpmndi:BPMNLabel><dc:Bounds x=\"649\" y=\"113\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNShape id=\"EndEvent_00hjhw8_di\" bpmnElement=\"EndEvent_00hjhw8\"><dc:Bounds x=\"824\" y=\"120\" width=\"36\" height=\"36\" /><bpmndi:BPMNLabel><dc:Bounds x=\"842\" y=\"156\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id=\"SequenceFlow_1120ivu_di\" bpmnElement=\"SequenceFlow_1120ivu\"><di:waypoint xsi:type=\"dc:Point\" x=\"772\" y=\"138\" /><di:waypoint xsi:type=\"dc:Point\" x=\"824\" y=\"138\" /><bpmndi:BPMNLabel><dc:Bounds x=\"798\" y=\"113\" width=\"0\" height=\"0\" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge></bpmndi:BPMNPlane></bpmndi:BPMNDiagram></definitions>",
+  "operatingStatus": "1",
+  "status": "0"
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>元数据</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["/medias/plugin/drop/drop.css",
+                "/medias/plugin/qtip/jquery.qtip.css"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+
+        #infoDiv table tr {
+            height: 60px;
+        }
+
+        #infoDiv .label_radio {
+            min-width: 100px !important;
+            margin: 5px 5px !important;
+        }
+
+        .scrollbox::-webkit-scrollbar-track { /*滚动条里面轨道*/
+            border-right: 1px solid #ddd;
+        }
+
+        .drop-hover .noDrop {
+            background: #aab9cb;
+        }
+
+        .nullxing {
+            color: red;
+            margin-right: 3px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="report_title">
+    <h1 style="">报表设计器</h1>
+    <!--<div class="w_button_box" id="w_butt">-->
+    <!--<div class="button_group" id="_button_group_33889796">\-->
+    <!--<input type="button" id="save" value="保存" class="c_button">-->
+    <!--<input type="button" id="back" value="返回" class="n_button"></div>-->
+    <!--</div>-->
+    <ul class="action_button to_right">
+        <li><a href="#none" id="save" class=""><i class="iconfont">&#xe634;</i>保存</a></li>
+        <li><a href="#none" id="back" class="active_back"><i class="iconfont">&#xe6a3;</i>返回</a></li>
+    </ul>
+</div>
+<div class="box" style="overflow-y:auto;overflow-x: hidden  " >
+    <div class="left_side left_panel_box">
+        <div class="">
+            <div id="dataArea" style="float:left;width:50%;">
+                <div class="x_box">
+                    <div class="p_box">
+                        <div class="page_title">
+                            <h1 id="metaDataName">选择元数据</h1>
+                            <ul class="action_button to_right">
+                                <li><a href='javascript:void(0);' onclick="selectMetaData()"><i class="iconfont"></i>选择</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="boxbody" style='float: none;height:180px;overflow: auto'>
+                            <div id="metaDataInfo" style='height:155px;'>
+
+                                <div id="noMetaData" class="noMetaData"
+                                     style='display:block;'>
+                                    请先 <a href='javascript:void(0);' onclick="selectMetaData()">选择元数据</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="propertyArea" style="float:right;width:50%;">
+                <div class="x_box">
+                    <div class="p_box">
+                        <div class="page_title">
+                            <h1>报表字段设计</h1>
+                        </div>
+                        <div class="boxbody" style="float: none; height: 180px;overflow: hidden">
+                            <div style="position:relative;margin-top:5px;">
+                                <label class="bbxy">
+                                    X轴<br/>
+                                    (维度)
+                                </label>
+                                <div id="propertyDropX" class="scrollbox bbxy_c">
+                                    <div id="noDropX" class="noDrop" style='display:none;'>
+                                        拖拽元数据列至此 (最多一个)
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="position:relative;margin-top:25px;">
+                                <label class="bbxy">
+                                    Y轴
+                                    <br/>
+                                    (数值)
+                                </label>
+                                <div id="propertyDropY" class="scrollbox bbxy_c">
+                                    <div id="noDropY" class="noDrop"
+                                         style='display:none;'>
+                                        拖拽元数据列至此 (一或多个)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="p_box" id="dataPropertyArea" style="height:200px;padding-left:10px;padding-right:10px;">-->
+
+            <!--</div>-->
+
+            <div id="" style="float:left;width:100%;">
+                <div class="x_box">
+                    <div class="p_box" id="formShowArea" style="">
+
+                        <div class="page_title">
+                            <h1>报表预览</h1>
+                            <ul class="action_button to_right">
+                                <li><a href='javascript:void(0);' onclick="openPreview()"><i
+                                        class="iconfont">&#xe631;</i>弹出预览</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="formShowDiv" class="boxbody" style="float: none;height: 255px">
+                            <iframe name="formPreview" id="formPreview" frameborder="0"
+                                    width="100%" height="100%" scrolling="auto"
+                                    src="${ctxPath}/report/reportFormPreview"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--右侧列表-->
+    <div class="right_content" style="width:400px;">
+        <div class="">
+            <div class="x_box">
+                <div class="p_box" id="settingArea" style="height:100%;padding:10px;">
+                    <div class="page_title">
+                        <h1>报表类型</h1>
+                    </div>
+                    <div id="typeDiv" style="height:90px;">
+                        <div class="disabled" id="type1">
+                            <i class="iconfont">&#xe650;</i>
+                            <span>表格</span>
+                        </div>
+                        <div class="disabled" id="type2">
+                            <i class="iconfont">&#xe694;</i>
+                            <span>柱状图</span>
+                        </div>
+                        <div class="disabled" id="type3">
+                            <i class="iconfont">&#xe651;</i>
+                            <span>折线图</span>
+                        </div>
+                        <div class="disabled" id="type4">
+                            <i class="iconfont">&#xe688;</i>
+                            <span>饼状图</span>
+                        </div>
+                    </div>
+                    <div class="page_title">
+                        <h1>报表信息</h1>
+                    </div>
+                    <div id="infoDiv">
+                        <script type="text/template">
+                            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                                <colgroup>
+                                    <col width="100px;"/>
+                                    <col width=""/>
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th><b class="nullxing">*</b>报表名称</th>
+                                    <td>
+                                        <div class="element_box">
+                                            <input type="text" class="i_text" model="name"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><b class="nullxing">*</b>报表标题</th>
+                                    <td>
+                                        <div class="element_box">
+                                            <input type="text" class="i_text" model="settings.title"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{#if type == "2" || type == "3" }}
+                                <tr>
+                                    <th>X轴</th>
+                                    <td>
+                                        <div class="element_box">
+                                            <input type="text" class="i_text" model="settings.xTitle"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Y轴</th>
+                                    <td>
+                                        <div class="element_box">
+                                            <input type="text" class="i_text" model="settings.yTitle"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                <tr>
+                                    <th>最大数据条数</th>
+                                    <td>
+                                        <div class="element_box">
+                                            <input type="text" class="i_text" model="settings.rownum"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--<tr>-->
+                                <!--<th>关联规则</th>-->
+                                <!--<td>-->
+                                <!--<div class="element_box">-->
+                                <!--<div model="ruleType"/>-->
+                                <!--</div>-->
+                                <!--</td>-->
+                                <!--</tr>-->
+                                <!--{{#if ruleType && ruleType != "0"}}-->
+                                <!--<tr style="height:45px;">-->
+                                <!--<th>规则对应元数据列</th>-->
+                                <!--<td>-->
+                                <!--<div class="element_box">-->
+                                <!--<input type="text" class="i_text" model="settings.ruleColumn"/>-->
+                                <!--</div>-->
+                                <!--</td>-->
+                                <!--</tr>-->
+                                <!--{{/if}}-->
+                                </tbody>
+                            </table>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--基础布局-->
+</div>
+<script type="text/javascript">
+    RX.page.resize = function () {
+        $(".left_side").width($(window).width() - $(".right_content").outerWidth() - 13);
+        $(".box").height($(window).height() - $(".report_title").height() );
+        // $("#box").height($("#formShowArea").height() - 50);
+        $("#settingArea").height($(window).height() - $("#w_butt").height() - 50);
+    };
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/plugin/drop/drop.js",
+            "/medias/plugin/qtip/jquery.qtip.js",
+            "/medias/src/plat/report/reportFormEdit_config.js",
+            "/medias/src/plat/report/reportFormEdit.js"
+        ]
+    });
+</script>
+</body>
+</html>

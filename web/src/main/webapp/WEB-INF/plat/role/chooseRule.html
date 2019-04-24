@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>角色关联要素编辑页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["treeIcon",
+                "zTree",
+                "/medias/style/plat/roleEditCSS.css"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+    <script type="text/javascript">
+        RX.load({
+            async: false,
+            template: "form",
+            module: [
+                "/medias/src/plat/role/chooseRule_config.js",
+                "/medias/src/plat/role/chooseRule.js"
+            ]
+        });
+    </script>
+</head>
+<body>
+<div class="form_box">
+    <div class="p_box">
+        <div id="dataRule">
+            <script type="text/template">
+                <div class="p_box">
+                    <div class="page_title"><h1>关联动态规则{{#if type === "ck"}}（双击查看规则）{{/if}}</h1>
+                        {{#if type !== "ck"}}
+                        <ul class='action_button to_right'>
+                            <li><a on-click='selRule()'><i class='iconfont'>{{{'&#xe721;'}}}</i>选择规则</a></li>
+                            <li><a on-click='addRule()'><i class='iconfont'>{{{'&#xe62a;'}}}</i>新增规则</a></li>
+                        </ul>
+                        {{/if}}
+                    </div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="list">
+                        <thead>
+                        <tr>
+                            <th style="width:10%">序号</th>
+                            <th style="width:40%">规则名称</th>
+                            <th style="width:20%">修改时间</th>
+                            <th>{{#if type === "ck"}}描述{{else}}操作{{/if}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each list:index}}
+                        {{#if sfyxSt !== "UNVALID"}}
+                        <tr class="rx-grid-tr" {{#if type == "ck"}}on-dblclick="openRule($keypath)"{{/if}}>
+                            <td style="text-align:left" class="orderTag"></td>
+                            <td style="text-align:left">
+                                <div class="element_box"><input type="text" class="i_text" model="ruleName"/></div>
+                            </td>
+                            <td style="text-align:left">
+                                <div class="element_box"><input type="text" class="i_text" model="ruleXgsj"/></div>
+                            </td>
+                            <td style="text-align:left">
+                                <div class="element_box">
+                                    {{#if type !== "ck"}}
+                                    <a on-click="editRule($keypath)">修改</a>
+                                    <a on-click="delRule($keypath)">删除</a>
+                                    {{else}}
+                                    <input type="text" class="i_text" model="description "/>
+                                    {{/if}}
+                                </div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button" style="display:none;"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+
+</body>
+</html>

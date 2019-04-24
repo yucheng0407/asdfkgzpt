@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--log4j2自身日志级别设置为warn-->
+<Configuration status="WARN" monitorInterval="1800">
+    <Properties>
+        <!-- 配置日志文件输出目录 -->
+        <property name="LOG_HOME">logs</property>
+        <property name="APP_NAME">${web:webAppRootKey}</property>
+    </Properties>
+
+    <Appenders>
+        <!--控制台打印-->
+        <Console name="Console">
+            <PatternLayout pattern="[%-5p][%d{yyyy/MM/dd HH:mm:ss}][%l][%m]%n"/>
+        </Console>
+        <!--日志文件-->
+        <RollingFile name="RollingFile" fileName="${sys:user.home}/${LOG_HOME}/${APP_NAME}/${APP_NAME}.log"
+                     filePattern="${sys:user.home}/${LOG_HOME}/${APP_NAME}-%d{yyyy-MM-dd}-%i.log">
+            <!--仅输出warn级别以上的日志，每天生成，每个日志文件不超过5m,同一文件夹下最多30个日志文件-->
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%-5p][%d{yyyy/MM/dd HH:mm:ss}][%l][%m]%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+                <SizeBasedTriggeringPolicy size="5MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- 配置日志的根节点 -->
+        <root level="warn">
+            <appender-ref ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </root>
+        <!--jdbc的sql输出-->
+        <logger name="org.springframework.jdbc.core.JdbcTemplate" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <Logger name="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+    </Loggers>
+
+
+</Configuration>

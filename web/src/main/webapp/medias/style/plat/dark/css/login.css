@@ -1,0 +1,45 @@
+.main{width: 980px;height: auto;margin: 6% auto 0;position: relative;}
+.dlbg{float: right;margin: 0 20px 0 0;width:350px;height:430px;background: url(image/login/dlbg.png) no-repeat 0 0;}
+.denglu{float: left;margin: 80px 0 0 40px;display: inline;}
+.denglu tr td{padding-top:15px;width: 268px;}
+.denglu tr td label{float: left;color: #666;font-size: 12px;cursor: pointer;}
+.denglu tr td a.forgetpwd{float: right;color: #006EBD;font-size: 12px;cursor: pointer;}
+.denglu tr td a.forgetpwd:hover{color: #003F96;}
+.boxtext{width: 100%;height: 39px;border: 1px solid #999;background: #fff;border-radius: 2px;position: relative;}
+.boxtext img{float: left;width: 19px;height: 19px;margin: 9px 0 0 10px;}
+.text{float: left;width: 210px;height: 31px;border: 0 none;font-size: 14px;margin: 0 0 0 10px;padding: 4px 8px;}
+.buttom{width:100%;height:38px;background: #006EBD;color:#fff;text-align:center;line-height:38px;border:1px solid #0060a5;cursor:pointer;font-size: 14px;border-radius: 2px;}
+.buttom:hover{background: #0061a6;}
+.PKIbuttom{width:100%;height:38px;background: #fff;color:#333;text-align:center;line-height:38px;border:1px solid #888;cursor:pointer;font-size: 14px;border-radius: 2px;}
+.PKIbuttom:hover{background: #e9f1f6;}
+.checkbox{background:none}
+.ewmdl{width: 32px;height: 32px;position: absolute;top: 9px;right: 9px;background: url(image/login/ewmdl.png) no-repeat 0 0;cursor: pointer;}
+.zhdl{width: 32px;height: 32px;position: absolute;top: 9px;right: 9px;background: url(image/login/zhdl.png) no-repeat 0 0;cursor: pointer;}
+.loginQrcode{width: 130px;height: 130px;padding: 4px;border: 1px solid #cdcdcd;background: #e8f3f7;margin: 90px auto 0;}
+.dlbg p{width: 100%;color: #333;text-align: center;margin-top: 25px;}
+.dlbg p a{color: #1a75ca;}
+.dlbg p a:hover{color: #003F96;}
+
+.logo{float:left;width:450px;height:auto;position: relative;margin: 20px 0 0 20px;}
+.logo i{float: left;font-size: 96px;line-height: 96px;color: #fff;margin-top: 60px;}
+.logo p{float: left;width: 100%;color: #fff;font-weight: normal;/*box-shadow:0 2px 4px 0px #333;*/}
+.logo p.a1{font-size: 48px;line-height: 70px;}
+.logo p.a2{font-size: 18px;line-height: 30px;}
+
+/*单选多选*/
+form {}
+fieldset {border: 0;}
+label {float: left;cursor: pointer;}
+.radios {}
+.label_check input,.label_radio input {	margin-right: 5px;}	
+.has-js .label_check,.has-js .label_radio {padding-left: 25px;}
+.has-js .label_radio {background: url(image/radio-off.png) no-repeat;}
+.has-js .label_radio:hover {background: url(image/radio.png) no-repeat;}
+.has-js .label_check {background: url(image/check-off.png) no-repeat;}
+.has-js .label_check:hover {background: url(image/check.png) no-repeat;}
+.has-js label.c_on {background: url(image/check-on.png) no-repeat;}
+.has-js label.c_on:hover {background: url(image/check-on.png) no-repeat;}
+.has-js label.r_on {background: url(image/radio-on.png) no-repeat;}
+.has-js label.r_on:hover {background: url(image/radio-on.png) no-repeat;}
+.has-js .label_check input,.has-js .label_radio input {position: absolute;left:-9999px;}
+

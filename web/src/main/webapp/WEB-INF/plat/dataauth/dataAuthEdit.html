@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>数据权限编辑页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form_box">
+    <div class="p_box">
+        <div class="page_title">
+            <h1>权限内容</h1>
+        </div>
+        <div id="info">
+            <script type="text/template">
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="100px">
+                        <col width="">
+                        <col width="100px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th><b>*</b>关联用户</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_layer" model="userNames"/>
+                            </div>
+                        </td>
+                        <th><b>*</b>对象类型</th>
+                        <td>
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="objectId">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </script>
+        </div>
+    </div>
+
+    <div id="dataAuthList">
+        </div>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/dataauth/dataAuthEdit_config.js",
+            "/medias/src/plat/dataauth/dataAuthEdit.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

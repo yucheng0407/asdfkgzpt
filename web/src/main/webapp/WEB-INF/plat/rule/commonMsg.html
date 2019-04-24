@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>公共提示信息</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+        .form1{ margin: 5px auto; width: 96%; }
+        .form1 tr td.msgTd{
+            border:0px !important;
+            height:30px;
+            text-align:center;
+        }
+        .form1 tr td.msgTd span{ float: left; color: #333;  width: 86%;
+            padding:4px 5px; background: #f9f9f9; border: 1px solid #e2e2e2;
+            white-space: nowrap;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;    /* Opera */
+            text-overflow:    ellipsis;    /* IE, Safari (WebKit) */
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <div id="msg"></div>
+</div>
+<div class="w_button_box">
+    <input type="button" id="confirm" value="确认" class="c_button" />
+    <input type="button" id="close" value="关闭" class="n_button" />
+</div>
+<script type="text/javascript">
+    RX.load({
+        module: [
+            "/medias/src/plat/rule/commonMsg.js"]
+    });
+</script>
+
+</body>
+</html>

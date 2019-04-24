@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>缩略图预览</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            module: ["/medias/style/plat/lztstyle.css"]
+        });
+    </script>
+</head>
+<body>
+<div>
+    <ul id="slideshow">
+    </ul>
+    <div id="wrapper">
+        <div id="fullsize">
+            <div id="imgprev" class="imgnav" title="上一张"></div>
+            <div id="imglink"></div>
+            <div id="imgnext" class="imgnav" title="下一张"></div>
+            <div id="image"></div>
+            <div id="information">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+        <div id="thumbnails">
+            <div id="slideleft" title="左移"></div>
+            <div id="slidearea">
+                <div id="slider"></div>
+            </div>
+            <div id="slideright" title="右移"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var slideshow;
+    function showyt(tid) {
+        window.open(RX.handlePath("/attachment/showYt?id=" + tid));
+    }
+    RX.load({
+        module: [
+            ["/medias/lib/compressed.js"]],
+        callback: function () {
+            $(function () {
+                var uuid = GetQueryString("uuid");   //附件id
+                $.ajax({
+                    type: "get",
+                    url: "/attachment/getLzPhotoList?random=" + Math.random() + "&uuid=" + uuid,
+                    async: false,
+                    success: function (ar) {
+                        if (ar.success) {
+                            if (ar.data != null && ar.data.length > 0) {
+                                for (var i = 0; i < ar.data.length; i++) {
+                                    $("#slideshow").append('<li><h3>' + ar.data[i].name + '(<a href="#none" onclick="showyt(' + ar.data[i].id + ')">查看原图</a>)</h3><span>getImage?id=' + ar.data[i].id + '</span><p>' + (ar.data[i].description || "") + '</p><a><img src="'+RX.handlePath("/attachment/getImage?id="+ ar.data[i].id + "")+'" alt="' + ar.data[i].name + '" /></a></li>');
+                                }
+                            }
+                        }
+                    }
+                });
+                $('#slideshow').hide();
+                $('#wrapper').show();
+                slideshow = new TINY.slideshow("slideshow");
+                slideshow.auto = true;
+                slideshow.speed = 100;
+                slideshow.infoSpeed = 2;
+                slideshow.imgSpeed = 5;
+                slideshow.link = "linkhover";
+                slideshow.info = "information";
+                slideshow.thumbs = "slider";
+                slideshow.left = "slideleft";
+                slideshow.right = "slideright";
+                slideshow.scrollSpeed = 7;
+                slideshow.spacing = 5;
+                slideshow.active = "#333";
+                slideshow.init("slideshow", "image", "imgprev", "imgnext", "imglink");
+            });
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+

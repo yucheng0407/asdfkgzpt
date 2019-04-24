@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>资源列表页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "roleRelate"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+<body>
+<div class="left_side_tree">
+    <div class="tree_box">
+        <ul id="tree" class="ztree">
+        </ul>
+    </div>
+</div>
+<div class="right_content">
+    <div class="base_box">
+        <div id="dataDiv">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    RX.page.resize = function () {
+        $(".right_content").width($(window).width() - $(".left_side_tree").outerWidth() - 1);
+        $(".tree_box").height($(window).height() - ($(".so_box").height() || 60) - 20);
+        RX.resizeTable();
+    };
+    var resourceDict = ${json(resourceDict)};
+    var resourceConfig = ${json(resourceConfig)};
+    RX.load({
+        template: "grid",
+        module: [
+            "zTree",
+            "/medias/src/plat/resource/resourceList_config.js",
+            "/medias/src/plat/resource/resourceList.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

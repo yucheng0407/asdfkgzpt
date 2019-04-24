@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>安顺市社会治安防控</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <script type="text/javascript">
+        function menuFix() {
+            var sfEls = document.getElementById("menu").getElementsByTagName("li");
+            for (var i = 0; i < sfEls.length; i++) {
+                if (sfEls[i].className && sfEls[i].className == "im") {
+                    sfEls[i].onmouseover = function () {
+                        this.className += (this.className.length > 0 ? " " : "") + "sfhover";
+                        var a = this.getElementsByTagName("A")[0];
+                        a.className += (a.className.length > 0 ? " " : "") + "mouseOver";
+                    };
+
+                    sfEls[i].onmouseout = limenu_hid;
+                }
+            }
+        }
+
+        function limenu_hid() {
+            var m = this;
+            m.className = m.className.replace(new RegExp("( ?|^)sfhover\\b"), "");
+            var a = m.getElementsByTagName("A")[0];
+            a.className = a.className.replace(new RegExp("( ?|^)mouseOver\\b"), "");
+        }
+
+        window.onload = menuFix;
+    </script>
+</head>
+
+<body>
+<div class="top">
+    <div class="logo">
+    </div>
+    <ul id="menu">
+    </ul>
+    <div class="user">
+        <p><span><img src="${ctxPath}/medias/style/plat/image/common/default_handsome.jpg"/><font id="user_name"></font>（<font
+                id="organName"></font>）
+        </span></p>
+    </div>
+    <!--右上方消息提示-->
+    <ul class="navbar_top_links">
+        <li class="dropdown_open"><i class="iconfont">&#xe611;</i><em style="background: #1ab394;">10</em>
+            <ul class="dropdown_alerts">
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+            </ul>
+        </li>
+        <li class="dropdown_open"><i class="iconfont">&#xe63d;</i><em>8</em>
+            <ul class="dropdown_alerts">
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+                <li><a href="javascript:void(0);">基础平台消息Tips</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="box">
+    <iframe name="MainIframe" id="mainframe" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
+</div>
+
+<script type="text/javascript">
+
+    RX.load({
+        template: "form",
+        module: [["msgbox", 'layerExtend', "cookie"],
+            "/medias/src/plat/main/index.js"
+        ]
+    });
+</script>
+</body>
+</html>

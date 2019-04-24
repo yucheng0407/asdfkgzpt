@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>批量删除数据权限</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form_box">
+    <div id="batchView">
+        <script type="text/template">
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th><b>*</b>选择用户</th>
+                    <td>
+                        <div class="element_box">
+                            <input type="text" class="i_layer" model="userNames"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>对象类型（为空时删除选择的用户所有权限）</th>
+                    <td>
+                        <div class="element_box">
+                            <select class="i_select" model="objectId"></select>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </script>
+    </div>
+    <div id="dataAuthList">
+    </div>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="确定" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/dataauth/batchDelSel_config.js",
+            "/medias/src/plat/dataauth/batchDelSel.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

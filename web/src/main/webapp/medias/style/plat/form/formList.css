@@ -1,0 +1,801 @@
+
+.dashboard {
+    position: relative;
+}
+.dashboard-header{
+	border-bottom: 1px solid #e5e6e7;
+    padding-bottom: 5px;
+    width: 100%;
+    z-index: 500;
+    padding-top: 10px;
+    background: #F8F8F8;
+}
+.dashboard-header h2{
+    padding-left: 15px;
+    padding-right: 30px;
+}
+ 
+.dashboard-content {
+	    position: relative;
+    padding-top: 25px;
+}
+
+
+.dashboard-sidebar-header h5{
+	border-bottom: 1px solid #e5e6e7;
+}
+
+.dashboard .forms-section {
+    width: 82%;
+    float: left;
+    position: relative
+}
+.dashboard .dashboard-item {
+    width: 170px;
+    height: 215px;
+    border: 1px solid #C3C9D0;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    margin: 0 15px 40px;
+}
+
+.dashboard .create-new {
+    background: #FFF;
+    cursor: pointer;
+    border-style: dashed;
+    display: inline-block;
+    padding: 0;
+    width: 170px;
+    height: 215px;
+    line-height: 215px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.dashboard .create-new:hover {
+    background: #FAFAFA
+}
+
+.dashboard .create-new img {
+    width: 40px;
+    height: 40px;
+    margin-top: 80px;
+}
+
+.dashboard .create-new .dashboard-create-new-options .template-form-create-link {
+    height: 215px;
+    line-height: 215px;
+    display: block
+}
+
+.dashboard .create-new .dashboard-create-new-options .form-folder-create-trigger {
+    display: none
+}	
+
+.dashboard .create-new .dashboard-create-new-options.with-form-folder-create-trigger .template-form-create-link {
+    height: 160px;
+    line-height: 160px
+}
+
+.dashboard .create-new .dashboard-create-new-options.with-form-folder-create-trigger .form-folder-create-trigger {
+    display: block;
+    border-top: 1px solid #C3C9D0;
+    height: 55px;
+    line-height: 55px
+}
+
+.dashboard .cover-list .form>a,.dashboard .cover-list .folder>a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0
+}
+
+.dashboard .cover-list .form .symbol,.dashboard .cover-list .folder .symbol {
+    position: absolute;
+    top: 85px;
+    left: 53px;
+    text-align: center;
+    font-size: 38px
+}
+
+.dashboard .cover-list .form .name,.dashboard .cover-list .folder .name {
+    font-size: 14px
+}
+
+.dashboard .cover-list .form .check-icons {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px
+}
+
+.dashboard .cover-list .form .checks {
+    color: #99D6FF
+}
+
+.dashboard .cover-list .form .checks.active {
+	color:#80ccff
+}
+
+.dashboard .cover-list .form .checks:hover {
+	color:#80ccff
+}
+.dashboard .cover-list .form  .checked{
+	color:#4DB8FF;
+    display: block !important;
+}
+
+
+.dashboard .cover-list .form .checks,.dashboard .cover-list .folder .checks {
+    display: none
+}
+
+.dashboard .cover-list .form .checks.active,.dashboard .cover-list .folder .checks.active {
+    display: block
+}
+
+.dashboard .cover-list .form .checks.active+.cover-view-icons,.dashboard .cover-list .folder .checks.active+.cover-view-icons {
+    display: none
+}
+
+.dashboard .cover-list .form>a:hover .checks,.dashboard .cover-list .folder>a:hover .checks {
+    display: block
+}
+
+
+.dashboard .cover-list .form .info-icons,.dashboard .cover-list .folder .info-icons {
+    position: absolute;
+    bottom: 10px;
+    right: 9px;
+    font-size: 18px
+}
+
+
+
+.dashboard .cover-list .form .form-data,.dashboard .cover-list .folder .form-data {
+    font-size: 12px;
+    position: absolute;
+    bottom: 7px;
+    left: 10px
+}
+
+.dashboard .cover-list .form .form-data .text,.dashboard .cover-list .folder .form-data .text {
+    line-height: 28px;
+    vertical-align: bottom
+}
+
+.dashboard .cover-list .form .form-data .count,.dashboard .cover-list .folder .form-data .count {
+    font-size: 24px;
+    margin-right: 3px;
+    vertical-align: bottom
+}
+
+.dashboard .cover-list .form .pinned-img,.dashboard .cover-list .folder .pinned-img {
+    width: 22px;
+    height: 24px;
+    position: absolute;
+    top: -11px;
+    left: 72px
+}
+
+.dashboard .cover-list .form {
+    background-color: white;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+}
+
+.dashboard .cover-list .form>a {
+    color: #222222
+}
+
+.dashboard .cover-list .form .name {
+    margin: 13px 10px 10px
+}
+
+.dashboard .cover-list .form .symbol i {
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    transition: color 0.3s linear
+}
+
+.dashboard .cover-list .form .symbol i.form-color-1 {
+    color: #4D9FFF
+}
+
+.dashboard .cover-list .form .symbol i.form-color-2 {
+    color: #FFB54D
+}
+
+.dashboard .cover-list .form .symbol i.form-color-3 {
+    color: #54C7FC
+}
+
+.dashboard .cover-list .form .symbol i.form-color-4 {
+    color: #FF6885
+}
+
+.dashboard .cover-list .form .symbol i.form-color-5 {
+    color: #44DB5E
+}
+
+.dashboard .cover-list .form .settings {
+    color: #99D6FF
+}
+
+.dashboard .cover-list .form .settings.active {
+    color: #4DB8FF
+}
+
+.dashboard .cover-list .form .settings:hover {
+    color: #4DB8FF
+}
+
+.dashboard .cover-list .form .form-data:hover {
+    color: #009AFF
+}
+
+.dashboard .cover-list .folder {
+    border: 0;
+    background-image: url(https://cdn.jinshuju.net/assets/form_folders-9fb37154cb271616a11ee80ddff25fc5eca88dec84207ab870f76530614ec5a6.png);
+    background-repeat: no-repeat;
+    background-size: auto 215px;
+    width: 173px;
+    margin-right: 2px
+}
+
+.dashboard .cover-list .folder.form-color-1 {
+    background-position: 0px 0
+}
+
+.dashboard .cover-list .folder.form-color-2 {
+    background-position: -173px 0
+}
+
+.dashboard .cover-list .folder.form-color-3 {
+    background-position: -346px 0
+}
+
+.dashboard .cover-list .folder.form-color-4 {
+    background-position: -519px 0
+}
+
+.dashboard .cover-list .folder.form-color-5 {
+    background-position: -692px 0
+}
+
+.dashboard .cover-list .folder>a {
+    color: white
+}
+
+.dashboard .cover-list .folder .name {
+    margin: 35px 30px 0 10px;
+    text-align: center
+}
+
+.dashboard .cover-list .folder .info-icons,.dashboard .cover-list .folder .settings {
+    right: 32px;
+    color: white
+}
+
+.dashboard .cover-list .folder .info-icons.active,.dashboard .cover-list .folder .settings.active {
+    color: white
+}
+
+.dashboard .cover-list .folder .info-icons .shared,.dashboard .cover-list .folder .settings .shared {
+    color: white;
+    opacity: 0.6;
+    filter: alpha(opacity=60)
+}
+
+.dashboard .cover-list .folder>a:hover .settings {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    color: white
+}
+
+.dashboard .cover-list .folder>a:hover .settings:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.dashboard .dashboard-sidebar {
+    width: 17%;
+    float: right
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title {
+    padding: 1px 4px 1px 8px;
+    border-bottom: 1px solid #D9D9D9;
+    height: 20px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title h6 {
+    margin: 2px 0 0;
+    padding: 0
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .edit-tags-actions {
+    float: right;
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .edit-tags-actions span {
+    color: #009AFF
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .view-tags-actions {
+    float: right
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .edit-all-tags {
+    color: #AAB2BD
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .edit-all-tags i {
+    font-size: 14px;
+    margin-top: -2px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .tags-title .edit-all-tags:hover {
+    color: #8a96a3
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .error-messages {
+    color: #FF3824;
+    margin-top: 8px;
+    margin-left: 7px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags {
+    padding: 5px 0 0 0
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li {
+    padding: 0 4px 0 8px;
+    min-height: 24px;
+    position: relative;
+    line-height: 100%
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .loading {
+    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -34px;
+    margin-top: -2px;
+    text-align: center;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    display: block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .count {
+    color: #222222;
+    font-size: 13px;
+    margin-top: -1px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-link {
+    color: #222222;
+    display: block;
+    cursor: pointer;
+    margin-left: -20px;
+    margin-right: -5px;
+    padding: 6px 5px 6px 20px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li:hover .tag-link {
+    color: #009AFF
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit {
+    margin-left: -15px;
+    display: none;
+    position: relative
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .input-with-enter-container {
+    position: relative;
+    display: inline-block;
+    width: 100%
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .input-with-enter-container input {
+    padding: 5px 20px 5px 10px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .input-with-enter-container .input-enter-icon {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    color: #C3C9D0
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .sort-tag {
+    visibility: hidden;
+    color: #AAB2BD;
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    cursor: move
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .sort-tag:hover {
+    color: #848484
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .remove-tag {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .edit-tag-name,.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .input-with-enter-container {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .tag-name-input {
+    display: none;
+    width: 100%;
+    height: 24px;
+    margin-bottom: 1px;
+    line-height: 1.5
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .tag-name-input.error {
+    color: #FF3824;
+    border-color: #FF3824
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li .tag-edit .tag-name-input+.error-message {
+    color: #FF3824;
+    padding-top: 3px;
+    line-height: 16px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li.editable.placeholder {
+    border: 1px dashed #C3C9D0
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li.editable .sort-tag {
+    visibility: visible
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li.active .tag-link,.dashboard .dashboard-sidebar .user-tags-container .user-tags li.active .tag-edit {
+    color: #009AFF
+}
+
+.dashboard .dashboard-sidebar .user-tags-container .user-tags li:last-child {
+    border-top: 1px dashed #C3C9D0;
+    margin-top: 5px;
+    padding-top: 5px !important;
+    margin-right: -1px !important;
+    padding-right: 5px !important
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .tags-title .view-tags-actions {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .tags-title .edit-tags-actions {
+    display: inline-block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags {
+    padding: 5px 0 0 0
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li {
+    min-height: 24px;
+    position: relative;
+    line-height: 100%;
+    margin-right: -2px;
+    padding: 0 6px 0 8px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li .tag-link {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li .tag-edit {
+    padding: 6px 0 6px 15px;
+    display: block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li .tag-edit .name {
+    cursor: default
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li .tag-edit .remove-tag,.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li .tag-edit .edit-tag-name {
+    cursor: pointer
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.view-mode:hover .sort-tag {
+    color: #515151
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.view-mode:hover:not(.active) .name {
+    color: #515151
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.view-mode:hover .count {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.view-mode:hover .remove-tag {
+    display: block;
+    margin-left: 5px
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.view-mode:hover .edit-tag-name {
+    display: block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.ui-sortable-helper {
+    border-radius: 2px;
+    background: white;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    -webkit-box-shadow: 0 0 1px 0 #AAB2BD;
+    box-shadow: 0 0 1px 0 #AAB2BD;
+    color: black
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.ui-sortable-helper:hover .count {
+    display: block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.ui-sortable-helper:hover .remove-tag {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.editable.ui-sortable-helper:hover .edit-tag-name {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.active::before {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit .sort-tag {
+    visibility: hidden
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit .input-with-enter-container,.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit .tag-name-input {
+    display: block
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit .name,.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit .count {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit:hover .count,.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit:hover .remove-tag,.dashboard .dashboard-sidebar .user-tags-container.edit-mode .user-tags li.edit-name-mode .tag-edit:hover .edit-tag-name {
+    display: none
+}
+
+.dashboard .dashboard-sidebar .other-forms-links {
+    padding: 0 0 5px 4px
+}
+
+.dashboard .dashboard-sidebar .other-forms-links li {
+    padding: 6px 4px 0
+}
+
+.dashboard .dashboard-sidebar .other-forms-links li a {
+    color: #222222
+}
+
+.dashboard .dashboard-sidebar .other-forms-links li a:hover {
+    color: #009AFF
+}
+
+.dashboard .dashboard-sidebar .other-forms-links li .participated-forms-link span.name {
+    margin-bottom: 8px
+}
+
+.dashboard .dashboard-sidebar .other-forms-links .participated-forms-notice {
+    z-index: 100;
+    position: absolute;
+    margin-top: 20px
+}
+
+.dashboard .dashboard-sidebar .other-forms-links .participated-forms-notice img {
+    height: 49px;
+    width: 25px;
+    margin-left: 110px;
+    margin-bottom: 8px;
+    margin-top: 12px;
+    display: block
+}
+
+.dashboard .dashboard-sidebar .other-forms-links .participated-forms-notice span {
+    color: #C3C9D0;
+    font-size: 14px
+}
+
+.dashboard #dashboard_breadcrumbs {
+    width: 82%;
+    position: absolute;
+    height: 40px;
+    top: -8px;
+    padding: 0 15px 0
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-desktop {
+    position: absolute;
+    left: 15px
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-desktop a {
+    text-decoration: none
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-folder {
+    text-align: center
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-folder .folder-share-setting {
+    display: inline-block;
+    cursor: pointer;
+    color: #777777
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-folder .ibps-icon-shared {
+    padding-right: 10px
+}
+
+.dashboard #dashboard_breadcrumbs .breadcrumb-folder .ibps-icon-cog .folder-share-setting {
+    padding-left: 10px
+}
+
+.dashboard-form-tags.content {
+    width: 241px
+}
+
+.dashboard-form-tags.content .form-tags-container .bootstrap-tagsinput {
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 5px 6px 2px
+}
+
+.dashboard-form-tags.content .form-tags-container .bootstrap-tagsinput .tag,.dashboard-form-tags.content .form-tags-container .bootstrap-tagsinput .cke .cke_widget_wrapper .cke_widget_element.cke_placeholder,.cke .cke_widget_wrapper .dashboard-form-tags.content .form-tags-container .bootstrap-tagsinput .cke_widget_element.cke_placeholder {
+    font-size: 12px;
+    background-color: #E6E9ED;
+    color: #222222;
+    display: inline-block;
+    margin: 0 0 3px 0;
+    padding: 2px 2px 2px 5px
+}
+
+.dashboard-form-tags.content .form-tags-container .bootstrap-tagsinput>input {
+    padding-right: 0;
+    padding-left: 0;
+    width: 70px;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 22px;
+    line-height: 22px;
+    margin: 0
+}
+
+.dashboard-form-tags.content .form-tags-container .error-message {
+    margin-left: 13px;
+    color: #FF3824;
+    margin-bottom: 5px
+}
+
+.dashboard-form-tags.content .form-tags-container .add-tag-container {
+    border-top: 1px solid #D9D9D9;
+    padding: 5px 0;
+    margin-bottom: -8px;
+    max-height: 124px;
+    overflow-y: auto
+}
+
+.dashboard-form-tags.content .form-tags-container .add-tag-container .available-tag {
+    position: relative;
+    padding: 2px 13px 2px 36px;
+    cursor: pointer;
+    margin: 0
+}
+
+.dashboard-form-tags.content .form-tags-container .add-tag-container .available-tag .tag-icon {
+    font-size: 16px;
+    color: #545454;
+    position: absolute;
+    left: 13px;
+    top: 4px
+}
+
+.dashboard-form-tags.content .form-tags-container .add-tag-container .available-tag:last-child {
+    margin-bottom: 0
+}
+
+.dashboard-form-tags.content .form-tags-container .add-tag-container.empty {
+    border-top: 0;
+    padding: 0
+}
+
+.ibps-hide {
+    display: none
+}
+
+
+
+.qtip-content {
+    padding: 0
+}
+
+.qtip-content ul li {
+    padding: 10px 15px
+}
+
+.qtip-content ul li:hover {
+    background-color: #F1F1F1
+}
+
+.qtip-content {
+    padding: 8px 0  !important;
+}
+.qtip-content   ul {
+    min-width: 100px
+}
+.qtip-content  ul li {
+    padding: 0 10px;
+    line-height: 200%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 1px 0
+}
+
+.qtip-content ul li a {
+    display: block;
+    width: 100%;
+  	color: #222222;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+.qtip-content ul li i.item-icon {
+    font-size: 12px;
+    color: #545454;
+    padding-right:2px; 
+    width:15px;
+}
+
+.qtip-content ul li i.arrow-icon {
+    position: absolute;
+    font-size: 12px;
+    right: 10px
+}
+
+.qtip-content ul li.separator {
+    padding: 0;
+    margin: 5px 0;
+    border-top: 1px solid #D9D9D9
+}
+
+
+ .selected .icon {
+     cursor: pointer;
+    width: 170px;
+    height: 215px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border: 0;
+    background-repeat: no-repeat;
+    background-image: url(../../../images/form/success.png);
+    background-image: url(../../../images/form/success.gif) \9;
+    background-position: 127px 172px;
+}

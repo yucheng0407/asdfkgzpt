@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>元数据</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--基础布局-->
+<div class="form_box">
+    <div id="baseDiv">
+    </div>
+    <div id="previewDiv">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>元数据展示</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--表单模板-->
+<script type="text/template" id="sysMetaDataForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>元数据信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px"/>
+                    <col/>
+                    <col width="120px"/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th><b>*</b>元数据名称</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="name"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>元数据编码</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="code"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>实现类型</th>
+                    <td>
+                        <div class="element_box ele_0">
+                            <select class="i_select" model="type"></select>
+                        </div>
+                    </td>
+                    <th><b>*</b>实现细节</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="detail"/>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {{#if type == '2'}}
+        <div class="p_box">
+            <div class="page_title">
+                <h1>视图内容</h1>
+                <ul class="action_button to_right">
+                    <li><a on-click="buildView()"><i class="iconfont"></i>创建视图</a></li>
+                </ul>
+            </div>
+            {{#if detail}}
+            <div style="border: 1px solid #e7e7e7; background-color:#f9f9f9;padding:20px;">
+                <span style="display:inline-block;word-wrap: break-word;line-height:18px;font-size:12px;color:#333;"
+                      id="viewText">
+                </span>
+            </div>
+            {{else}}
+            <div class="noMetaData">
+                请先 <a href='javascript:void(0);'  on-click="selectView()">选择视图</a>，
+                或 <a href='javascript:void(0);'  on-click="buildView()">创建视图</a>
+            </div>
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+</script>
+
+<iframe name="metadataPreview" id="metadataPreview" frameborder="0"
+        width="100%" height="100%" scrolling="auto"></iframe>
+
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+<script type="text/javascript">
+    RX.page.resize = function () {
+        // $("#previewDiv").innerHeight($(window).height() - $("#baseDiv").outerHeight() - $(".w_button_box").outerHeight());
+        $("#metadataPreview").height($(window).height()-$(".form_box").outerHeight()-$(".w_button_box").outerHeight());
+    };
+
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/report/sysMetaDataEdit_config.js",
+            "/medias/src/plat/report/sysMetaDataEdit.js"]
+    });
+</script>
+</body>
+</html>

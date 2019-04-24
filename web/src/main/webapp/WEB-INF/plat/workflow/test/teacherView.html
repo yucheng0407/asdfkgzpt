@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div>
+            <div class="page_title">
+                <h1>员工信息</h1>
+            </div>
+            <div>
+                <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="120px">
+                        <col width="">
+                    </colgroup>
+                    <tr>
+                        <th>员工名称</th>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{name||''}}">{{name||""}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>请假时长(h)</th>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{qjsc||''}}">{{qjsc||""}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ['/medias/src/plat/workflow/instance/workflow.js',
+            '/medias/src/plat/workflow/test/teacherView.js']
+    });
+</script>
+
+</body>
+</html>

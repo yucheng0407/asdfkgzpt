@@ -1,0 +1,25 @@
+<script type="text/template">
+    <div class="form_box">
+        <div class="no_p_box">
+            <div class="page_title">
+                <h1>填写路由条件</h1>
+            </div>
+            <table class="form" border="0" cellborder="0" cellspance="0">
+                <col width="100px"/>
+                <col/>
+                <tr>
+                    <td colspan="2">
+                        <div class="element_box">
+                            <input type="text" class="i_text" model="branch" placeholder="路由条件的流程变量必须是已经新建的流程变量"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <p style="color: red">路由条件的流程变量必须是已经新建的流程变量</p>
+            <p style="color: #999">格式：[WF:SFJLSP]=2 （WF:固定格式;SFJLSP:流程变量名;2:流程变量比较值）</p>
+            <p style="color: #999">扩展写法1：[WF:CL_TYPE]>2 （流程变量值大于2）</p>
+            <p style="color: #999">扩展写法2：[WF:CL_TYPE]<>2 （流程变量值不等于2）</p>
+            <p style="color: #999">扩展写法3：[WF:CL_TYPE]=1 OR [WF:CL_TYPE]=2 （流程变量值等于1或2）</p>
+        </div>
+    </div>
+</script>

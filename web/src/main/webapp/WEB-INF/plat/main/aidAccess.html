@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>辅助访问资源</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<iframe name="MainIframeR1" frameborder="0"
+        width="100%" height="100%" scrolling="no" id="MainIframeR"></iframe>
+<div style="display: none" class="middle_box" id="errTips">
+    <h1>401</h1>
+    <h3 id="tips">没有访问权限！</h3>
+</div>
+<script type="text/javascript">
+    RX.load({
+        module: [ "cookie",
+            "/medias/src/plat/main/aidAccess.js"]
+    });
+</script>
+</body>
+</html>

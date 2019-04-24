@@ -1,0 +1,61 @@
+<div class="form_box" style="padding: 0">
+    <script type="text/template">
+        <div>
+        <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col width="80px"/>
+                <col/>
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>办理动作</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{latest.action||''}}">{{latest.action||''}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>任务状态</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{latest.status||''}}">{{latest.status||''}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>办理人</th>
+                <td>
+                    <span class="span_show_ellipsis span_owner" title="{{latest.user_id.userName||''}}">{{latest.user_id.userName||''}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>派发时间</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{date(latest.cjsj,'yyyy-MM-dd HH:mm:ss')}}">{{date(latest.cjsj,'yyyy-MM-dd HH:mm:ss')}}</span>
+                </td>
+            </tr>
+            {{#if latest.status!='待办'}}
+            <tr>
+                <th>签收时间</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{date(latest.accept_date,'yyyy-MM-dd HH:mm:ss')}}">{{date(latest.accept_date,'yyyy-MM-dd HH:mm:ss')}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>结束时间</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{date(latest.finish_date,'yyyy-MM-dd HH:mm:ss')}}">{{date(latest.finish_date,'yyyy-MM-dd HH:mm:ss')||'未结束'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>环节意见</th>
+                <td>
+                    <span class="span_show_ellipsis" title="{{latest.opinion||''}}">{{latest.opinion||'无'}}</span>
+                </td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+        {{#if list&&list.length>1}}
+         <a href="javascript:void(0)" class="more-history">查看更多流转历史</a>
+        {{/if}}
+        </div>
+    </script>
+</div>

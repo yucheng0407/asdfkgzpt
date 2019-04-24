@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title>活动环节</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tabPanel"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--页面基础布局-->
+<div id="box">
+    <!--环节设置-->
+    <script type="text/template">
+        <div class="tabdiv" id="activityTab">
+            <!--环节设置-->
+            <div id="tab1">
+                <div class="form_box">
+                    <table class="form" cellpadding="0" cellspacing="0">
+                        <col width="120px"/>
+                        <col width=""/>
+                        <tr>
+                            <th><b>*</b>环节名称</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="name"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>环节编码</th>
+                            <td id="nodeCode">
+                                <div class="element_box ele_0">
+                                    <select class="i_select" model="nodeCode"></select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>环节序号</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="nodeSort"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>分支聚合</th>
+                            <td>
+                                <div class="element_box">
+                                    <div model="nature"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><b>*</b>多人办理方式</th>
+                            <td>
+                                <div class="element_box" model="transactType" on-change="clearCountersign()"></div>
+                            </td>
+                        </tr>
+                        {{#if transactType == "1"}}
+                        <tr class="countersign">
+                            <th>会签方式</th>
+                            <td>
+                                <div class="element_box ele_0">
+                                    <select class="i_select" model="countersignParameter"
+                                            on-change="changeStatus()"></select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="countersign">
+                            <th>会签参数值</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="countersignValue"/>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        <tr>
+                            <th>不同意跳转至</th>
+                            <td>
+                                <div class="element_box ele_0">
+                                    <select class="i_select" model="disagreeNodeDomid"></select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>环节业务状态</th>
+                            <td>
+                                <div class="element_box ele_0">
+                                    <select class="i_select" model="ywzt"></select>
+                                </div>
+                            </td>
+                        </tr>
+                        <!--<tr>
+                            <th>环节默认意见</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="opinion"/>
+                                </div>
+                            </td>
+                        </tr>-->
+                    </table>
+                </div>
+            </div>
+            <!--办理人-->
+            <div id="tab2">
+                <div class="form_box">
+                    <table class="form" cellpadding="0" cellspacing="0" border="0">
+                        <col width="80px"/>
+                        <col width=""/>
+                        <col width="80px"/>
+                        <col width=""/>
+                        <col width="80px"/>
+                        <col width=""/>
+                        <col width="80px"/>
+                        <tr>
+                            <th>角色名称</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="roleName"/>
+                                </div>
+                            </td>
+                            <th>角色编码</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="roleCode"/>
+                                </div>
+                            </td>
+                            <th>角色类别</th>
+                            <td>
+                                <div class="element_box">
+                                    <input type="text" class="i_text" model="roleTypeName"/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="element_box">
+                                    <ul>
+                                        <li><a href='javascript:void(0)' on-click="addRole()">新建角色</a></li>
+                                        <li><a href='javascript:void(0)' on-click="editRole()">修改角色</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="page_title">
+                        <h1>角色相关要素</h1>
+                    </div>
+                    <iframe id='roleElementFrame' src='' frameborder="0" width="100%" height="230px"
+                            scrolling="no"></iframe>
+                </div>
+            </div>
+            <!--环节表单-->
+            <div id="tab3">
+                <!--环节表单列表-->
+                <NodeSheetGrid ref="nodeSheetGrid" list="{{sheets}}">
+                    <div class="form_box">
+                        <div class="p_box">
+                            <div class='page_title'><h1>环节表单</h1>
+                                <ul class='action_button to_right'>
+                                    <li><a on-click="addSheet()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                                </ul>
+                            </div>
+                            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                <tr>
+                                    <th align="left" width='8%'><b>*</b>序号</th>
+                                    <th align="left" width='30%'><b>*</b>标题</th>
+                                    <th align="left" width='34%'><b>*</b>所属表单</th>
+                                    <th align="left" width='12%'><b>*</b>表单控制</th>
+                                    <!--{{#if workflowShowSpx}}
+                                    <th align="left" width='16%'>审批项名称</th>
+                                    <th align="left" width='10%'>审批项序号</th>
+                                    <th align="left" width='12%'>是否打印</th>
+                                    {{/if}}-->
+                                    <th align="left">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#if list.length}}
+                                {{#each list:index}}
+                                {{#if sfyxSt !== "UNVALID"}}
+                                <tr>
+                                    <td align="left">
+                                        <div class='element_box'>
+                                            <input type="text" class="i_text" model="sort"/>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'>
+                                            <input type="text" class="i_text" model="title"/>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class="element_box ele_0">
+                                            <select class="i_select" model="sheet_id"></select>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class="element_box ele_0">
+                                            <select class="i_select" model="control"></select>
+                                        </div>
+                                    </td>
+                                    {{#if workflowShowSpx}}
+                                    <td align="left">
+                                        <div class='element_box'>
+                                            <input type="text" class="i_text" model="spxName"/>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'>
+                                            <input type="text" class="i_text" model="spxSort"/>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class="element_box ele_0">
+                                            <select class="i_select" model="spxPrint"></select>
+                                        </div>
+                                    </td>
+                                    {{/if}}
+                                    <td align="left">
+                                        <a href='javascript:void(0)' class="active_2"
+                                           on-click='delSheet($keypath)'>删除</a>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                                {{else}}
+                                <tr>
+                                    <td align="center" class="no_data"
+                                        colspan="{{#if workflowShowSpx}}8{{else}}5{{/if}}">无数据
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </NodeSheetGrid>
+            </div>
+            <!--后处理-->
+            <div id="tab4">
+                <div class="form_box">
+                    <div class="p_box">
+                        <table class="form" border="0" cellspacing="0" cellpadding="0">
+                            <td>
+                                <div class="element_box">
+                                    <textarea style="height: 180px" class="i_textarea"
+                                              model="finishProcessSql"></textarea>
+                                </div>
+                            </td>
+                        </table>
+                        <div class="prompt_long prompt_long_two" style="margin-top:10px;">
+                            <p> 1.SQL格式：SQL:sql语句</p>
+                            <p> 2.PRO格式：PRO:存储过程名称</p>
+                            <p>3.JAVA格式：JAVA:Java类名</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--高级设置-->
+            <div id="tab5">
+                <div class="form_box">
+                    <!--环节按钮列表-->
+                    <NodeButtonGrid ref="nodeButtonGrid" list="{{buttons}}">
+                        <div class="no_p_box">
+                            <div class='page_title'><h1>按钮设置</h1>
+                                <ul class='action_button to_right'>
+                                    <li><a on-click="addButton()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                                </ul>
+                            </div>
+                            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                <tr>
+                                    <th width='5%' align="left">序号</th>
+                                    <th width='11%' align="left"><b>*</b>名称</th>
+                                    <th width='12%' align="left"><b>*</b>code</th>
+                                    <th width='11%' align="left">图标</th>
+                                    <th width='12%' align="left">类型</th>
+                                    <th width='11%' align="left">函数名</th>
+                                    <th width='7%' align="left">排序号</th>
+                                    <th width='12%' align="left">显示条件</th>
+                                    <th width='11%' align="left">默认意见</th>
+                                    <th align="left">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#if list.length}}
+                                {{#each list:index}}
+                                {{#if sfyxSt !== "UNVALID"}}
+                                <tr>
+                                    <td align="left">
+                                        {{index+1}}
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='name'></div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='code'></div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='icon'></div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box ele_0'><select class='i_select' model='type'></select>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='funcName'>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='sort'></div>
+                                    </td>
+                                    <td align="left">
+                                        <div class="element_box ele_0">
+                                            <select class='i_select' model='isShowInHandle'></select>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <div class='element_box'><input type='text' class='i_text' model='opinion'>
+                                        </div>
+                                    </td>
+                                    <td align="left">
+                                        <a href='javascript:void(0);' class="active_2"
+                                           on-click='delButton($keypath)'>删除</a>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                                {{else}}
+                                <tr>
+                                    <td align="center" class="no_data" colspan="10">无数据</td>
+                                </tr>
+                                {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </NodeButtonGrid>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<!--js引用区-->
+<script>
+    RX.load({
+        template: "all",
+        module: ["zTree", "tabPanel",
+            "/medias/src/plat/workflow/design/util/flow.property.js",
+            "/medias/src/plat/workflow/design/activityNodeEdit_config.js",
+            "/medias/src/plat/workflow/design/activityNodeEdit.js"
+        ], callback: function () {
+            $("#box").innerHeight($(window).height() - $(".w_button_box").outerHeight());
+        }
+    });
+</script>
+</body>
+</html>

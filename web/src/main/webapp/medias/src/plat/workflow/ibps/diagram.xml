@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram"
+             targetNamespace="http://bpmn.io/schema/bpmn"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <process id="Process_0kbf75m" isExecutable="false">
+        <startEvent id="StartEvent_1" name="开始">
+            <outgoing>SequenceFlow_1xa4j5q</outgoing>
+        </startEvent>
+        <userTask id="UserTask_1ts0r7k" name="组长审批">
+            <incoming>SequenceFlow_1xa4j5q</incoming>
+            <outgoing>SequenceFlow_0r4vypj</outgoing>
+        </userTask>
+        <sequenceFlow id="SequenceFlow_1xa4j5q" sourceRef="StartEvent_1" targetRef="UserTask_1ts0r7k"/>
+        <userTask id="UserTask_1c54pdj" name="领导审批">
+            <incoming>SequenceFlow_0r4vypj</incoming>
+            <outgoing>SequenceFlow_1a2wx22</outgoing>
+        </userTask>
+        <sequenceFlow id="SequenceFlow_0r4vypj" sourceRef="UserTask_1ts0r7k" targetRef="UserTask_1c54pdj"/>
+        <endEvent id="EndEvent_008hbwp">
+            <incoming>SequenceFlow_1a2wx22</incoming>
+        </endEvent>
+        <sequenceFlow id="SequenceFlow_1a2wx22" sourceRef="UserTask_1c54pdj" targetRef="EndEvent_008hbwp"/>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0kbf75m">
+            <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+                <dc:Bounds x="180" y="120" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="UserTask_1ts0r7k_di" bpmnElement="UserTask_1ts0r7k">
+                <dc:Bounds x="295" y="98" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="SequenceFlow_1xa4j5q_di" bpmnElement="SequenceFlow_1xa4j5q">
+                <di:waypoint xsi:type="dc:Point" x="216" y="138"/>
+                <di:waypoint xsi:type="dc:Point" x="295" y="138"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="256" y="113" width="0" height="0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="UserTask_1c54pdj_di" bpmnElement="UserTask_1c54pdj">
+                <dc:Bounds x="485" y="98" width="100" height="80"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="SequenceFlow_0r4vypj_di" bpmnElement="SequenceFlow_0r4vypj">
+                <di:waypoint xsi:type="dc:Point" x="395" y="138"/>
+                <di:waypoint xsi:type="dc:Point" x="485" y="138"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="440" y="113" width="0" height="0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="EndEvent_008hbwp_di" bpmnElement="EndEvent_008hbwp">
+                <dc:Bounds x="646" y="120" width="36" height="36"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="664" y="156" width="0" height="0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="SequenceFlow_1a2wx22_di" bpmnElement="SequenceFlow_1a2wx22">
+                <di:waypoint xsi:type="dc:Point" x="585" y="138"/>
+                <di:waypoint xsi:type="dc:Point" x="646" y="138"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="616" y="113" width="0" height="0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

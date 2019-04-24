@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>消息类型查看页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div>
+            <div class="p_box">
+                <div class="page_title">
+                    <h1>基本信息</h1>
+                </div>
+                <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="90px">
+                        <col width="">
+                        <col width="110px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>名称</th>
+                        <td>
+                                <span class="span_show_ellipsis" title="{{name}}">{{name}}</span>
+                        </td>
+                        <th>编码</th>
+                        <td>
+                                <span class="span_show_ellipsis" title="{{code}}">{{code}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>紧急程度</th>
+                        <td>
+                                <span class="span_show_ellipsis" title="{{dict(urgentLevel, 'XXJJCD')}}">{{dict(urgentLevel, 'XXJJCD')}}</span>
+                        </td>
+
+                        <th>有效期限(天)</th>
+                        <td>
+                                <span class="span_show_ellipsis" title="{{validTime || ""}}">{{validTime || ""}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述</th>
+                        <td colspan="3">
+                            <span class="span_show_multiline" title="{{{html(description || "")}}}">{{{html(description || "")}}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p_box">
+                <div class="page_title">
+                    <h1>操作设置</h1>
+                </div>
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="100px">
+                        <col width="200px">
+                        <col width="100">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>操作类型</th>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{dict(operateType, 'XXCZLX')}}">{{dict(operateType, 'XXCZLX')}}</span>
+                        </td>
+                        <th>跳转类型</th>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{dict(skipType, 'XXTZLX')}}">{{dict(skipType, 'XXTZLX')}}</span>
+                        </td>
+                    </tr>
+                    {{#if skipType == 1}}
+                    <tr>
+                        <th class="win_size">窗口大小</th>
+                        <td colspan="3" class="win_size">
+                            <span class="span_show_ellipsis" title="{{dict(winSize, 'WINSIZE')}}">{{dict(winSize, 'WINSIZE')}}</span>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    {{#if skipType == 1 || skipType == 2}}
+                    <tr class="skipPath">
+                        <th>跳转路径</th>
+                        <td colspan="3">
+                            <span class="span_show_ellipsis" title="{{skipPath}}">{{skipPath}}</span>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/message/messageTypeView.js"]
+    });
+</script>
+
+</body>
+</html>

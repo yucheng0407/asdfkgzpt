@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>报表查看</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body class="formPreview">
+
+<div class="base_box report_box" >
+<!--访问地址显示栏-->
+<div id="formUrl" style="display:none;">
+    <div class="element_box">
+        <input type="text" class="i_text"/>
+    </div>
+</div>
+<!--基础布局-->
+
+    <div class="">
+        <div id="chartGrid" style="display:none;">
+            <script type="text/template">
+                <div>
+                    {{#if title}}
+                    <div style="" class="bbbt">
+                        {{title}}
+                    </div>
+                    {{/if}}
+                    <table cellpadding="0" cellspacing="0" border="0" class="list">
+                        {{> gridHead}}
+                        {{> gridBody}}
+                    </table>
+                </div>
+            </script>
+        </div>
+
+        <div id="chartColumn" style="display:none;width:100%;height:100%;"></div>
+
+        <div id="chartLine" style="display:none;width:100%;height:100%;"></div>
+
+        <div id="chartPie" style="display:none;width:100%;height:100%;"></div>
+
+        <div id="noChart" class="report_view">
+        </div>
+    </div>
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.page.resize = function () {
+        // $(".base_box").outerHeight($(window).height()-30);
+        // $("#noChart").css("line-height", $("#noChart").innerHeight() + "px");
+        // $(".list_box").outerHeight($(window).height() - $("#formUrl").outerHeight()-30);
+    };
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/plugin/highcharts/highcharts.js",
+            "/medias/src/plat/report/reportFormPreview.js"]
+    });
+</script>
+
+</body>
+</html>

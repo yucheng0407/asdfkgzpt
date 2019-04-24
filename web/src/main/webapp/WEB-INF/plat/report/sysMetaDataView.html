@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查看</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--基础布局-->
+<div class="form_box" id="baseDiv"></div>
+
+<!--表单模板-->
+<script type="text/template" id="sysMetaDataForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>元数据信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px"/>
+                    <col/>
+                    <col width="120px"/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>元数据名称</th>
+                    <td>
+                        <div class="element_box">
+                            <span class="span_show_ellipsis">{{name}}</span>
+                        </div>
+                    </td>
+                    <th>元数据编码</th>
+                    <td>
+                        <div class="element_box">
+                            <span class="span_show_ellipsis">{{code}}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>实现类型</th>
+                    <td>
+                        <div class="element_box">
+                            <span class="span_show_ellipsis"> {{dict(type,"YSJSXLX")}}</span>
+
+                        </div>
+                    </td>
+                    <th>实现细节</th>
+                    <td>
+                        <div class="element_box">
+                            <span class="span_show_ellipsis">   {{detail}}</span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {{#if type == '2'}}
+        <div class="p_box">
+            <div class="page_title">
+                <h1>视图内容</h1>
+            </div>
+            <div class="view_content">
+                <span >
+                    {{viewText}}
+                </span>
+            </div>
+        </div>
+        {{/if}}
+
+    </div>
+
+</script>
+
+<div id="previewDiv" style="width:100%;">
+    <div class="page_title" style="padding-left:10px;">
+        <h1>元数据展示</h1>
+    </div>
+    <iframe name="metadataPreview" id="metadataPreview" frameborder="0"
+            width="100%" height="100%" scrolling="auto"></iframe>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.page.resize = function(){
+        $("#previewDiv").innerHeight($(window).height() - $("#baseDiv").outerHeight() - $(".w_button_box").outerHeight() - 20);
+        $("#metadataPreview").height($("#previewDiv").innerHeight() - $("#previewDiv").find(".page_title").outerHeight())
+    }
+
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/report/sysMetaDataView_config.js",
+            "/medias/src/plat/report/sysMetaDataView.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

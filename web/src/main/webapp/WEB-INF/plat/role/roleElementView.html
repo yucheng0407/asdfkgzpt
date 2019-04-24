@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        var _options = {
+            template: "platMain",
+            module: ["roleRelate"]
+        };
+        //皮肤控制
+        if (RX.page.param && RX.page.param.skin) {
+            _options.skin = RX.page.param.skin;
+        }
+        RX.loadCSS(_options);
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .span_show_ellipsis em {
+            width: 95%;
+        }
+
+        .rx-paging {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box" style="padding:0;display: none;">
+    <div class="glinfo_box" style=" display:none; ">
+        <!--<div class="glinfo_title" >-->
+        <!--点击展开已关联要素信息-->
+        <!--</div>-->
+        <div class="glinfo_content">
+            <div class="glinfo_left">
+                <div id="glinfoOrgan" class="glinfo_left_item glinfo_left_select" style="margin-top:10px;">
+                    组织机构
+                </div>
+                <div id="glinfoInUser" class="glinfo_left_item">
+                    包含用户
+                </div>
+                <div id="glinfoOutUser" class="glinfo_left_item">
+                    排除用户
+                </div>
+            </div>
+            <!--关联信息查询区-->
+            <div class="glinfo_right">
+                <div style="width:95%;padding:10px;border-bottom: 1px solid #cccccc;">
+                    名称：<input type="text" id="searchName" class="i_query_text" style="width:100px;margin-right:10px;">
+                    <input id="search" class="query_button" type="button" value="查询" style="width:68px">
+                </div>
+
+                <div style="width:95%;padding:10px;" class="ulDiv">
+
+                </div>
+                <div class="rx-paging" style=" width: 97%; padding:10px 0;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ruleElement" style="display: none;height:200px;overflow-y:auto">
+    <script type="text/template">
+        <div class="no_p_box">
+            <div class="page_title">
+                <h1 class="ruleTitle">动态逻辑规则</h1>
+            </div>
+            <table class="list">
+                <thead>
+                <tr>
+                    <th style='width:10%'>序号</th>
+                    <th style='width:30%'>规则名称</th>
+                    <th style='width:20%'>修改时间</th>
+                    <th>描述</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#if list.length}}
+                {{#each list:index}}
+                {{#if sfyxSt !== "UNVALID"}}
+                <tr class="rx-grid-tr">
+                    <td style="text-align:left" class="orderTag"></td>
+                    <td style="text-align:left" title="{{RULE_NAME}}">
+                        {{RULE_NAME}}
+                    </td>
+                    <td style="text-align:left" title="{{date(XGSJ,'yyyy-MM-dd HH:mm')}}">
+                        {{date(XGSJ,'yyyy-MM-dd HH:mm')}}
+                    </td>
+                    <td style="text-align:left" title="{{{html(DESCRIPTION)}}}">
+                        {{{html(DESCRIPTION)}}}
+                    </td>
+                </tr>
+                {{/if}}
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td align="center" colspan="4" class="no_data">无数据</td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<script type="text/template" id="glinfoUl">
+    <ul class="tableUl">
+        {{#if data.length > 0}}
+        {{#each data}}
+        <li>
+         <span class="span_show_ellipsis" style="cursor :auto;">
+                        <em title="{{name}}{{#if saveObj.info}} （{{saveObj.info}}）{{/if}}"> {{name}} {{#if saveObj.info}}（{{saveObj.info}}）{{/if}}</em>
+                    </span>
+        </li>
+        {{/each}}
+        {{else}}
+        <div style="width:100%;text-align:center;">无数据</div>
+        {{/if}}
+    </ul>
+</script>
+<script type="text/template" id="paging">
+    <div style="float:right">
+                <span style="display:block;width:auto;float:left;padding:0 10px;height:24px;font-size: 12px;text-indent: 15px;line-height:24px;color: #999">
+                    共<b style="padding:0 3px;color:red;">{{pageMax}}</b>页<b
+                        style="padding:0 3px;color:red;">{{total}}</b>条数据</span>
+        <ul class="rx-pagenate" style="float: left; width: auto;">
+            <li class="rx-first" style="width:50px;cursor:pointer;">上一页</li>
+            <li class="clicked paged"><{{pageNum}}</li>
+            <li class="rx-last" style="width:50px;cursor:pointer;">下一页</li>
+        </ul>
+    </div>
+</script>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/role/roleElementViewObj.js",
+            "/medias/src/plat/role/roleElementView.js"]
+    });
+</script>
+
+</body>
+</html>

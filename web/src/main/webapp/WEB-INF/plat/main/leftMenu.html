@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>基础后台</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript" src="${ctxPath}/medias/src/plat/main/leftMenu.js"></script>
+
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            overflow: hidden;
+        }
+
+        .item { /*滚动条隐藏样式不可删除*/
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!--初始化正常样式-->
+<div class="left_side" id="leftContent">
+    <div class="toggle_collapse">
+        <h2>功能菜单</h2>
+    </div>
+    <div class="nav_container">
+        <div class="item">
+            <ul class="ce" id="nav">
+            </ul>
+        </div>
+    </div>
+    <div class="shrink" title="隐藏主菜单"><i class="iconfont">&#xe64e;</i></div>
+</div>
+
+<!--收缩后样式-->
+<div class="left_side_2" style="display: none;">
+    <div class="toggle_collapse_sq" id="zhankai">
+        <i class="iconfont" title="展开主菜单">&#xe64e;</i>
+    </div>
+    <ul class="nav_tabs" id="font_nav">
+    </ul>
+</div>
+
+<div class="right_content">
+    <iframe name="MainIframeR" id="MainIframeR" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
+</div>
+
+<script type="text/javascript" src="${ctxPath}/medias/plugin/divscroll/divscroll.js"></script>
+<script type="text/javascript" src="${ctxPath}/medias/src/plat/main/main.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        //初始化菜单内容区域高度
+        $(".nav_container").height($(window).height() - $(".toggle_collapse").outerHeight());
+        $('.item').perfectScrollbar();
+        $('.nav_tabs').perfectScrollbar();
+        //菜单收缩后选中样式
+        $(".nav_second").click(function () {
+            //点击非二级菜单，去除二级菜单的样式
+            if ($(this).children().length === 1) {
+                $(".active").removeClass("active");
+            }
+            $("body").find(".ClickStyle").removeClass("ClickStyle");
+            $(this).addClass("ClickStyle");
+        });
+        //二级菜单收缩后选中样式
+        $(".innerMenu").click(function () {
+            $("body").find(".active").removeClass("active");
+            $(this).addClass("active");
+        });
+        //初始化菜单内容区域高度
+        $(".nav_tabs").height($(window).height() - $(".toggle_collapse_sq").outerHeight());
+    });
+    //页面大小改变时，触发jquery的resize方法，自适应拖拽
+    $(window).resize(function () {
+        $(".nav_container").height($(window).height() - $(".toggle_collapse").outerHeight());
+        $('.item').perfectScrollbar("update");
+        $('.nav_tabs').perfectScrollbar("update");
+    });
+
+    $(function () {
+        $(".nav_tabs").height($(window).height() - $(".toggle_collapse_sq").outerHeight());
+        var flag = 1;
+        //初始化尺寸
+        $(".right_content").width($(window).width() - $(".left_side").outerWidth() - 1);
+        $(window).resize(function () {
+            $(".nav_tabs").height($(window).height() - $(".toggle_collapse_sq").outerHeight());
+            if (flag === 1) {
+                $(".right_content").width($(window).width() - $(".left_side").outerWidth() - 1);
+            } else {
+                $(".right_content").width($(window).width() - $(".left_side_2").outerWidth() - 1);
+            }
+        });
+
+        //收缩菜单
+        $(".shrink").click(function () {
+            //先全部收缩二级菜单
+            $(".er").toggle(false);
+            flag = 0;
+            $(".left_side").hide();  //隐藏全面菜单
+            $(".left_side_2").show(); //显示收缩菜单
+            $(".left_side_2 .ClickStyle").removeClass("ClickStyle");//收缩后的一级菜单选中清除
+            $(".left_side_2 .active").removeClass("active"); //收缩后的二级菜单选中样式清除
+            var open_first_xz_id = "";
+            var open_second_xz_id = "";
+            var $menu;
+            if ($(".xz:not(.second)").attr("menuid")) {
+                open_first_xz_id = $(".xz").attr("menuid");//收缩前一级选中的id;
+            }
+            if ($(".sen_x").attr("menuid")) {
+                open_second_xz_id = $(".sen_x").attr("menuid");//收缩前二级选中id;
+            }
+            if (open_second_xz_id && !open_first_xz_id) {
+                $menu = $(".left_side_2 [menuid = " + open_second_xz_id + "]");
+                $menu.addClass("active");//收缩后的二级菜单选中样式添加
+                open_first_xz_id = $(".sen_x").parent().parent().prev().attr("menuid"); //二级菜单选中时，一级菜单不会选中，选择器获取一级菜单的menuid
+            }
+            if (open_first_xz_id) {
+                var $menu2 = $(".left_side_2 [menuid = " + open_first_xz_id + "]");
+                $menu2.parent().addClass("ClickStyle"); //收缩后一级菜单的选中样式添加
+            }
+            $(".xz").removeClass("xz");
+            $(".nav_tabs").height($(window).height() - $(".toggle_collapse_sq").outerHeight());
+            $(".right_content").width($(window).width() - $(".left_side_2").outerWidth() - 1);
+        });
+        //展开
+        $("#zhankai").click(function () {
+            flag = 1;
+            $(".left_side_2").hide();
+            $(".left_side").show();
+            var close_first_xz_id = $(".ClickStyle a:first-child").attr("menuid");
+            var close_second_xz_id = $(".active").attr("menuid");
+            $(".xz").removeClass("xz");
+            $(".right_content").width($(window).width() - $(".left_side").outerWidth() - 1);
+            var $menu = $(".left_side [menuid = " + close_first_xz_id + "]");
+            $menu.addClass("xz");
+            var $menu2 = $(".left_side [menuid = " + close_second_xz_id + "]");
+            $(".left_side .sen_x").removeClass("sen_x");
+            $menu2.addClass("sen_x");
+            if (close_second_xz_id) {
+                $menu2.parent().parent().toggle(true);
+            }
+        });
+        //收缩后二级子菜单高度自适应
+        $(".nav_tabs li.nav_second").hover(function () {
+            if ($(this).find("ul").length > 0) {
+                //子菜单的高度大于当前hover元素距离底部的高度
+                if ($(this).find("ul").height() > $(window).height() - $(this).offset().top) {
+                    var top1 = $(this).offset().top - $(this).find("ul").height() + 40;
+                    $(this).find("ul").css("top", top1 + "px");
+                } else {
+                    var top2 = $(this).offset().top;
+                    $(this).find("ul").css("top", top2 + "px");
+                }
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

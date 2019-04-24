@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>统计数据列表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!--基础布局-->
+<div class="base_box">
+    <!--列表模板-->
+    <script type="text/template">
+        <div>
+            <div class="no_p_box">
+                <div class="operation_box" id="operate">
+                </div>
+                <div class="query_box">
+                </div>
+            </div>
+            <div class="no_p_box">
+                <div class="bb_list_box">
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: ["/medias/src/plat/demo/cmpt/statisticDataList_config.js",
+            "/medias/src/plat/demo/cmpt/statisticDataList.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

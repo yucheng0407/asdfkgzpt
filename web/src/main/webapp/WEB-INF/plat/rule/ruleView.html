@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>规则查看页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+
+        .explain {
+            color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <script type="text/template" id="ruleTpl">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>规则基本信息</h1>
+            </div>
+            <ProjectGrid ref="authRuleTpl" sysBaseRule="{{sysBaseRule}}">
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="100px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>规则名称</th>
+                        <td colspan="3">
+                            <span class="span_show_ellipsis" title="{{sysBaseRule.rule_name}}">{{sysBaseRule.rule_name}}</span>
+                        </td>
+                        <th>实现方式</th>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{dict(sysBaseRule.sxfs, 'GZSXFS')}}">{{dict(sysBaseRule.sxfs, 'GZSXFS')}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="explain">说明</th>
+                        <td colspan="5" class="explain">
+                    <span id="xxsm">
+                        {{#if sysBaseRule.sxfs == 1)}}
+                        动态规则在sql中加入:data_id占位符（代表传入业务参数），通过sql获取业务参数对应的用户id。如：select id from sys_user where id = :data_id，代表选择sys_user表中和数据参数关联的用户id。
+                        {{else if sysBaseRule.sxfs == 2}}
+                        动态规则在细节中录入使用的存储过程名，无需录入参数，若动态规则被工作流使用，则存储过程传入流程实例id。
+                        {{else if sysBaseRule.sxfs == 3}}
+                        JAVA方式暂不支持
+                        {{else if sysBaseRule.sxfs == 4}}
+                        其他方式待开发
+                        {{else}}
+                        请选择实现方式
+                        {{/if}}
+                    </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>实现细节</th>
+                        <td colspan="5">
+                            <span class="span_show_ellipsis" title="{{{sysBaseRule.rule_detail}}}">{{{sysBaseRule.rule_detail}}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>简述</th>
+                        <td colspan="5">
+                            <span class="span_show_ellipsis" title="{{{sysBaseRule.description || ""}}}">{{{sysBaseRule.description || ""}}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </ProjectGrid>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/rule/ruleView.js"]
+    });
+</script>
+
+</body>
+</html>

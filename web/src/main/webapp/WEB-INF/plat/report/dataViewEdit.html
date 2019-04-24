@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>元数据</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--基础布局-->
+<div class="form_box">
+    <!--表单模板-->
+    <script type="text/template">
+        <div class="p_box">
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="200px">
+                    <col width="200px">
+                    <col width="">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>CREATE OR REPLACE VIEW</th>
+                    <td>
+                            <div class="element_box">
+                                <input title="" type="text" class="i_text" model="name"/>
+                            </div>
+                    </td>
+                    <th>AS</th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <textarea class="i_textarea" model="text"/>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/report/dataViewEdit_config.js",
+            "/medias/src/plat/report/dataViewEdit.js"]
+    });
+</script>
+</body>
+</html>

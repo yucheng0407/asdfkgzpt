@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--主表单模板-->
+<script type="text/template" id="sysSubdictForm">
+    <div class="p_box">
+        <div class="page_title">
+            <h1>系统字典表（从表）</h1>
+        </div>
+        <table class="form" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>字典编码</th>
+                <td>
+                    {{dictCode||""}}
+                </td>
+                <th>字典项编码</th>
+                <td>
+                    {{code||""}}
+                </td>
+            </tr>
+            <tr>
+                <th>字典项值</th>
+                <td>
+                    {{value||""}}
+                </td>
+                <th>字典项序号</th>
+                <td>
+                    {{sort||""}}
+                </td>
+            </tr>
+            <tr>
+                <th>上级字典项编码</th>
+                <td>
+                    {{pcode||""}}
+                </td>
+                <th>上级字典编码</th>
+                <td>
+                    {{pdictCode||""}}
+                </td>
+            </tr>
+            <tr>
+                <th>备注</th>
+                <td>
+                    {{remark||""}}
+                </td>
+                <th>字典ID 对应SYS_DICT表主键(ID)</th>
+                <td>
+                    {{dictId||""}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</script>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/dict/sysSubdictView_config.js",
+            "/medias/src/plat/dict/sysSubdictView.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

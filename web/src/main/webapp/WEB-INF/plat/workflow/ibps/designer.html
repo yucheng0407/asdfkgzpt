@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IBPS</title>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/default/css/Global.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/modeler/diagram-js.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/modeler/bpmn-embedded.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/modeler/app.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/modeler/plat.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="${ctxPath}/medias/style/plat/modeler/css/font-awesome/font-awesome.min.css"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        RX.loadCSS({
+            module: ["select2"],
+            skin: "default"
+        });
+    </script>
+</head>
+<body>
+<div class="operation_box">
+    <script type="text/template">
+        <div class="button_group">
+            <ul class="action_button">
+                <li><a href="javascript:void(0)" class="active_back" id="js-goback"><i
+                        class="iconfont">{{{'&#xe6a3;'}}}</i>返回</a>
+                </li>
+                {{#if operatingStatus&&operatingStatus=="3"}}
+                <li><a href="javascript:void(0)" id="js-save-as-newversion"><i class="iconfont">{{{'&#xe634;'}}}</i>保存为新版本</a>
+                </li>
+                {{/if}}
+                {{#if operatingStatus&&(operatingStatus=="1"||operatingStatus=="6")}}
+                <li><a href="javascript:void(0)" id="js-save-as-draft"><i class="iconfont">{{{'&#xe634;'}}}</i>保存为草稿</a>
+                </li>
+                {{/if}}
+                {{#if operatingStatus&&operatingStatus=="2"}}
+                <li><a href="javascript:void(0)" id="js-save-for-update"><i class="iconfont">{{{'&#xe634;'}}}</i>保存</a>
+                </li>
+                {{/if}}
+                {{#if (!status||status=="0")&&operatingStatus!="3"}}
+                <li><a href="javascript:void(0)" id="js-save-for-release"><i class="iconfont">{{{'&#xe634;'}}}</i>保存并发布</a>
+                </li>
+                {{/if}}
+                <li><a href="javascript:void(0)" id="js-download-diagram"><i class="iconfont">{{{'&#xe648;'}}}</i>导出</a>
+                </li>
+            </ul>
+        </div>
+    </script>
+</div>
+<div class="content" id="js-drop-zone">
+
+    <div class="message error">
+        <div class="note">
+            <p>糟糕,我们不能显示流程图。</p>
+
+            <div class="details">
+                <span>引起原因：</span>
+                <pre></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas" id="js-canvas"></div>
+    <div id="js-properties-panel"></div>
+</div>
+
+<input id="defId" type="hidden">
+<input id="defKey" type="hidden">
+<script type="text/javascript">
+    RX.load({
+        module: [
+            "json2",
+            "rxvm",
+            "rxvmExt",
+            "/medias/src/plat/workflow/ibps/designer_config.js",
+            "/medias/src/plat/workflow/ibps/designer.js",
+            "/medias/src/plat/workflow/ibps/DialogUtil.js",
+            "/medias/src/plat/workflow/ibps/bpmnConfig.js",
+            "/medias/src/plat/workflow/ibps/index.min.js"
+        ],
+        callback: function () {
+            $(".content").innerHeight($(window).height() - $(".operation_box").outerHeight());
+            $(window).resize(function () {
+                $(".content").innerHeight($(window).height() - $(".operation_box").outerHeight());
+            });
+        }
+    });
+</script>
+</body>
+</html>

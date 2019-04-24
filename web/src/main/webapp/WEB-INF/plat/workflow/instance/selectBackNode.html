@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>RX.pageLoading();</script>
+<div class="form_box">
+    <div class="p_box" id="nodes" style="padding-left:30px;">
+    </div>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="确定" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+</body>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/src/plat/workflow/instance/selectBackNode.js"]
+    });
+</script>
+
+</html>

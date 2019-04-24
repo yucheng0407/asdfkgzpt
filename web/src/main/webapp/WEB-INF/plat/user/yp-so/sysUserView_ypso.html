@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>查看</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--主表单模板-->
+<script type="text/template" id="sysUserForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>用户表</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th>用户名</th>
+                    <td>
+                        <div class="span_show_ellipsis" title="{{userName||''}}">{{userName||""}}</div>
+                    </td>
+                    <th>性别</th>
+                    <td>
+                        <div class="span_show_ellipsis" title="{{dict(sex, 'SEXDEMO')}}">{{dict(sex, 'SEXDEMO')}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>登录名</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{loginName||''}}">{{loginName||''}}</span>
+                    </td>
+                    <th>默认组织</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dftOrganName||''}}">{{dftOrganName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否封锁</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title="{{dict(isBlocked, 'getBlock()')}}">{{dict(isBlocked, 'getBlock()')}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>身份证号码</th>
+                    <td colspan="3" class="user_info"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--机构用户岗位联表动态列表-->
+        <SysGlbUser ref="sysGlbUser" list="{{sysGlbUser}}" defaultOrganId="{{defaultOrganId}}"/>
+
+        <!--机构用户岗位联表动态列表-->
+        <OrganRole ref="organRole" list="{{sysOrganRoleList}}"/>
+
+
+        <!--角色关联表动态列表-->
+        <SysGlbRoleGrid ref="sysGlbRoleGrid" list="{{sysGlbRoleList}}"/>
+
+
+    </div>
+</script>
+
+<!--用户扩展信息-->
+<script type="text/template" id="userInfoForm">
+    <div>
+        <span class="span_show_ellipsis" title="{{sfzhm}}">{{sfzhm||""}}</span>
+    </div>
+</script>
+
+<!--角色关联表子模板-->
+<script type="text/template" id="sysGlbRole">
+    <div class="p_box">
+        <div class="page_title"><h1>角色关联表列表</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="">角色名称</th>
+                <th style="width:20%">角色编码</th>
+                <th style="width:20%">角色类型</th>
+                <th style="width:20%">角色级别</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="left" class="orderTag"></td>
+                <td align="left" title="{{roleName||''}}">
+                   {{roleName||''}}
+                </td>
+                <td align="left" title="{{roleCode||''}}">
+                    {{roleCode||''}}
+                </td>
+                <td align="left" title="{{roleTypeName||''}}">
+                   {{roleTypeName||''}}
+                </td>
+                <td align="left" title="{{levelName||''}}">
+                    {{levelName||''}}
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="5" class="no_data">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--所属机构岗位子模板-->
+<script type="text/template" id="sysGlbUser">
+    <div class="p_box">
+        <div class="page_title"><h1>所属机构岗位信息</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="width:50%">所属机构</th>
+                <th style="">所属岗位</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr">
+                <td align="left" class="orderTag"></td>
+                <td align="left" title='{{organName||""}}'>
+                    {{#if organId==defaultOrganId}}
+                    <div class="unique_box">{{organName||""}}</div>
+                    <div class="right_tag">
+                        <span class="tag_1">默认机构</span>
+                    </div>
+                    {{else}}
+                    {{organName||""}}
+                    {{/if}}
+                </td>
+                <td align="left" title="{{postRoleName||''}}">
+                   {{postRoleName||''}}
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="3" class="no_data">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--所在机构的角色信息-->
+<script type="text/template" id="organRole">
+    <div class="p_box">
+        <div class="page_title"><h1>所在机构的角色信息</h1>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:45px">序号</th>
+                <th style="width:30%">角色名称</th>
+                <th style="width:20%">角色编码</th>
+                <th style="width:20%">角色类型</th>
+                <th style="">角色来源</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if list.length>0}}
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr" {{#if sfqySt=="UNVALID"}} class="disable"{{/if}}>
+                <td align="left" class="orderTag"></td>
+                <td align="left" title="{{roleName||''}}">
+                   {{roleName||''}}
+                </td>
+                <td align="left" title="{{roleCode||''}}">
+                    {{roleCode||''}}
+                </td>
+                <td align="left" title="{{roleTypeName||''}}">
+                    {{roleTypeName||''}}
+                </td>
+                <td align="left" title="{{organName||''}}">
+                       {{organName||''}}
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <tr>
+                <td align="center" colspan="5" class="no_data">无数据</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+    </div>
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "view",
+        module: [
+            "/medias/src/plat/user/yp-so/sysUserView_config_ypso.js",
+            "/medias/src/plat/user/yp-so/sysUserView_ypso.js"
+        ]
+    });
+</script>
+</body>
+</html>
+
+

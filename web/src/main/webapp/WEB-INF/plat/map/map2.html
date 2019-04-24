@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>资源列表页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        var dojoConfig = {
+            async: true,
+            //注册路径
+            packages: [{
+                name: "RXMap",
+                location: "/mhsj/medias/src/mhsj/map"
+            }]
+        };
+
+        RX.load({
+            template: "grid",
+            module: ["button",
+                "http://192.168.0.117:8080/arcgis_js_api/library/3.23/3.23/init.js",
+                "/medias/src/mhsj/map/createMap2.js",
+                "/medias/src/mhsj/map/progress.js",
+                //"/medias/src/mhsj/code/cxpz/test.js"
+                //"/medias/src/mhsj/conf/cxpz/resourceList_config.js",
+                // "/medias/src/mhsj/code/cxpz/resourceList.js"
+            ]
+        });
+    </script>
+    <link rel="stylesheet"
+          href="http://192.168.0.117:8080/arcgis_js_api/library/3.23/3.23/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://192.168.0.117:8080/arcgis_js_api/library/3.23/3.23/esri/css/esri.css">
+
+    <script type="text/javascript">
+        $(function () {
+            loadingPages();
+        });
+        RX.loadCSS({
+            template: "platMain", module: [
+                "/medias/src/plat/map/mapCss/mapCss.css",
+                "/medias/src/plat/map/mapCss/progress.css"
+                //"/medias/src/mhsj/conf/cxpz/resourceList_config.js",
+                // "/medias/src/mhsj/code/cxpz/resourceList.js"
+            ]
+        });
+    </script>
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<script>
+</script>
+<div id="mainMap" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 0;">
+    <div id="map2" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 0;"></div>
+    <!--地图工具-->
+    <div class="mapTool">
+        <ul>
+            <!--<li>-->
+            <!--<div id="print_button"></div>-->
+            <!--</li>-->
+            <li>
+                <a href="#none" data-tool="expand" class="map-tool-button"><i class="iconfont">&#xe610;</i></a>
+            </li>
+            <li>
+                <a href="#none" data-tool="reduce" class="map-tool-button"><i class="iconfont">&#xe617;</i></a>
+            </li>
+            <li>
+                <a href="#none" data-tool="allExtent" class="map-tool-button"><i class="iconfont">&#xe622;</i></a>
+            </li>
+            <li>
+                <a href="#none" data-tool="clearMap" class="map-tool-button"><i class="iconfont">&#xe606;</i></a>
+            </li>
+            <li>
+                <a href="#none" data-tool="measureDistance" class="map-tool-button"><i class="iconfont">&#xe6b4;</i></a>
+            </li>
+            <li>
+                <a href="#none" data-tool="mapGlobalasureArea" class="map-tool-button"><i class="iconfont">&#xe623;</i></a>
+            </li>
+            <!--<li>-->
+            <!--<a href="#none" data-tool="aa" class="map-tool-button">1111111</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+    <!--扩展工具-->
+    <div class="extensionTool">
+        <ul>
+            <!--<li>-->
+            <!--<a href="#none" data-tool="expand" class="map-tool-button"><i class="iconfont">&#xe610;</i></a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+    <!--地图模式-->
+    <div class="maptype">
+    </div>
+
+    <!-- sidebar -->
+    <div id="mapSidebar">
+        <div class="panel-heading" style="text-align: right;background-color:#ccc9ca;;">
+            <a href="#none" data-tool="track"  class="close"><i style="color:#828282;" class="iconfont">&#xe609;</i></a>
+        </div>
+        <div id="mapSidebarContent">
+
+        </div>
+    </div>
+    <!--应用功能-->
+    <div class="mapApp">
+        <ul>
+            <li>
+                <a href="#none" data-tool="track" class="map-tool-button"><i class="iconfont">&#xe633;</i> 移动轨迹</a>
+            </li>
+            <li>
+                <a href="#none" data-tool="mapDraw" class="map-tool-button"><i class="iconfont">&#xe633;</i> 常规标绘</a>
+            </li>
+            <li>
+                <a href="#none" data-tool="militaryDraw" class="map-tool-button"><i class="iconfont">&#xe633;</i> 军事标绘</a>
+            </li>
+        </ul>
+    </div>
+    <div id="mapProgress" style="background: red;width: 500px; position: absolute;bottom: 50px;left: 50px">
+    </div>
+</div>
+</body>
+</html>

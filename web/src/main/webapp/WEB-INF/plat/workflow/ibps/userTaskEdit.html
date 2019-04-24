@@ -1,0 +1,301 @@
+<script type="text/template">
+    <div class="form_box">
+        <table class="form" cellpadding="0" cellspacing="0">
+            <col width="120px"/>
+            <col width=""/>
+            <tr>
+                <th><b>*</b>环节名称</th>
+                <td>
+                    <div class="element_box">
+                        <input data-label-input type="text" class="i_text" model="name"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>环节编码</th>
+                <td id="nodeCode">
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="nodeCode"></select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><b>*</b>环节序号</th>
+                <td>
+                    <div class="element_box">
+                        <input type="text" class="i_text" model="sort"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><b>*</b>分支聚合</th>
+                <td>
+                    <div class="element_box">
+                        <div model="nature"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><b>*</b>多人办理方式</th>
+                <td>
+                    <div class="element_box" model="transactType" on-change="clearCountersign()"></div>
+                </td>
+            </tr>
+            {{#if transactType == "1"}}
+            <tr class="countersign">
+                <th>会签方式</th>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="countersignParameter"
+                                on-change="changeStatus()"></select>
+                    </div>
+                </td>
+            </tr>
+            <tr class="countersign">
+                <th>会签参数值</th>
+                <td>
+                    <div class="element_box">
+                        <input type="text" class="i_text" model="countersignValue"/>
+                    </div>
+                </td>
+            </tr>
+            {{/if}}
+            <tr>
+                <th>不同意跳转至</th>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="disagreeNodeDomid"></select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>环节业务状态</th>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="ywzt"></select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</script>
+<script type="template">
+    <div class="form_box">
+        <div class="p_box">
+            <div class='page_title'><h1>规则与角色</h1>
+                <ul class='action_button to_right'>
+                    <li><a on-click="addCandidate()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                </ul>
+            </div>
+            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th align="left" width='8%'><b></b>序号</th>
+                    <th align="left" width='30%'><b>*</b>规则</th>
+                    <th align="left" width='50%'><b></b>办理人角色</th>
+                    <th align="left">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#if list&&list.length>0}}
+                {{#each list}}
+                {{#if sfyxSt !== "UNVALID"}}
+                <tr class="rx-grid-tr">
+                    <td align="left" class="orderTag"></td>
+                    <td>{{rule.ruleName}}</td>
+                    <td>{{joinRoleName(roleList)}}</td>
+                    <td><a class="active_1" href="javascript:void(0);" on-click="editCandidate($keypath)">修改</a><a
+                            class="active_2" href="javascript:void(0);" on-click="delCandidate($keypath)">删除</a></td>
+
+                </tr>
+                {{/if}}
+                {{/each}}
+                {{else}}
+                <tr class="rx-grid-tr">
+                    <td align="center" class="no_data" colspan="4">无数据
+                    </td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/template">
+    <div class="form_box">
+        <div class="p_box">
+            <div class='page_title'><h1>环节表单</h1>
+                <ul class='action_button to_right'>
+                    <li><a on-click="addSheet()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                </ul>
+            </div>
+            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th align="left" width='8%'><b>*</b>序号</th>
+                    <th align="left" width='30%'><b>*</b>标题</th>
+                    <th align="left" width='34%'><b>*</b>所属表单</th>
+                    <th align="left" width='12%'><b>*</b>表单控制</th>
+                    <!--{{#if workflowShowSpx}}
+                    <th align="left" width='16%'>审批项名称</th>
+                    <th align="left" width='10%'>审批项序号</th>
+                    <th align="left" width='12%'>是否打印</th>
+                    {{/if}}-->
+                    <th align="left">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#if sheets.length}}
+                {{#each sheets:index}}
+                {{#if sfyxSt !== "UNVALID"}}
+                <tr>
+                    <td align="left">
+                        <div class='element_box'>
+                            <input type="text" class="i_text" model="sort"/>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'>
+                            <input type="text" class="i_text" model="title"/>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="element_box ele_0">
+                            <select class="i_select" model="sheet_id"></select>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="element_box ele_0">
+                            <select class="i_select" model="control"></select>
+                        </div>
+                    </td>
+                    {{#if workflowShowSpx}}
+                    <td align="left">
+                        <div class='element_box'>
+                            <input type="text" class="i_text" model="spxName"/>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'>
+                            <input type="text" class="i_text" model="spxSort"/>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="element_box ele_0">
+                            <select class="i_select" model="spxPrint"></select>
+                        </div>
+                    </td>
+                    {{/if}}
+                    <td align="left">
+                        <a href='javascript:void(0)' class="active_2"
+                           on-click='delSheet($keypath)'>删除</a>
+                    </td>
+                </tr>
+                {{/if}}
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td align="center" class="no_data"
+                        colspan="{{#if workflowShowSpx}}8{{else}}5{{/if}}">无数据
+                    </td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/template">
+    <div class="form_box">
+        <div class="p_box">
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <td>
+                    <div class="element_box">
+                                    <textarea style="height: 160px" class="i_textarea"
+                                              model="finishProcessSql"></textarea>
+                    </div>
+                </td>
+            </table>
+            <div class="prompt_long" style="margin-top:10px;">
+                <p> 1.SQL格式：SQL:sql语句</p>
+                <p> 2.PRO格式：PRO:存储过程名称</p>
+                <p>3.JAVA格式：JAVA:Java类名</p>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template">
+    <div class="form_box">
+        <!--环节按钮列表-->
+        <!--<NodeButtonGrid ref="nodeButtonGrid" list="{{buttons}}">-->
+        <div class="no_p_box">
+            <div class='page_title'><h1>按钮设置</h1>
+                <ul class='action_button to_right'>
+                    <li><a on-click="addButton()"><i class="iconfont">{{{'&#xe62a;'}}}</i>新增</a></li>
+                </ul>
+            </div>
+            <table class="list" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th width='8%' align="left"><b>*</b>序号</th>
+                    <th width='12%' align="left"><b>*</b>名称</th>
+                    <th width='12%' align="left"><b>*</b>code</th>
+                    <th width='10%' align="left">图标</th>
+                    <th>类型</th>
+                    <th width='13%' align="left">函数名</th>
+                    <th align="left">排序号</th>
+                    <th align="left">显示条件</th>
+                    <th align="left">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#if buttons.length}}
+                {{#each buttons:index}}
+                {{#if sfyxSt !== "UNVALID"}}
+                <tr>
+                    <td align="left">
+                        {{index+1}}
+                    </td>
+                    <td align="left">
+                        <div class='element_box'><input type='text' class='i_text' model='name'></div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'><input type='text' class='i_text' model='code'></div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'><input type='text' class='i_text' model='icon'></div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box ele_0'><select class='i_select' model='type'></select>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'><input type='text' class='i_text' model='funcName'>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class='element_box'><input type='text' class='i_text' model='sort'></div>
+                    </td>
+                    <td align="left">
+                        <div class="element_box ele_0">
+                            <select class='i_select' model='isShowInHandle'></select>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <a href='javascript:void(0);' class="active_2"
+                           on-click='delButton($keypath)'>删除</a>
+                    </td>
+                </tr>
+                {{/if}}
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td align="center" class="no_data" colspan="9">无数据</td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+        <!--</NodeButtonGrid>-->
+    </div>
+</script>

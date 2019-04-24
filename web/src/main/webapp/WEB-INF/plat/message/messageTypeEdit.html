@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>消息类型编辑页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div>
+            <div class="p_box">
+                <div class="page_title">
+                    <h1>基本信息</h1>
+                </div>
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="90px">
+                        <col width="">
+                        <col width="110px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th><b>*</b>名称</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="name"/>
+                            </div>
+                        </td>
+                        <th><b>*</b>编码</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="code"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>紧急程度</th>
+                        <td>
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="urgentLevel"></select>
+                            </div>
+                        </td>
+
+                        <th>有效期限(天)</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="validTime"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述</th>
+                        <td colspan="3">
+                            <div class="element_box">
+                <textarea class="i_textarea" model="description">
+                </textarea>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p_box">
+                <div class="page_title">
+                    <h1>操作设置</h1>
+                </div>
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="90px">
+                        <col width="">
+                        <col width="110px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>操作类型</th>
+                        <td>
+                            <div class="element_box">
+                                <div model="operateType"></div>
+                            </div>
+                        </td>
+                        <th><b>*</b>跳转类型</th>
+                        <td>
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="skipType"></select>
+                            </div>
+                        </td>
+                    </tr>
+                    {{#if skipType == 1}}
+                    <tr>
+                        <th class="win_size">窗口大小</th>
+                        <td colspan="3" class="win_size">
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="winSize"></select>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    {{#if skipType == 1 || skipType == 2}}
+                    <tr class="skipPath">
+                        <th><b>*</b>跳转路径</th>
+                        <td colspan="3">
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="skipPath"/>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/message/messageTypeEdit_config.js",
+            "/medias/src/plat/message/messageTypeEdit.js"]
+    });
+</script>
+
+</body>
+</html>

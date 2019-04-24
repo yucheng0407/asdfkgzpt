@@ -1,0 +1,43 @@
+<div>
+    <div class="page_title">
+        <h1>{{listName}}</h1>
+        {{#if disabled != true}}
+            {{#if totalMin}}
+                <p totalMin="{{totalMin}}">（至少上传{{totalMin}}份）</p>{{/if}}
+                <!--<span class="err" style="margin:8px 0 0 5px"><i class="iconfont">{{{'&#xe603;'}}}</i></span>-->
+                <ul class="action_button to_right">
+                    <li>
+                        <a href="#none" on-click="addFile()"><i class="iconfont">{{{'&#xe8ab;'}}}</i>{{uploadName}}</a>
+                    </li>
+                    <!--<li>-->
+                        <!--<a href="#none" on-click="preview()"><i class="iconfont">{{{'&#xe7b9;'}}}</i>附件预览</a>-->
+                    <!--</li>-->
+                </ul>
+            {{/if}}
+    </div>
+    <div class="attachment_box">
+        {{#each resultList:index}}
+        <div class="attachment_header" min="{{dictMin}}">
+            <h1>{{value}}<em size="{{list.length}}">({{list.length}})</em></h1>
+     {{#if dictMin}}   <p style="color:#717171;"><em style="float: left">至少上传{{dictMin}}份</em></p>{{/if}}
+            <a href="#none" title="展开"><i class="iconfont">{{{'&#xe62d;'}}}</i></a>
+        </div>
+        <div class="attachment_content" style="display: none">
+            <ul class="download_thumbnail">
+                {{#each list:index}}
+                <li>
+                    <a href="#none"><img alt="" src="{{showImg}}"/>
+                        <span class="attachment_operation">
+								<i class="iconfont" title="下载" on-click="downloadFile($keypath)">{{{'&#xe630;'}}}</i>
+							   {{#if disabled != true}}	<i class="iconfont" title="删除" on-click="deleteFile($keypath)">{{{'&#xe6a2;'}}}</i>{{/if}}
+							</span>
+                        <p title="{{fullName}}">{{simpleName}}</p>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+            <div class="clear"></div>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机构树</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["treeIcon", "zTree"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="centre">
+    <div class="tree_box">
+        <ul id="tree" class="ztree">
+        </ul>
+    </div>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box" style="text-align: center" id="w_butt"></div>
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: ["zTree",
+            "/medias/src/plat/tree/organTreeSync.js"],
+        callback: function () {
+            //初始化内容区域高度
+            $(".tree_box").height($(window).height() - 50);
+            //页面大小改变时，触发jquery的resize方法，自适应拖拽
+            $(window).resize(function () {
+                $(".tree_box").height($(window).height() - 50);
+            })
+        }
+    });
+</script>
+</body>
+</html>

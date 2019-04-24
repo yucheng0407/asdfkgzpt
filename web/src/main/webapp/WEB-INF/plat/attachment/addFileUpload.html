@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="layout" content="main"/>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["uploadify"]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        var uploadResult = '';
+        RX.load({
+            async: false,
+            module: ["uploadify",
+                "/medias/src/plat/attachment/addFileUpload.js"]
+        });
+    </script>
+</head>
+<body>
+<div class="form_box">
+    <table class="form">
+        <colgroup>
+            <col width="120px">
+            <col width="">
+        </colgroup>
+        <tr id="TypeTag">
+            <th>
+                <b>*</b>文件类别：
+            </th>
+            <td>
+                <select id="fileNo" name="fjlb_no" class="i_select">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>文件：</th>
+            <td>
+                <input id="file_upload" name="uploadFile" type="file"/>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="defaultType" name="defaultType" />
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="uploadBtn" value="上传" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+</body>
+</html>

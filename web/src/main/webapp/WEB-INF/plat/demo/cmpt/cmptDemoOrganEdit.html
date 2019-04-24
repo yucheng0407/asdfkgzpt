@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tagsInput","/medias/plugin/slider/slider.css"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<script>RX.pageLoading();</script>
+
+<!--页面基础布局-->
+<div class="form_box">
+    <!--主表单模板-->
+    <script type="text/template">
+        <div>
+            <div class="p_box">
+                <table class="form" border="0" cellspacing="0" cellpadding="0" on-enter="enterMethod()">
+                    <colgroup>
+                        <col width="100px"/>
+                        <col width=""/>
+                    </colgroup>
+                    <tr>
+                        <th o-tag="organName"></th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="organName"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>滑动条Demo</th>
+                        <td>
+                            <SliderBar text="{{barValue}}" min="0" max="20" changeFunc="changeFunc"/>
+                        </td>
+                    </tr>
+                    <!--<tr>-->
+                    <!--<th>新增关系</th>-->
+                    <!--<td>-->
+                    <!--&lt;!&ndash;领导人动态列表&ndash;&gt;-->
+                    <!--<LeaderTags ref="leaderTags" list="{{demoLeaderList}}">-->
+                    <!--<div>{{> tagsInput}}</div>-->
+                    <!--</LeaderTags>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+            <!--项目动态列表-->
+            <ProjectGrid ref="projectGrid" list="{{demoProjectList}}">
+                <div class="p_box">
+                    <div class="page_title"><h1>项目列表(可编辑列表)</h1>
+                        <ul class="action_button to_right">
+                            <li><a on-click="addProject()"><i class="iconfont"></i>新增</a></li>
+                            <li><a on-click="reloadProject()"><i class="iconfont"></i>重置关系</a></li>
+                        </ul>
+                    </div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="list">
+                        <thead>
+                        <tr>
+                            <th style="width:5%">序号</th>
+                            <th style="width:20%">项目名称</th>
+                            <th style="width:20%">项目类型</th>
+                            <th style="width:20%">成立日期</th>
+                            <th style="width:10%">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#if list.length}}
+                        {{#each list:index}}
+                        {{#if sfyxSt !== "UNVALID"}}
+                        <tr class="rx-grid-tr">
+                            <td align="center" class="orderTag"></td>
+                            <td align="center">
+                                <div class="element_box"><input type="text" class="i_text" model="projectName"/></div>
+                            </td>
+                            <td align="center">
+                                <div class="element_box"><input type="text" class="i_text" model="projectType"/></div>
+                            </td>
+                            <td align="center">
+                                <div class="element_box"><input type="text" class="i_date" model="clrq"/></div>
+                            </td>
+                            <td style="text-align:center"><a href="javascript:void(0);" class="active_2"
+                                                             on-click="deleteProject($keypath)">删除</a>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        {{else}}
+                        <tr class="rx-grid-tr">
+                            <td align="center" colspan="5">无数据</td>
+                        </tr>
+                        {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </ProjectGrid>
+            <!--项目动态列表-->
+            <LeaderGrid ref="leaderGrid" data="{{demoLeaderList}}"/>
+        </div>
+    </script>
+</div>
+
+<!--领导人子模板-->
+<script type="text/template" id="leaderGrid">
+    <div class="p_box">
+        <div class="page_title"><h1>领导人列表(弹层填充-列表禁选)</h1>
+            <ul class="action_button to_right">
+                <li><a on-click="addLeader()"><i class="iconfont"></i>新增</a></li>
+            </ul>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="list">
+            <thead>
+            <tr>
+                <th style="width:5%">序号</th>
+                <th style="width:20%">姓名</th>
+                <th style="width:20%">性别</th>
+                <th style="width:10%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each list:index}}
+            {{#if sfyxSt !== "UNVALID"}}
+            <tr class="rx-grid-tr" on-click="select($keypath,$event)">
+                <td align="center" class="orderTag"></td>
+                <td align="center">
+                    <div class="element_box"><input type="text" class="i_text" model="leaderName"/></div>
+                </td>
+                <td align="center">
+                    <div class="element_box"><select type="text" class="i_select" model="sex"></select></div>
+                </td>
+                <td align="center">
+                    <a href="javascript:void(0);" on-click="addSubLeader($keypath)"
+                       class="active_1">增加子</a>
+                    <a href="javascript:void(0);" on-click="deleteLeader($keypath)"
+                       class="active_2">删除</a>
+                </td>
+            </tr>
+            {{#if subList && subList.length}}
+            <tr class="rx-grid-tr">
+                <td colspan="4">
+                    <SubLeaderGrid ref="subLeader{{index}}" list="{{subList}}"/>
+                </td>
+            </tr>
+            {{/if}}
+            {{/if}}
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--领导人子模板-->
+<script type="text/template" id="subLeaderGrid">
+    <table cellpadding="0" cellspacing="0" border="0" class="list">
+        <tbody>
+        {{#each list:index}}
+        {{#if sfyxSt !== "UNVALID"}}
+        <tr class="rx-grid-tr" on-click="select($keypath,$event)">
+            <td align="center" class="orderTag"></td>
+            <td align="center">
+                <div class="element_box"><input type="text" class="i_text" model="leaderName"/></div>
+            </td>
+            <td align="center"><a href="javascript:void(0);" on-click="deleteSubLeader($keypath)"
+                                  class="active_2">删除</a></td>
+        </tr>
+        {{/if}}
+        {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<!-- 下面按钮 -->
+<div class="w_button_box">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/plugin/slider/slider.js",
+            "/medias/lib/cmpt/rx.slider.bar-rxvm.js",
+            "tagsInput", "rxTag", "/medias/src/plat/demo/cmpt/cmptDemoOrganEdit_config.js",
+            "/medias/src/plat/demo/cmpt/cmptDemoOrganEdit.js"]
+    });
+</script>
+
+</body>
+</html>

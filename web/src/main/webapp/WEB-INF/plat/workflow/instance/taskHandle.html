@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["tabPanel", "flow"]
+        });
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #sheets td, #vars td {
+            text-align: center;
+        }
+
+        /*手型标志*/
+        #buttons span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="base_box" style="padding: 0px;">
+    <!--操作按钮区-->
+    <div class="operation_box" id="operation">
+    </div>
+    <!--表单列表-->
+    <div id="sheetList" style="overflow:hidden;">
+        <script type="text/template">
+            <div id="center-tab" style="position: relative;height: 100%">
+                {{#each list:index}}
+                <iframe id="{{id}}" name="{{name}}" src="{{url}}" tabId="{{tabId}}" frameborder="0" width="100%"
+                        height="100%"></iframe>
+                {{/each}}
+            </div>
+        </script>
+    </div>
+    <div class="bottomTips" id="bottomTips">
+        <b></b>
+    </div>
+    <div class="bottomPanel" id="bottomPanel" style="overflow:hidden">
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    RX.load({
+        template: "all",
+        module: ["json2", "tabPanel", "jqueryUrl", "validate",
+            "/medias/src/plat/workflow/instance/workflow.js",
+            "/medias/src/plat/workflow/instance/flowPageCheck.js",
+            "/medias/src/plat/workflow/instance/taskHandle.ext.js",
+            "/medias/src/plat/workflow/instance/taskHandle.js"]
+    });
+</script>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防控安排任务单</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+</div>
+<!--表单模板-->
+<script type="text/template" id="fqapRwd">
+<div>
+    <div class="p_box">
+        <table class="form" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col width="120px"/>
+                <col width=""/>
+                <col width=""/>
+                <col width="120px"/>
+                <col width="35%"/>
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>
+                    <b>*</b>责任单位
+                </th>
+                <td colspan="2">
+                    <div class="element_box ele_1">
+                        <input title="" type="text" class="i_text" model="zrdwmc" disabled="disabled" id="zrdwmc"/>
+                        <input title="" type="text" class="i_text" model="zrdw" hidden="hidden"/>
+                    </div>
+                </td>
+                <th><b>*</b>巡组</th>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="xz">
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <b>*</b>巡防开始时间
+                </th>
+                <td colspan="2">
+                    <div class="element_box ele_1">
+                        <input type="text" class="i_text" model="xfkssj" />
+                    </div>
+                </td>
+                <th>
+                    <b>*</b>巡防结束时间
+                </th>
+                <td>
+                    <div class="element_box ele_1">
+                        <input type="text" class="i_text" model="xfjssj"/>
+                        <div class="ico_1">
+									<span class="i_noborder" title="引用历史时间" onclick="xz()">
+										<i class="iconfont">{{{'&#xe6cd;'}}}</i>
+									</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <b>*</b>巡区
+                </th>
+                <td colspan="2">
+                    <div class="element_box">
+                        <input type="hidden" model="xqid">
+                        <input title="" type="text" class="i_text" model="xqmc"/>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="xqlx">
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><b>*</b>任务类型</th>
+                <td colspan="2">
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="rwlx">
+                        </select>
+                    </div>
+                </td>
+                <th>
+                    <b>*</b>巡逻方式
+                </th>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="xffs">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th >
+                    <b>*</b>巡防设备
+                </th>
+
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="equipmentParent" id="equipmentParent">
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="equipmentChild" id="equipmentChild" >
+                        </select>
+                    </div>
+                </td>
+
+                <td  colspan="1">
+                    <div class="element_box">
+                        <input title="设备ID" type="text" class="i_text" hidden="hidden"  model="deviceId"   id="deviceId" />
+                        <input title="设备名称" type="text" class="i_text" model="deviceInfomation" id="deviceName" />
+                    </div>
+                </td>
+
+
+                <td  colspan="1" class="element_box ele_select">
+                  <div>
+                    <input type="button" value="设备自检" onclick="sbzj(this,true)" >
+                      <span class="err" >
+                          <i class="iconfont" hidden="hidden" id="hiddenDevices"></i>
+                      </span>
+                        <div class="ico_1" style="width:2px">
+                                        <span class="i_noborder" title="新增" id="addAdvice">
+                                            <i class="iconfont">{{{'&#xe62a;'}}}</i>
+                                        </span>
+                        </div>
+                 </div>
+                </td>
+
+
+             </tr>
+            <tr >
+                <th>
+                    在线情况
+                </th>
+                <td colspan="4">
+                    <div class="element_box ele_0">
+                        <select class="i_select" model="sbzsqk" id="sbzsqk">
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr  hidden="hidden" id="czsp">
+                <th>
+                    车载视频情况
+                </th>
+                <td colspan="4">
+                    <div class="element_box ele_select">
+                        <select class="i_select" model="czspqk" id="czspqk">
+                        </select>
+                        <div class="ico_1">
+									<span class="date" title="查看车载视频" >
+										<i class="iconfont">{{{'&#xe6b7;'}}}</i>
+									</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+            <table class="form" border="0" cellspacing="0" cellpadding="0" id="deviceTab" hidden="hidden">
+                <colgroup>
+                    <col width="120px"/>
+                    <col width=""/>
+                    <col width=""/>
+                    <col width="120px"/>
+                    <col width="35%"/>
+                </colgroup>
+                <tbody id="devices">
+                </tbody>
+            </table>
+
+
+       <table class="form" border="0" cellspacing="0" cellpadding="0">
+        <colgroup>
+            <col width="120px"/>
+            <col width=""/>
+            <col width=""/>
+            <col width="120px"/>
+            <col width="35%"/>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th>
+                    <b>*</b>责任民警
+                </th>
+                <td colspan="4">
+                    <div class="element_box">
+                        <input hidden="hidden" model="zrmjs">
+                        <input title="" type="text" class="i_text" model="zrmjmcs"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    重防区域
+                </th>
+                <td colspan="4">
+                    <div class="element_box ">
+                        <input type="hidden" model="zfqy">
+                        <input title="" type="text" class="i_text" model="zfqymc"/>
+                    </div>
+                </td>
+            </tr>
+            <tr hidden="hidden">
+                <th>
+                    重防时段
+                </th>
+                <td colspan="4">
+                    <div class="element_box"  id="zfsd">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>备注</th>
+                <td colspan="4">
+                    <div class="element_box">
+                        <textarea class="i_textarea" model="bz"></textarea>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+    </table>
+   </div>
+</div>
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt" style="text-align: center">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/jmfk/fkap/fkapRwdEdit_config.js",
+            "/medias/src/jmfk/fkap/fkapRwdEdit.js"]
+    });
+</script>
+</body>
+</html>

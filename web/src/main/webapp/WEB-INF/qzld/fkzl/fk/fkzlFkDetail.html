@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>防控指令-反馈详情</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="title_box">
+    <h1 class="bt_title"></h1>
+    <a onclick="reBack()">
+        <i class="iconfont">&#xe642;</i>
+    </a>
+</div>
+
+<div class="roll_box">
+    <div class="short_message_box">
+        <div class="feedback_message" style="display: none">
+        </div>
+        <div class="reply_box">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/map/getMap.js",
+            "/medias/src/qzld/fkzl/fk/fkzlFkDetail.js"
+        ]
+    });
+    $(function () {
+        //初始化内容区域高度
+        $(".roll_box").height($(window).height() - $(".title_box").outerHeight() - $(".feedback_box").outerHeight() - 10);
+    });
+    //页面大小改变时，触发jquery的resize方法，自适应拖拽
+    $(window).resize(function () {
+        $(".roll_box").height($(window).height() - $(".title_box").outerHeight() - $(".feedback_box").outerHeight() - 10);
+    })
+</script>
+</body>
+</html>

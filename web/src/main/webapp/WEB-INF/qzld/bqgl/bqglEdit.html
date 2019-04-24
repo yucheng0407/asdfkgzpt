@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增任务</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+</div>
+<!--表单模板-->
+<script type="text/template" id="bqglForm">
+    <div>
+        <div class="p_box">
+            <table class="form" border="0" cellspacing="0" cellpadding="0" id="xstb">
+                <colgroup>
+                    <col width="120px">
+                    <col/>
+                    <col width="120px">
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th><b>*</b>责任单位</th>
+                    <td colspan="3">
+                        <div class="element_box ele_1">
+                            <input title="" type="text" class="i_text" hidden="hidden"  model="zrdw"/>
+                            <input title="" type="text" class="i_text" model="zrdwmc"/>
+                        </div>
+                       <div class="ico_6">
+                             <span class="i_noborder" title="引用历史时间" id="yyls">
+                                <i class="iconfont">{{{'&#xe6cd;'}}}</i>
+                             </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>值班开始时间</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_date" model="zbkssj"/>
+                        </div>
+                    </td>
+                    <th>值班结束时间</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_date" model="zbjssj"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>值班领导</th>
+                    <td>
+                        <div class="element_box">
+                           <input title="" type="text" class="i_text" model="zbldxm"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>值班领导职务</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" hidden="hidden" model="zbld"/>
+                            <input title="" type="text" class="i_text" model="zbldzw"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>值班领导电话</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="zblddh"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>值班室电话</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="zbsdh"/>
+                        </div>
+                    </td>
+                </tr>
+              <tr>
+                <th><b>*</b>值班民警</th>
+                <td colspan="3">
+                    <div class="element_box">
+                        <input title="" type="text" class="i_text" model="zbmjmcs"/>
+                    </div>
+                </td>
+             </tr>
+                <tr>
+                    <th><b>*</b>备勤领导</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="bqldmc"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>备勤民警</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="bqmjmcs"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>值班辅协警数</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" hidden="hidden" model="zbmjs"/>
+                            <input title="" type="text" class="i_text" model="zbfxjsl"/>
+                        </div>
+                    </td>
+                <th><b>*</b>备勤辅协警数</th>
+                <td>
+                    <div class="element_box">
+                        <input title="" type="text" class="i_text" hidden="hidden" model="bqld"/>
+                        <input title="" type="text" class="i_text" hidden="hidden" model="bqmjs"/>
+                        <input title="" type="text" class="i_text" model="bqfxjsl"/>
+                    </div>
+                </td>
+                </tr>
+                <tr id="apdr">
+                    <th><b></b>安排多日</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_date" model="apdr"/>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="element_box ele_select" style="height: 20px">
+                            <div class="ico_5">
+									<span class="i_noborder" title="新增"  id="xz">
+										<i class="iconfont">{{{'&#xe62a;'}}}</i>
+									</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!---安排多日-->
+            <table class="form" border="0" cellspacing="0" cellpadding="0" style="display: none"  id="dateTable">
+                <colgroup>
+                    <col width="120px">
+                    <col/>
+                    <col width="120px">
+                    <col/>
+                </colgroup>
+                <tbody id="dateTr">
+
+                </tbody>
+            </table>
+            <table class="form" border="0" cellspacing="0" cellpadding="0" >
+                <colgroup>
+                    <col width="120px">
+                    <col/>
+                    <col width="120px">
+                    <col/>
+                </colgroup>
+                <tbody>
+              <tr>
+                    <th>备注</th>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <textarea type="text" class="i_textarea"  model="bz"
+                                      maxlength="100"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</script>
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt" style="text-align: center">
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/qzld/bqgl/bqglEdit_config.js",
+            "/medias/src/qzld/bqgl/bqglEdit.js"]
+    });
+</script>
+</body>
+</html>

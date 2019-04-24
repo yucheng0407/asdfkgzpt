@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        .file_title h1{ padding: 15px 0; font-size: 16px; text-align: center;  }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <div class="file_title">
+        <h1>文件预览:<span id="filename"></span></h1>
+        <h1 id="description" style="display:none">文件描述:<span></span></h1>
+    </div>
+    <!--<a class="media" href=""></a>-->
+    <div id="preview" style="height: 300px;width: auto;text-align:center;"></div>
+</div>
+<div class="w_button_box" style="text-align: center">
+
+    <input type="button" value="缩小" id="sx" class="c_button" onclick="changeSmaller(this)"/>
+    <input type="button" value="放大" id="fd" class="c_button" onclick="changeBigger(this)"/>
+    <input type="button" value="旋转" id="xz" class="c_button" onclick="rotateRight('previewimg',90)"/>
+    <input type="button" value="关闭" id="close" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        module: [
+            "/medias/src/plat/attachment/showFile.js"]
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+

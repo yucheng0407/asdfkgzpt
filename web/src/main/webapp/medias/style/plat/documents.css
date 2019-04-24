@@ -1,0 +1,101 @@
+﻿/*文书样式*/
+.docbox{width:100%;height:100%;overflow-x:hidden;overflow-y:auto;}
+.docBook{
+    width:650px;	
+    margin:20px auto;
+    border:1px solid #d6d6d6;
+    background:#fff;
+    padding:30px 100px;
+}
+
+.docTable{
+    width:100%;
+    height:100%;
+    font-size:14px;
+    background-color:#fff;
+}
+.docTable caption b{font-size:20px;font-weight:bold}
+.docTable th{font-weight:normal; vertical-align: middle}
+.docTable tr td{height:40px;line-height: 40px;vertical-align: middle}
+.docTextBox{width:160px;height:20px;line-height:20px;text-align:left;border-top:1px solid #abadb3;border-left:1px solid #abadb3;border-right:1px solid #e2e3ea;border-bottom:1px solid #e2e3ea;float:left;}
+.docTable caption{text-align: center;height:30px;line-height: 30px;}
+.docTxtArea{height:40px;border:1px #abadb3 solid}
+.alignRight{text-align:right;text-indent:30px}
+
+
+.docBook h1.title{ width:100%; height:50px; line-height:50px; font-size:26px; font-weight:bold; text-align:center;  padding:20px 0px 50px 0px; }
+.docBook h2.title{ color: #333; width:100%; font-size:16px; font-weight:normal; text-decoration:underline; }
+.docBook h3.title{ color: #333; width:100%; font-size:15px; font-weight:bold; height:36px; line-height:36px; padding:5px 0 0px 0; }
+.docBook p{ line-height:36px; font-size:16px; padding:10px 0px; }
+.buttonz{background:#fff;width:70px;height:28px;border:0 none;color:#333;line-height:26px;text-align:center;cursor:pointer;font-size:14px;margin-left:2px;border:1px solid #c8c8c8;
+border-radius: 2px; /* 所有角都使用半径为5px的圆角，此属性为CSS3标准属性 */ 
+-moz-border-radius: 2px; /* Mozilla浏览器的私有属性 */ 
+-webkit-border-radius: 2px; /* Webkit浏览器的私有属性 */ }
+.buttonz:hover{ color:#3a83e1 }
+.docBook p span{ font-weight: bold; }
+font.span_show_ellipsis{ border-bottom: 1px solid #333333 }
+
+.doc_text{font-size:16px;height:30px;line-height:30px;text-align:center;border:none;border-bottom:1px #000 solid;color:#000}
+.doc_layer{height:30px;line-height:30px;text-align:center;color:#333;border:none;border-bottom:1px #000 solid;background:#fff url(../images/plat/toolbar_find.png) no-repeat right 2px;cursor:pointer;}
+.doc_date{width:150px;height:30px;line-height:30px;text-align:center;color:#333;border:none;border-bottom:1px #333 solid;background:#fff url(../images/plat/datePicker.gif) no-repeat right 0}
+.doc_textarea{width:100%;height:80px;border:none;border:1px #999999 solid;color:#333;overflow:auto;text-indent:2px}
+.doc_select{width:100%;border:none;border-bottom:1px #000 solid;height:30px;color:#333}
+.doc_radio{background:none}
+.doc_checkbox{background:none}
+.doc_file{width:100%;border:none;border-bottom:1px #000 solid;height:30px;color:#333}
+
+.docBook p.txtword{ padding: 0; font-size: 12px; line-height:28px; color: #666 }
+.docBook .TextBoxErr{border:1px solid #ff0000;background:#fff}
+
+/*普通列表*/
+.doc_list{width:100%;_width:auto;background:#fff;font-size: 12px;border:1px solid #666666}
+.doc_list .trhover:hover{background:#FFF8D9}
+.doc_list tr th{height:32px;line-height:26px;text-align:center;color:#333;background:#fff;font-weight:normal;border:1px solid #666666}
+.doc_list tr td{height:32px;line-height:26px;text-align:center;text-indent:0px;border:1px solid #666666;color:#333;padding: 2px 4px 2px 2px;}
+.doc_list tr th a{color:#0c80e8}
+.doc_list tr td img{width:16px;height:16px;margin:0 1px;cursor:pointer}
+.doc_list tr td a{color:#075cdb;margin: 0 5px;}
+.doc_list tr td a:hover{text-decoration:underline}
+.doc_list tr td.Tablecenter{text-align:center;padding-right:1px}
+.doc_list tr td .ellipsis a{float:none}
+.doc_list tr td i{font-size: 16px;color: #707070;cursor: pointer;}
+.doc_list tr td i:hover{color: #003867;}
+.doc_list tr.disabledRow {font-style: oblique;  cursor: not-allowed;  background-color: #BFBCBC  }
+.se{background:#f9f9f9}
+.selectRow{background:#FFF8D9}
+
+
+/*表单*/
+.doc_form{width:100%;_width:auto;background:#fff;border-collapse:collapse;}
+.doc_form tr{background:#fff}
+.doc_form tr th{height:32px;cursor:default;line-height:20px;color:#333333;text-align:center;background:#f2f2f2 !important;font-weight:normal;border:1px solid #d5d5d5 !important;}
+.doc_form tr td{color:#333;background:#fff;border:1px solid #d5d5d5 !important;text-align:left;padding:2px 5px 2px 3px;_padding:2px 5px 2px 3px;  }
+.doc_form tbody tr.hover{cursor: pointer;background-color:#FFF8D9}
+.doc_form tr td a{color:#0056cc}
+.doc_form tr td a:hover{text-decoration:underline}
+/*.doc_form tr td p{float:left;margin-left:3px;color:#333}*/
+.doc_form tr td em{color:red}
+.doc_form tr th a{color:blue;text-decoration:underline}
+.doc_form tr th b{color:red;margin-right:3px}
+.doc_form tr th p{ text-align: left; text-indent: 12px; font-weight: bold; }
+.sorting{float:left}
+.sorting li{float:left;display:inline;width:100px;height:25px}
+.doc_form .list tr th{text-align:center}
+.doc_form .list tr td{padding:0;padding:1px 0px;padding-right:6px;word-break:keep-all;}
+.doc_form tr td input[type="checkbox"]{ vertical-align:middle; margin-right:1px;margin-left: 15px;}
+.doc_form tr td input[type="radio"]{ vertical-align:middle; margin-right:1px;margin-left: 15px;}
+.doc_form tr td table{ width: 100%; }
+.doc_form tr td table th{ border:0; background: none;  }
+.doc_form tr td table td{ border:0; }
+.doc_form tr td.center{ text-align: center;}
+.doc_form tr td .yz{ float: left; width: 100%; position: relative;}
+.doc_form tr td .yz img{ width: 16px; position: absolute; right: 1px; top: 3px; }
+
+
+
+
+
+
+
+
+

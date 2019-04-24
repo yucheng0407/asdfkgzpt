@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>资源查看页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+
+        .content_wrap {
+        }
+
+        .explain {
+            color: red !important;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div class="p_box">
+            <div class="page_title">
+                <h1 id="title">资源基本信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="100px">
+                    <col width="">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th width="30%">名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{name}}">{{name}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{code}}">{{code}}</span>
+                    </td>
+                </tr>
+                <*if(isNotEmpty(config.parent)){*>
+                <tr>
+                    <th>上级资源</th>
+                    <td>
+                        <span class="span_show_ellipsis" title=" {{parentName}}">{{parentName}}</span>
+                    </td>
+                </tr>
+                <*}*>
+                <*if(strutil.index(config.column,"url") > -1){*>
+                <tr>
+                    <*if(isNotEmpty(config.urlname)){*>
+                    <th>${config.urlname}</th>
+                    <*}else{*>
+                    <th>URL</th>
+                    <*}*>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{url || ""}}">{{url || ""}}</span>
+                    </td>
+                </tr>
+                <*if(isNotEmpty(config.urlselect)){*>
+                <tr id="targetNameTr" style="display:none;">
+                    <*if(isNotEmpty(config.urlname)){*>
+                    <th>${config.urlname}关联资源</th>
+                    <*}else{*>
+                    <th>URL关联资源</th>
+                    <*}*>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{targetName || ""}}">{{targetName || ""}}</span>
+                    </td>
+                </tr>
+                <*}*>
+                <*}*>
+                <*if(strutil.index(config.column,"icon") > -1){*>
+                <tr>
+                    <*if(isNotEmpty(config.iconname)){*>
+                    <th>${config.iconname}</th>
+                    <*}else{*>
+                    <th>图标</th>
+                    <*}*>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{icon || ""}}">{{icon || ""}}</span>
+                    </td>
+                </tr>
+                <*}*>
+                <*if(strutil.index(config.column,"bizType") > -1){*>
+                <tr>
+                    <*if(isNotEmpty(config.biztypename)){*>
+                    <th>${config.biztypename}</th>
+                    <*}else{*>
+                    <th>业务类型</th>
+                    <*}*>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{bizType || ""}}">{{bizType || ""}}</span>
+                    </td>
+                </tr>
+                <*}*>
+                <tr>
+                    <th>描述</th>
+                    <td>
+                        <span class="span_show_multiline" title="{{{html(description || "")}}}">{{{html(description || "")}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <div class="button_group">
+    <input type="button" id="editResPage" value="修改" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+    </div>
+</div>
+<script type="text/javascript">
+    var config = ${json(config)};
+    var resourceDict = ${json(resourceDict)};
+    var resourceType = "${resourceType}";
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/resource/resourceView_config.js",
+            "/medias/src/plat/resource/resourceView.js"
+        ]
+    });
+</script>
+
+</body>
+</html>

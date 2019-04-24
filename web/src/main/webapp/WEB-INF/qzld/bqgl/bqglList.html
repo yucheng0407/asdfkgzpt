@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>备勤管理列表页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "/medias/style/plat/default/css/sjz.css"]
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .none_icon {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!--左侧机构树-->
+<div class="left_side_tree">
+    <div class="tree_box">
+        <ul id="tree" class="ztree">
+        </ul>
+    </div>
+</div>
+
+<!--右侧列表-->
+<div class="right_content" id="right">
+    <script type="text/template">
+        <div >
+            <div class="event_box">
+                <div class="parHd clearfix">
+                    <ul id='time'>
+                    </ul>
+                    <a class="sPrev"><img src="${ctxPath}/medias/style/plat/image/bqgl/left_ico.png" alt=""
+                                          title=""></a>
+                    <a class="sNext"><img src="${ctxPath}/medias/style/plat/image/bqgl/right_ico.png" alt=""
+                                          title=""></a>
+                    <a class="left_time" id='left_time'><img
+                            src="${ctxPath}/medias/style/plat/image/bqgl/left_time_ico.png"
+                            alt="" title=""></a>
+                    <a class="right_time" id='right_time'><img
+                            src="${ctxPath}/medias/style/plat/image/bqgl/right_time_ico.png"
+                            alt="" title=""></a>
+                </div>
+            </div>
+            <div class="base_box">
+                <div class="no_p_box">
+                    <div class="operation_box" id="operate">
+                    </div>
+                    <div class="query_box">
+                    </div>
+                </div>
+                <div class="list_box">
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+
+</body>
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        async: false,
+        module: ["zTree",
+            "/medias/src/qzld/bqgl/bqglList_config.js",
+            "/medias/src/qzld/bqgl/bqglList.js",
+            "/medias/lib/bqgl/jquery.SuperSlide2.1.2.js",
+            "/medias/lib/bqgl/sjz.js"
+
+        ]
+    });
+</script>
+</html>

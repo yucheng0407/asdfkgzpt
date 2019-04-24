@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>流程管理</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            /*overflow: hidden;*/
+        }
+    </style>
+</head>
+<body>
+<div id="frDiv" class="frDiv" style="height:100%;width:100%">
+    <input type="hidden" id="remindval" value=""/>
+    <div class="operation_box">
+        <ul class="action_button" style="height: auto">
+            <li><h3>任务列表 <span
+                    style="color:#eb8500;font-size:12px;margin-left:10px;display: inline-block">双击列表条目打开任务</span></h3>
+            </li>
+        </ul>
+    </div>
+    <div id="dataDiv">
+        <!--列表模板-->
+        <script type="text/template">
+            <div class="list_box"></div>
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: ["/medias/src/plat/workflow/instance/taskList_config.js",
+            "/medias/src/plat/workflow/instance/taskList.js"]
+    });
+</script>
+
+</body>
+</html>
